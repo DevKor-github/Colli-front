@@ -6,6 +6,7 @@ const App = () => {
   return (
     <SafeAreaView>
       <Dummy text="Hello World!" />
+      <Dummy text="Hello World!" />
     </SafeAreaView>
   );
 };
