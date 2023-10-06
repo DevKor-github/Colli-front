@@ -1,6 +1,6 @@
 import { SafeAreaView } from 'react-native';
 
-import { Dummy } from './src/Dummy';
+import { Dummy } from '@/Dummy';
 
 const App = () => {
   return (
