@@ -1,14 +1,17 @@
-import { SafeAreaView } from 'react-native';
+import { SafeAreaView } from 'react-native'
 
-import { Dummy } from '@/Dummy';
+import { Dummy } from '@/Dummy'
+import { NavigationContainer } from '@react-navigation/native'
 
 const App = () => {
   return (
-    <SafeAreaView>
-      <Dummy text="Hello World!" />
-      <Dummy text="Hello World!" />
-    </SafeAreaView>
-  );
-};
+    <NavigationContainer>
+      <SafeAreaView>
+        <Dummy text="Hello World!!!" />
+        <Dummy text="Hello World!" />
+      </SafeAreaView>
+    </NavigationContainer>
+  )
+}
 
-export default App;
+export default App

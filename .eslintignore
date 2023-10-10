@@ -1,0 +1,3 @@
+# .estlintignore file
+node_modules/
+metro.config.js

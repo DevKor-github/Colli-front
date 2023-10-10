@@ -1,9 +1,7 @@
-import { Text } from 'react-native';
+import { Text } from 'react-native'
 
-type DummyProps = {
-  text: string;
-};
+type DummyProps = { text: string }
 
 export const Dummy = ({ text }: DummyProps) => {
-  return <Text>{text}</Text>;
-};
+  return <Text>{text}</Text>
+}
