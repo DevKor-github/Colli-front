@@ -60,7 +60,10 @@ export const size = {
   $17: 224,
   $18: 244,
   $19: 264,
-  $20: 284
+  $20: 284,
+  big: 101,
+  small: 97,
+  long: 328
 }
 
 type SizeKeysIn = keyof typeof size
@@ -176,7 +179,9 @@ export const radius = {
   9: 26,
   10: 34,
   11: 42,
-  12: 50
+  12: 50,
+  round: 1000,
+  square: 8
 }
 
 export const tokens = createTokens({

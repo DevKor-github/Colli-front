@@ -103,6 +103,103 @@ const fonts = {
       4: '400',
       5: '700'
     }
+  }),
+  regular12: createFont({
+    family: `Pretendard-Regular`,
+    size: {
+      12: 12,
+      true: 12
+    },
+    letterSpacing: {},
+    weight: {
+      4: '400'
+    },
+    lineHeight: {
+      12: 17
+    }
+  }),
+  regular14: createFont({
+    family: `Pretendard-Regular`,
+    size: {
+      14: 14,
+      true: 14
+    },
+    letterSpacing: {},
+    weight: {
+      4: '400'
+    },
+    lineHeight: {
+      14: 20
+    }
+  }),
+  regular17: createFont({
+    family: `Pretendard-Regular`,
+    size: {
+      17: 17,
+      true: 17
+    },
+    letterSpacing: {},
+    weight: {
+      4: '400'
+    },
+    lineHeight: {
+      17: 21
+    }
+  }),
+  regular18: createFont({
+    family: `Pretendard-Regular`,
+    size: {
+      18: 18,
+      true: 18
+    },
+    letterSpacing: {},
+    weight: {
+      4: '400'
+    },
+    lineHeight: {
+      18: 44
+    }
+  }),
+
+  medium: createFont({
+    family: `Pretendard-Medium`,
+    size: {
+      12: 12,
+      14: 14,
+      17: 17,
+      18: 18,
+      true: 18
+    },
+    letterSpacing: {},
+    weight: {
+      5: '500'
+    },
+    lineHeight: {
+      12: 17,
+      14: 20,
+      17: 21,
+      18: 44
+    }
+  }),
+  bold: createFont({
+    family: `Helvetica`,
+    size: {
+      12: 12,
+      14: 14,
+      17: 17,
+      18: 18,
+      true: 17
+    },
+    letterSpacing: {},
+    weight: {
+      5: '700'
+    },
+    lineHeight: {
+      12: 17,
+      14: 20,
+      17: 21,
+      18: 44
+    }
   })
 }
 
