@@ -182,7 +182,7 @@ const fonts = {
     }
   }),
   bold: createFont({
-    family: `Helvetica`,
+    family: `Pretendard-Bold`,
     size: {
       12: 12,
       14: 14,
