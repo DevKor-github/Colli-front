@@ -1,4 +1,3 @@
-import { SafeAreaProvider } from 'react-native-safe-area-context'
 import { TamaguiProvider } from 'tamagui'
 
 import { Router } from '@/router'
