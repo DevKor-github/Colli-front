@@ -1,18 +1,13 @@
-import { SafeAreaView } from 'react-native'
-import { Calendar } from 'react-native-calendars'
+import { TamaguiProvider } from 'tamagui'
 
-import { Dummy } from '@/Dummy'
-import { NavigationContainer } from '@react-navigation/native'
+import { Router } from '@/router'
+import config from '@/theme/tamagui.config'
 
 const App = () => {
   return (
-    <NavigationContainer>
-      <SafeAreaView>
-        <Calendar />
-        <Dummy text="Hello World!!!" />
-        <Dummy text="Hello World!" />
-      </SafeAreaView>
-    </NavigationContainer>
+    <TamaguiProvider config={config}>
+      <Router />
+    </TamaguiProvider>
   )
 }
 
