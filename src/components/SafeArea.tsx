@@ -11,7 +11,7 @@ export const SafeArea = ({ children }: { children: React.ReactNode }) => {
       paddingTop={insets.top}
       paddingLeft={insets.left}
       paddingRight={insets.right}
-      backgroundColor={customPalettes.g[2]}
+      backgroundColor={customPalettes.gray[50]}
     >
       {children}
     </View>

@@ -17,7 +17,7 @@ export const CustomCalendar = () => {
     const today = date.toString('yyyy년 MM월')
     return (
       <XStack justifyContent="space-between" width="100%" alignItems="center">
-        <Text fontFamily="$medium" fontSize={17} lineHeight={21}>
+        <Text fontFamily="$M" fontSize={17} lineHeight={21}>
           {today}
         </Text>
         <Icon name="more-horizontal" size={24} color="black" />
