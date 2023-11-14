@@ -11,11 +11,15 @@ interface CalendarHeaderProps {
   setIsWeek: React.Dispatch<React.SetStateAction<boolean>>
 }
 export const CalendarHeader = ({ isWeek, setIsWeek }: CalendarHeaderProps) => {
+  const today = new Date()
+  const year = today.getFullYear()
+  const month = today.getMonth() + 1
+  const date = today.getDate()
   return (
     <YStack>
       <XStack flex={1} height={65} justifyContent="space-between" alignItems="center" paddingHorizontal={20}>
         <Typography fontSize={17} type="B" textColor={customPalettes.gray[700]}>
-          2023.12.25
+          {year}. {month}. {date}
         </Typography>
         <CalendarSwitch isWeek={isWeek} handlePress={() => setIsWeek(!isWeek)} />
       </XStack>

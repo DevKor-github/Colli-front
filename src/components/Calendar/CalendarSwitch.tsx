@@ -16,6 +16,9 @@ export const CalendarSwitch = ({ isWeek, handlePress }: CalendarSwitchProps) => 
   const animatedStyle = useAnimatedStyle(() => ({ transform: [{ translateX: offset.value }] }))
 
   const togglePress = () => {
+    setTimeout(() => {
+      handlePress()
+    }, 100)
     offset.value = withDelay(
       0,
       withTiming(!isWeek ? 0 : 46, {
@@ -23,9 +26,6 @@ export const CalendarSwitch = ({ isWeek, handlePress }: CalendarSwitchProps) => 
         easing: Easing.inOut(Easing.ease)
       })
     )
-    setTimeout(() => {
-      handlePress()
-    }, 350)
   }
   return (
     <Pressable

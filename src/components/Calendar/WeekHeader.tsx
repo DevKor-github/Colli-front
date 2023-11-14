@@ -11,7 +11,7 @@ export const WeekHeader = () => {
     return customPalettes.gray[700]
   }
   return (
-    <XStack flex={1} alignSelf="center" padding={8} gap={1}>
+    <XStack flex={1} width="100%" alignSelf="center" justifyContent="space-around" padding={8} gap={1}>
       {WEEK_HEADER.map(day => (
         <View key={day} width={50} height={22} paddingHorizontal={18} justifyContent="center">
           <Typography fontSize={14} type="M" textColor={handleHeaderColor(day)}>
