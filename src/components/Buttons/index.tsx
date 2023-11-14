@@ -1,3 +1,4 @@
+import { Pressable } from 'react-native'
 import { Stack, styled } from 'tamagui'
 
 import { customPalettes } from '@/theme/customPalettes'
