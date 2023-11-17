@@ -1,9 +1,8 @@
 import { View, XStack, YStack } from 'tamagui'
 
+import { Typography } from '@/components/Typography'
 import { getCurrentMonthEndDate, getCurrentMonthStartDate } from '@/components/constants/calendar'
 import { customPalettes } from '@/theme/customPalettes'
-
-import { Typography } from '../Typography'
 
 interface DayContainerProps {
   day: Date
@@ -40,7 +39,7 @@ export const DayContainer = ({ day }: DayContainerProps) => {
         gap={10}
         backgroundColor={handleTodayColor()}
       >
-        <Typography fontSize={15} type="B" textColor={handleDayTextColor()}>
+        <Typography fontSize={14} type="M" textColor={handleDayTextColor()}>
           {day.getDate()}
         </Typography>
       </View>

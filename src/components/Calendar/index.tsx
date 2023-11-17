@@ -1,11 +1,10 @@
 import { useState } from 'react'
 import { YStack } from 'tamagui'
 
-import { getCalendar, getCurrentMontStartDay } from '@/components/constants/calendar'
-
-import { CalendarHeader } from './CalendarHeader'
-import { MonthCalendar } from './MonthCalendar'
-import { WeekCalendar } from './WeekCalendar'
+import { CalendarHeader } from '@components/Calendar/CalendarHeader'
+import { MonthCalendar } from '@components/Calendar/MonthCalendar'
+import { WeekCalendar } from '@components/Calendar/WeekCalendar'
+import { getCalendar, getCurrentMontStartDay } from '@components/constants/calendar'
 
 /* 
 info

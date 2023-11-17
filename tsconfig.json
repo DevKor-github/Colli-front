@@ -3,9 +3,13 @@
     "jsx": "react-jsx",
 
     /* alias paths */
-    "baseUrl": ".",
+    "baseUrl": "./src",
     "paths": {
-      "@/*": ["src/*"]
+      "~/*": ["./*"],
+      "@assets/*": ["assets/*"],
+      "@components/*": ["components/*"],
+      "@constants/*": ["constants/*"],
+      "@theme/*": ["theme/*"],
     }
   },
   "extends": "@tsconfig/react-native/tsconfig.json"

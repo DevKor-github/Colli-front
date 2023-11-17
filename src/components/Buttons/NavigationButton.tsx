@@ -2,9 +2,9 @@ import { useState } from 'react'
 import Animated, { useSharedValue, withDelay, withTiming } from 'react-native-reanimated'
 import { Text, styled } from 'tamagui'
 
-import Colli from '@/../assets/Svgs/Colli.svg'
-import { Typography } from '@/components/Typography'
-import { customPalettes } from '@/theme/customPalettes'
+import Colli from '@assets/svg/Colli.svg'
+import { Typography } from '@components/Typography'
+import { customPalettes } from '@theme/customPalettes'
 
 const SELECTED_COLOR = '#fff'
 const SELECTED_TEXT_COLOR = customPalettes.blue[400]

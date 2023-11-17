@@ -1,7 +1,6 @@
-import React from 'react'
 import { XStack } from 'tamagui'
 
-import { DayContainer } from './DayContainer'
+import { DayContainer } from '@components/Calendar/DayContainer'
 
 interface WeekCalendarProps {
   week: Date[]

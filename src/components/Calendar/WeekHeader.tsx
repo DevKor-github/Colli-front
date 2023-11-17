@@ -1,8 +1,8 @@
 import { View, XStack } from 'tamagui'
 
-import { Typography } from '@/components/Typography'
-import { WEEK_HEADER } from '@/components/constants/calendar'
-import { customPalettes } from '@/theme/customPalettes'
+import { Typography } from '@components/Typography'
+import { WEEK_HEADER } from '@components/constants/calendar'
+import { customPalettes } from '@theme/customPalettes'
 
 export const WeekHeader = () => {
   const handleHeaderColor = (day: string) => {

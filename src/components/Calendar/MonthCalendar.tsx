@@ -1,6 +1,6 @@
 import { YStack } from 'tamagui'
 
-import { WeekCalendar } from './WeekCalendar'
+import { WeekCalendar } from '@components/Calendar/WeekCalendar'
 
 interface MonthCalendarProps {
   month: Date[]
