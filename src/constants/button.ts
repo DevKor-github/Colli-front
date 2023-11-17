@@ -1,6 +1,6 @@
 import type { GestureResponderEvent } from 'react-native'
 
-import { customPalettes } from '@/theme/customPalettes'
+import { customPalettes } from '@theme/customPalettes'
 
 type buttonColor = 'primary' | 'secondary' | 'gray' | 'text'
 type buttonSize = 'sml' | 'mid' | 'big'

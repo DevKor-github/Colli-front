@@ -4,7 +4,7 @@ import { YStack } from 'tamagui'
 import { CalendarHeader } from '@components/Calendar/CalendarHeader'
 import { MonthCalendar } from '@components/Calendar/MonthCalendar'
 import { WeekCalendar } from '@components/Calendar/WeekCalendar'
-import { getCalendar, getCurrentMontStartDay } from '@components/constants/calendar'
+import { getCalendar, getCurrentMontStartDay } from '@constants/calendar'
 
 /* 
 info

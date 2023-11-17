@@ -1,9 +1,9 @@
 import { Pressable } from 'react-native'
 import Animated, { Easing, useAnimatedStyle, useSharedValue, withDelay, withTiming } from 'react-native-reanimated'
 
-import { customPalettes } from '@/theme/customPalettes'
 import Month from '@assets/Svgs/Month.svg'
 import Week from '@assets/Svgs/Week.svg'
+import { customPalettes } from '@theme/customPalettes'
 
 interface CalendarSwitchProps {
   isWeek: boolean

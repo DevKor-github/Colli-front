@@ -1,7 +1,7 @@
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import { View } from 'tamagui'
 
-import { customPalettes } from '@/theme/customPalettes'
+import { customPalettes } from '@theme/customPalettes'
 
 export const SafeArea = ({ children }: { children: React.ReactNode }) => {
   const insets = useSafeAreaInsets()

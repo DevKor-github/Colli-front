@@ -1,8 +1,8 @@
 import { View, XStack, YStack } from 'tamagui'
 
-import { Typography } from '@/components/Typography'
-import { getCurrentMonthEndDate, getCurrentMonthStartDate } from '@/components/constants/calendar'
-import { customPalettes } from '@/theme/customPalettes'
+import { Typography } from '@components/Typography'
+import { getCurrentMonthEndDate, getCurrentMonthStartDate } from '@constants/calendar'
+import { customPalettes } from '@theme/customPalettes'
 
 interface DayContainerProps {
   day: Date

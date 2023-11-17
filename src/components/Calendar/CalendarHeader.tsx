@@ -1,10 +1,9 @@
 import { XStack, YStack } from 'tamagui'
 
-import { Typography } from '@/components/Typography'
-import { customPalettes } from '@/theme/customPalettes'
-
-import { CalendarSwitch } from './CalendarSwitch'
-import { WeekHeader } from './WeekHeader'
+import { CalendarSwitch } from '@components/Calendar/CalendarSwitch'
+import { WeekHeader } from '@components/Calendar/WeekHeader'
+import { Typography } from '@components/Typography'
+import { customPalettes } from '@theme/customPalettes'
 
 interface CalendarHeaderProps {
   isWeek: boolean

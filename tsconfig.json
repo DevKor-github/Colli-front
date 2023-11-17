@@ -5,7 +5,7 @@
     /* alias paths */
     "baseUrl": "./src",
     "paths": {
-      "~/*": ["./*"],
+      "@/*": ["./*"],
       "@assets/*": ["assets/*"],
       "@components/*": ["components/*"],
       "@constants/*": ["constants/*"],

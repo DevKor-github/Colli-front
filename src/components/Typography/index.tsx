@@ -1,6 +1,6 @@
 import { Text } from 'tamagui'
 
-import { TYPOGRAPHY_WEIGHT, type TypographyProps, getLineHeight } from '@/components/constants/typography'
+import { TYPOGRAPHY_WEIGHT, type TypographyProps, getLineHeight } from '@constants/typography'
 
 export const Typography = ({ children, fontSize, type, textColor }: TypographyProps) => {
   const lineHeight = getLineHeight(fontSize)
