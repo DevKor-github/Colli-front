@@ -24,5 +24,8 @@ export const customPalettes = {
     800: '#3c4450',
     900: '#353b45',
     950: '#23272e'
+  },
+  snow: {
+    50: '#ffffff'
   }
 }
