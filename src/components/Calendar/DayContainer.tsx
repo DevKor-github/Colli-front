@@ -20,7 +20,7 @@ export const DayContainer = ({ day }: DayContainerProps) => {
   }
 
   const handleTodayColor = () => {
-    if (day.getDate() === today.getDate()) return customPalettes.blue[500]
+    if (day.getDate() === today.getDate()) return customPalettes.blue[600]
     return 'transparent'
   }
   const handleOpacity = () => {

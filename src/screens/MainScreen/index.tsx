@@ -1,41 +1,29 @@
 import { ScrollView } from 'react-native'
-import { View, YStack } from 'tamagui'
 
-import { Tag } from '@/components/Tags'
-import DayTag from '@/components/Tags/DayTag'
+import { HeaderContainer } from '@/components/HeaderContainer'
+import { DueDateContainer } from '@/screens/MainScreen/DueDateContainer'
+import { TaskSection } from '@/screens/MainScreen/TaskSection'
+import { TopBar } from '@/screens/MainScreen/TopBar'
+import { customPalettes } from '@/theme/customPalettes'
 // import { NavigationButton } from '@/components/Buttons/NavigationButton'
 import { Calendar } from '@components/Calendar'
 import { SafeArea } from '@components/SafeArea'
 
-const BACKGROUND_COLOR = '#fff'
 export const Home = () => {
   return (
     <SafeArea>
       <ScrollView
         showsVerticalScrollIndicator={false}
-        style={{ backgroundColor: BACKGROUND_COLOR }}
+        style={{ backgroundColor: customPalettes.gray[50] }}
         scrollEventThrottle={0}
         decelerationRate="fast"
       >
-        <YStack space>
-          <Calendar />
-          {/* <NavigationButton /> */}
-          <View display="flex" flexDirection="row" justifyContent="space-around">
-            <Tag type="dot" status="on">
-              텍스트
-            </Tag>
-            <Tag type="dot" status="off">
-              텍스트
-            </Tag>
-            <Tag type="text" status="big">
-              태그
-            </Tag>
-            <Tag type="text" status="sml">
-              태그
-            </Tag>
-            <DayTag>D-3</DayTag>
-          </View>
-        </YStack>
+        <HeaderContainer>
+          <TopBar />
+          <DueDateContainer />
+        </HeaderContainer>
+        <Calendar />
+        <TaskSection />
       </ScrollView>
     </SafeArea>
   )

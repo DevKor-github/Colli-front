@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { YStack } from 'tamagui'
 
+import { customPalettes } from '@/theme/customPalettes'
 import { CalendarHeader } from '@components/Calendar/CalendarHeader'
 import { MonthCalendar } from '@components/Calendar/MonthCalendar'
 import { WeekCalendar } from '@components/Calendar/WeekCalendar'
@@ -24,7 +25,7 @@ export const Calendar = () => {
     return isWeek ? <WeekCalendar week={weekCalendar} /> : <MonthCalendar month={calendar} />
   }
   return (
-    <YStack>
+    <YStack backgroundColor={customPalettes.snow[50]}>
       <CalendarHeader isWeek={isWeek} setIsWeek={setIsWeek} />
       {renderCalendarBody()}
     </YStack>
