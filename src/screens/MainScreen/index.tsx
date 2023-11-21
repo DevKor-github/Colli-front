@@ -1,7 +1,8 @@
 import { ScrollView } from 'react-native'
-import { YStack } from 'tamagui'
+import { View, YStack } from 'tamagui'
 
 import { Tag } from '@/components/Tags'
+import DayTag from '@/components/Tags/DayTag'
 // import { NavigationButton } from '@/components/Buttons/NavigationButton'
 import { Calendar } from '@components/Calendar'
 import { SafeArea } from '@components/SafeArea'
@@ -19,7 +20,21 @@ export const Home = () => {
         <YStack space>
           <Calendar />
           {/* <NavigationButton /> */}
-          <Tag type="day">D-1</Tag>
+          <View display="flex" flexDirection="row" justifyContent="space-around">
+            <Tag type="dot" status="on">
+              텍스트
+            </Tag>
+            <Tag type="dot" status="off">
+              텍스트
+            </Tag>
+            <Tag type="text" status="big">
+              태그
+            </Tag>
+            <Tag type="text" status="sml">
+              태그
+            </Tag>
+            <DayTag>D-3</DayTag>
+          </View>
         </YStack>
       </ScrollView>
     </SafeArea>

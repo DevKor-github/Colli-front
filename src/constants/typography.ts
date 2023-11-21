@@ -1,10 +1,10 @@
 // info 12, 14: 17(lineHeight), 16: 19(lineHeight)
 
-type font = 'R' | 'M' | 'B'
+export type fontVariant = 'R' | 'M' | 'B'
 export interface TypographyProps {
   children: React.ReactNode
   fontSize: number
-  type: font
+  type: fontVariant
   textColor: string
 }
 type weight = '400' | '600' | '700'
