@@ -1,60 +1,47 @@
-import { View } from 'react-native'
-import { Stack, styled } from 'tamagui'
+import React, { useState } from 'react'
+import type { GetProps } from 'tamagui'
+import { Stack, View, styled } from 'tamagui'
 
 import { customPalettes } from '@/theme/customPalettes'
 
 import { Typography } from '../Typography'
 import { CHIP_TEXT_COLOR, type ChipProps } from '../constants/chip'
 
-const CustomChip = styled(Stack, {
-  display: 'flex',
+export const CustomChip = styled(Stack, {
+  display: 'inline-flex',
   justifyContent: 'center',
   alignItems: 'center',
+  height: 39,
   borderRadius: 100,
+  paddingVertical: 10,
+  paddingHorizontal: 14,
+  width: 'auto',
   variants: {
-    color: {
-      graytrue: {
-        width: 79,
-        height: 39,
-        display: 'inline-flex',
-        paddingVertical: 10,
-        paddingHorizontal: 14,
-        gapHorizontal: 10,
+    gray: {
+      true: {
+        gap: 10,
         backgroundColor: customPalettes.gray[600]
       },
-      teamtrue: {
+      false: {
+        gap: 10,
+        backgroundColor: customPalettes.snow[50],
+        borderColor: customPalettes.gray[200],
+        borderStyle: 'solid',
+        borderWidth: 1
+      }
+    },
+    team: {
+      true: {
         flexDirection: 'row',
-        width: 86,
-        height: 39,
-        display: 'inline-flex',
-        paddingVertical: 10,
-        paddingHorizontal: 14,
-        gapHorizontal: 8,
+        gap: 8,
         backgroundColor: customPalettes.blue[50],
         borderColor: customPalettes.blue[200],
         borderStyle: 'solid',
         borderWidth: 1
       },
-      grayfalse: {
-        width: 79,
-        height: 39,
-        display: 'inline-flex',
-        paddingVertical: 10,
-        paddingHorizontal: 14,
-        gapHorizontal: 10,
-        backgroundColor: customPalettes.snow[50],
-        borderColor: customPalettes.gray[200],
-        borderStyle: 'solid',
-        borderWidth: 1
-      },
-      teamfalse: {
+      false: {
         flexDirection: 'row',
-        width: 86,
-        height: 39,
-        display: 'inline-flex',
-        paddingVertical: 10,
-        paddingHorizontal: 14,
-        gapHorizontal: 8,
+        gap: 8,
         backgroundColor: customPalettes.snow[50],
         borderColor: customPalettes.gray[200],
         borderStyle: 'solid',
@@ -64,33 +51,46 @@ const CustomChip = styled(Stack, {
   } as const
 })
 
-const CircleTrue = styled(View, {
+export type ChipWrapperProps = GetProps<typeof CustomChip>
+const Circle = styled(View, {
   width: 8,
   height: 8,
   borderRadius: 10,
-  backgroundColor: customPalettes.blue[500],
-  marginRight: 5
+  backgroundColor: customPalettes.blue[500]
 })
 
-const CircleFalse = styled(View, {
-  width: 8,
-  height: 8,
-  borderRadius: 10,
-  backgroundColor: customPalettes.blue[200],
-  marginRight: 5
-})
-
-export const Chip = ({ color, children }: ChipProps) => {
+export const Chip = ({ chipVariant, status, children, handlePress }: ChipProps) => {
   const fontSize = 16
   const type = 'B'
-  const textColor = CHIP_TEXT_COLOR[color]
+  const textColor = chipVariant === 'gray' ? CHIP_TEXT_COLOR.gray[`${status}`] : CHIP_TEXT_COLOR.team[`${status}`]
+
+  const ChipWrapper = ({ variant, children }: { variant: string; children: React.ReactNode; onPress: () => void }) => {
+    const handleClick = () => {
+      handlePress()
+    }
+
+    if (variant === 'gray') {
+      return (
+        <CustomChip gray={status} onPress={handleClick}>
+          <Typography fontSize={fontSize} type={type} textColor={textColor}>
+            {children}
+          </Typography>
+        </CustomChip>
+      )
+    } else {
+      return (
+        <CustomChip team={status} onPress={handleClick}>
+          <Circle backgroundColor={status ? customPalettes.blue[500] : customPalettes.blue[200]} />
+          <Typography fontSize={fontSize} type={type} textColor={textColor}>
+            {children}
+          </Typography>
+        </CustomChip>
+      )
+    }
+  }
   return (
-    <CustomChip color={color}>
-      {color === 'teamtrue' && <CircleTrue />}
-      {color === 'teamfalse' && <CircleFalse />}
-      <Typography fontSize={fontSize} type={type} textColor={textColor}>
-        {children}
-      </Typography>
-    </CustomChip>
+    <ChipWrapper variant={chipVariant} onPress={handlePress}>
+      {children}
+    </ChipWrapper>
   )
 }

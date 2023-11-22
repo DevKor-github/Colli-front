@@ -33,10 +33,18 @@ export const Home = () => {
             버튼
           </Button>
           <NavigationButton />
-          <Chip color="graytrue">텍스트</Chip>
-          <Chip color="teamtrue">텍스트</Chip>
-          <Chip color="grayfalse">텍스트</Chip>
-          <Chip color="teamfalse">텍스트</Chip>
+          <Chip chipVariant="team" status={false} handlePress={() => {}}>
+            텍스트
+          </Chip>
+          <Chip chipVariant="team" status={true} handlePress={() => {}}>
+            텍스트
+          </Chip>
+          <Chip chipVariant="gray" status={false} handlePress={() => {}}>
+            텍스트
+          </Chip>
+          <Chip chipVariant="gray" status={true} handlePress={() => {}}>
+            텍스트
+          </Chip>
         </YStack>
       </ScrollView>
     </SafeArea>

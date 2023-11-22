@@ -1,16 +1,25 @@
 import type { GestureResponderEvent } from 'react-native'
+import type { GetProps } from 'tamagui'
 
+import type { CustomChip } from '@/components/Chips/index'
 import { customPalettes } from '@/theme/customPalettes'
 
-type chipColor = 'graytrue' | 'teamtrue' | 'grayfalse' | 'teamfalse'
+type variant = 'gray' | 'team'
 export interface ChipProps {
-  color: chipColor
+  chipVariant: variant
+  status: boolean
   children: React.ReactNode
-  //handlePress: (event: GestureResponderEvent) => void
+  handlePress: () => void
 }
 export const CHIP_TEXT_COLOR = {
-  graytrue: customPalettes.snow[50],
-  teamtrue: customPalettes.blue[500],
-  grayfalse: customPalettes.gray[400],
-  teamfalse: customPalettes.gray[400]
+  gray: {
+    true: customPalettes.snow[50],
+    false: customPalettes.gray[400]
+  },
+  team: {
+    true: customPalettes.blue[500],
+    false: customPalettes.gray[400]
+  }
 }
+
+export type ChipWrapperProps = GetProps<typeof CustomChip>
