@@ -2,7 +2,7 @@ import { useState } from 'react'
 import Animated, { useSharedValue, withDelay, withTiming } from 'react-native-reanimated'
 import { Text, styled } from 'tamagui'
 
-import Colli from '@assets/svg/Colli.svg'
+import Colli from '@assets/Svgs/Colli.svg'
 import { Typography } from '@components/Typography'
 import { customPalettes } from '@theme/customPalettes'
 
@@ -12,6 +12,8 @@ const UNSELECTED_COLOR = customPalettes.blue[400]
 const UNSELECTED_TEXT_COLOR = customPalettes.blue[200]
 
 const NavigationTab = styled(Animated.View, {
+  position: 'absolute',
+  bottom: 31,
   width: 56,
   height: 56,
   borderRadius: 28,

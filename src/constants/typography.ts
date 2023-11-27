@@ -6,6 +6,7 @@ export interface TypographyProps {
   fontSize: number
   type: fontVariant
   textColor: string
+  textDecoration?: 'none' | 'underline' | 'line-through' | 'underline line-through' | undefined
 }
 type weight = '400' | '600' | '700'
 interface TypographyWeight {
