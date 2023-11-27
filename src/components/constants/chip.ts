@@ -9,7 +9,7 @@ export interface ChipProps {
   chipVariant: variant
   status: boolean
   children: React.ReactNode
-  handlePress: () => void
+  onPress: () => void
 }
 export const CHIP_TEXT_COLOR = {
   gray: {
