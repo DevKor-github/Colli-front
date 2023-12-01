@@ -1,8 +1,8 @@
 import { Stack, styled } from 'tamagui'
 
 import { ProjectAdd } from '@/components/Projects/ProjectAdd'
-import { ProjectMain } from '@/components/Projects/ProjectMain'
-import { ProjectSub } from '@/components/Projects/ProjectSub'
+import { ProjectBottom } from '@/components/Projects/ProjectBottom'
+import { ProjectHeader } from '@/components/Projects/ProjectHeader'
 import { customPalettes } from '@/theme/customPalettes'
 
 import { Typography } from '../Typography'
@@ -20,9 +20,6 @@ export const CustomProject = styled(Stack, {
   variants: {
     type: {
       default: {
-        pressStyle: {
-          opacity: 0.6
-        },
         justifyContent: 'space-between',
         backgroundColor: customPalettes.blue[50]
       },
@@ -34,12 +31,12 @@ export const CustomProject = styled(Stack, {
   } as const
 })
 
-export const Project = ({ type, children }: ProjectProps) => {
+export const Project = ({ type }: ProjectProps) => {
   if (type == 'default') {
     return (
       <CustomProject type={type}>
-        <ProjectMain>최대열글자까지보...</ProjectMain>
-        <ProjectSub>마지막 업데이트 · 2일 전</ProjectSub>
+        <ProjectHeader>최대열글자까지보...</ProjectHeader>
+        <ProjectBottom>마지막 업데이트 · 2일 전</ProjectBottom>
       </CustomProject>
     )
   } else {

@@ -34,21 +34,22 @@ export const Home = () => {
             버튼
           </Button>
           <NavigationButton />
-
-          <Chip chipVariant="team" status={false} onPress={() => {}}>
-            텍스트
-          </Chip>
-          <Chip chipVariant="team" status={true} onPress={() => {}}>
-            텍스트
-          </Chip>
-          <Chip chipVariant="gray" status={false} onPress={() => {}}>
-            텍스트
-          </Chip>
-          <Chip chipVariant="gray" status={true} onPress={() => {}}>
-            텍스트어쩔티비
-          </Chip>
-          <Project type="default" handlePress={() => {}}></Project>
-          <Project type="add" handlePress={() => {}}></Project>
+          <XStack space={8}>
+            <Chip chipVariant="gray" initialStatus={false} onPress={() => {}}>
+              전체
+            </Chip>
+            <Chip chipVariant="team" initialStatus={false} onPress={() => {}}>
+              뎁코
+            </Chip>
+            <Chip chipVariant="team" initialStatus={false} onPress={() => {}}>
+              연구실
+            </Chip>
+            <Chip chipVariant="team" initialStatus={false} onPress={() => {}}>
+              어쩔티비저쩔티비
+            </Chip>
+          </XStack>
+          <Project type="default"></Project>
+          <Project type="add"></Project>
         </YStack>
       </ScrollView>
     </SafeArea>

@@ -8,7 +8,7 @@ import { Typography } from '../Typography'
 
 export type ProjectWrapperProps = GetProps<typeof CustomProject>
 
-export const CustomProjectMain = styled(XStack, {
+export const CustomProjectHeader = styled(XStack, {
   gap: 8,
   display: 'inline-flex',
   justifyContent: 'center',
@@ -28,19 +28,16 @@ const Circle = styled(View, {
   gap: 8
 })
 
-export const ProjectMain = ({ children }: { children: React.ReactNode }) => {
+export const ProjectHeader = ({ children }: { children: React.ReactNode }) => {
   const fontSize = 16
   const type = 'R'
   const textColor = customPalettes.gray[700]
-  const ProjectWrapper = ({ children }: { children: React.ReactNode }) => {
-    return (
-      <CustomProjectMain>
-        <Circle />
-        <Typography fontSize={fontSize} type={type} textColor={textColor}>
-          {children}
-        </Typography>
-      </CustomProjectMain>
-    )
-  }
-  return <ProjectWrapper>{children}</ProjectWrapper>
+  return (
+    <CustomProjectHeader>
+      <Circle />
+      <Typography fontSize={fontSize} type={type} textColor={textColor}>
+        {children}
+      </Typography>
+    </CustomProjectHeader>
+  )
 }

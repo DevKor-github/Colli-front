@@ -6,8 +6,8 @@ import { customPalettes } from '@/theme/customPalettes'
 type variant = 'default' | 'add'
 export interface ProjectProps {
   type: variant
-  children: React.ReactNode
-  handlePress: (event: GestureResponderEvent) => void
+  //children: React.ReactNode
+  //handlePress: (event: GestureResponderEvent) => void
 }
 export interface CircleProps {
   children: React.ReactNode

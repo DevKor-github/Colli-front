@@ -7,7 +7,7 @@ import { customPalettes } from '@/theme/customPalettes'
 type variant = 'gray' | 'team'
 export interface ChipProps {
   chipVariant: variant
-  status: boolean
+  initialStatus: boolean
   children: React.ReactNode
   onPress: () => void
 }
