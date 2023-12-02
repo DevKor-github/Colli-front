@@ -1,7 +1,7 @@
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import { View } from 'tamagui'
 
-import { customPalettes } from '@/theme/customPalettes'
+import { customPalettes } from '@theme/customPalettes'
 
 export const SafeArea = ({ children }: { children: React.ReactNode }) => {
   const insets = useSafeAreaInsets()
@@ -11,7 +11,7 @@ export const SafeArea = ({ children }: { children: React.ReactNode }) => {
       paddingTop={insets.top}
       paddingLeft={insets.left}
       paddingRight={insets.right}
-      backgroundColor={customPalettes.g[2]}
+      backgroundColor={customPalettes.gray[50]}
     >
       {children}
     </View>

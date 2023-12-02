@@ -104,7 +104,7 @@ const fonts = {
       5: '700'
     }
   }),
-  regular12: createFont({
+  R: createFont({
     family: `Pretendard-Regular`,
     size: {
       12: 12,
@@ -118,50 +118,7 @@ const fonts = {
       12: 17
     }
   }),
-  regular14: createFont({
-    family: `Pretendard-Regular`,
-    size: {
-      14: 14,
-      true: 14
-    },
-    letterSpacing: {},
-    weight: {
-      4: '400'
-    },
-    lineHeight: {
-      14: 20
-    }
-  }),
-  regular17: createFont({
-    family: `Pretendard-Regular`,
-    size: {
-      17: 17,
-      true: 17
-    },
-    letterSpacing: {},
-    weight: {
-      4: '400'
-    },
-    lineHeight: {
-      17: 21
-    }
-  }),
-  regular18: createFont({
-    family: `Pretendard-Regular`,
-    size: {
-      18: 18,
-      true: 18
-    },
-    letterSpacing: {},
-    weight: {
-      4: '400'
-    },
-    lineHeight: {
-      18: 44
-    }
-  }),
-
-  medium: createFont({
+  M: createFont({
     family: `Pretendard-Medium`,
     size: {
       12: 12,
@@ -181,7 +138,7 @@ const fonts = {
       18: 44
     }
   }),
-  bold: createFont({
+  B: createFont({
     family: `Pretendard-Bold`,
     size: {
       12: 12,
