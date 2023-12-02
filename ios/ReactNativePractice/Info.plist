@@ -26,15 +26,6 @@
 	<true/>
 	<key>UIAppFonts</key>
 	<array>
-		<string>Pretendard-SemiBold.ttf</string>
-		<string>Pretendard-Thin.ttf</string>
-		<string>Pretendard-Regular.ttf</string>
-		<string>Pretendard-Medium.ttf</string>
-		<string>Pretendard-Light.ttf</string>
-		<string>Pretendard-ExtraLight.ttf</string>
-		<string>Pretendard-ExtraBold.ttf</string>
-		<string>Pretendard-Bold.ttf</string>
-		<string>Pretendard-Black.ttf</string>
 		<string>AntDesign.ttf</string>
 		<string>Entypo.ttf</string>
 		<string>EvilIcons.ttf</string>
@@ -54,6 +45,15 @@
 		<string>Octicons.ttf</string>
 		<string>SimpleLineIcons.ttf</string>
 		<string>Zocial.ttf</string>
+		<string>Pretendard-Black.ttf</string>
+		<string>Pretendard-Bold.ttf</string>
+		<string>Pretendard-ExtraBold.ttf</string>
+		<string>Pretendard-ExtraLight.ttf</string>
+		<string>Pretendard-Light.ttf</string>
+		<string>Pretendard-Medium.ttf</string>
+		<string>Pretendard-Regular.ttf</string>
+		<string>Pretendard-SemiBold.ttf</string>
+		<string>Pretendard-Thin.ttf</string>
 	</array>
 	<key>NSAppTransportSecurity</key>
 	<dict>

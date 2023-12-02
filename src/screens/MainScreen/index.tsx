@@ -1,57 +1,30 @@
 import { ScrollView } from 'react-native'
-import { XStack, YStack } from 'tamagui'
-
-import { Button } from '@/components/Buttons'
 import { NavigationButton } from '@/components/Buttons/NavigationButton'
-import { Chip } from '@/components/Chips'
-import { Project } from '@/components/Projects'
-import { SafeArea } from '@/components/SafeArea'
+import { HeaderContainer } from '@/components/HeaderContainer'
+import { DueDateContainer } from '@/screens/MainScreen/DueDateContainer'
+import { TaskSection } from '@/screens/MainScreen/TaskSection'
+import { TopBar } from '@/screens/MainScreen/TopBar'
+import { customPalettes } from '@/theme/customPalettes'
+import { Calendar } from '@components/Calendar'
+import { SafeArea } from '@components/SafeArea'
 
-const BACKGROUND_COLOR = '#fff'
-export const Home = () => {
+export const Main = () => {
   return (
     <SafeArea>
       <ScrollView
         showsVerticalScrollIndicator={false}
-        style={{ backgroundColor: BACKGROUND_COLOR, paddingHorizontal: 16 }}
+        style={{ backgroundColor: customPalettes.gray[50] }}
         scrollEventThrottle={0}
         decelerationRate="fast"
       >
-        <YStack space>
-          <Button color="primary" size="big" handlePress={() => {}}>
-            버튼
-          </Button>
-          <Button color="secondary" size="big" handlePress={() => {}}>
-            버튼
-          </Button>
-          <Button color="primary" size="mid" handlePress={() => {}}>
-            버튼
-          </Button>
-          <Button color="primary" size="sml" handlePress={() => {}}>
-            버튼
-          </Button>
-          <Button color="gray" size="sml" handlePress={() => {}}>
-            버튼
-          </Button>
-          <NavigationButton />
-          <XStack space={8}>
-            <Chip chipVariant="gray" initialStatus={false} onPress={() => {}}>
-              전체
-            </Chip>
-            <Chip chipVariant="team" initialStatus={false} onPress={() => {}}>
-              뎁코
-            </Chip>
-            <Chip chipVariant="team" initialStatus={false} onPress={() => {}}>
-              연구실
-            </Chip>
-            <Chip chipVariant="team" initialStatus={false} onPress={() => {}}>
-              어쩔티비저쩔티비
-            </Chip>
-          </XStack>
-          <Project type="default"></Project>
-          <Project type="add"></Project>
-        </YStack>
+        <HeaderContainer>
+          <TopBar />
+          <DueDateContainer />
+        </HeaderContainer>
+        <Calendar />
+        <TaskSection />
       </ScrollView>
+      <NavigationButton />
     </SafeArea>
   )
 }
