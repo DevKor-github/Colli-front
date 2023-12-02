@@ -25,7 +25,8 @@ module.exports = {
           '@assets': './src/assets',
           '@components': './src/components',
           '@constants': './src/constants',
-          '@theme': './src/theme'
+          '@theme': './src/theme',
+          '@types': './src/types'
         }
       }
     ],

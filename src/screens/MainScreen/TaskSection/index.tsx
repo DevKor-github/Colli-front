@@ -36,8 +36,8 @@ export const TaskSection = () => {
         //   scrollEventThrottle={0}
         //   decelerationRate="fast">
       ></ScrollView>
-      {TEST_TASKS.map(task => (
-        <Task checked={true} taskContent={task} />
+      {TEST_TASKS.map((task, i) => (
+        <Task key={i} checked={true} taskContent={task} />
       ))}
     </View>
   )

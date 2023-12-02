@@ -9,7 +9,7 @@ import { customPalettes } from '@/theme/customPalettes'
 import { Calendar } from '@components/Calendar'
 import { SafeArea } from '@components/SafeArea'
 
-export const Home = () => {
+export const Main = () => {
   return (
     <SafeArea>
       <ScrollView

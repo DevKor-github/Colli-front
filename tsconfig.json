@@ -10,6 +10,7 @@
       "@components/*": ["components/*"],
       "@constants/*": ["constants/*"],
       "@theme/*": ["theme/*"],
+      "@types/*": ["types/*"],
     }
   },
   "extends": "@tsconfig/react-native/tsconfig.json"
