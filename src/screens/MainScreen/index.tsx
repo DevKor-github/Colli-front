@@ -1,5 +1,4 @@
 import { ScrollView } from 'react-native'
-
 import { NavigationButton } from '@/components/Buttons/NavigationButton'
 import { HeaderContainer } from '@/components/HeaderContainer'
 import { DueDateContainer } from '@/screens/MainScreen/DueDateContainer'

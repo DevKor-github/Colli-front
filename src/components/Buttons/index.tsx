@@ -13,6 +13,7 @@ const CustomButton = styled(Stack, {
   },
   gap: 8,
   borderRadius: 10,
+  padding: 12,
   variants: {
     color: {
       primary: {
