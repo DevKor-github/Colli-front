@@ -139,7 +139,7 @@ export const SplashScreen = () => {
     lTwoOpacity.value = withDelay(3600, withTiming(1, { duration: 200 }))
     iOpacity.value = withDelay(3800, withTiming(1, { duration: 200 }))
 
-    setTimeout(() => navigation.navigate('Main'), 5000)
+    setTimeout(() => navigation.navigate('LogIn'), 4000)
   }, [])
   return (
     <SplashScreenContainer>

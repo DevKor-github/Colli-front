@@ -27,6 +27,9 @@ const CustomButton = styled(Stack, {
       },
       text: {
         backgroundColor: customPalettes.blue[50]
+      },
+      kakao: {
+        backgroundColor: customPalettes.kakao[50]
       }
     },
     size: {
