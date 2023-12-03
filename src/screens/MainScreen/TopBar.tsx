@@ -1,11 +1,8 @@
-import React from 'react'
 import { View } from 'tamagui'
 
-import { customPalettes } from '@/theme/customPalettes'
+import Bell from '@assets/Svgs/Bell.svg'
 import MainScreenLogo from '@assets/Svgs/COLLI/MainScreenLogo.svg'
-
-import Dots from 'react-native-vector-icons/Entypo'
-import Icon from 'react-native-vector-icons/Feather'
+import Menu from '@assets/Svgs/Menu.svg'
 
 export const TopBar = () => {
   return (
@@ -17,9 +14,9 @@ export const TopBar = () => {
       justifyContent="space-between"
       alignItems="center"
     >
-      <Dots name="dots-three-horizontal" size={24} color={customPalettes.gray[700]} />
+      <Menu />
       <MainScreenLogo />
-      <Icon name="bell" size={24} color={customPalettes.gray[700]} />
+      <Bell />
     </View>
   )
 }

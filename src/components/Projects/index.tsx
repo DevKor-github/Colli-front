@@ -4,9 +4,7 @@ import { ProjectAdd } from '@/components/Projects/ProjectAdd'
 import { ProjectBottom } from '@/components/Projects/ProjectBottom'
 import { ProjectHeader } from '@/components/Projects/ProjectHeader'
 import { customPalettes } from '@/theme/customPalettes'
-
-import { Typography } from '../Typography'
-import { type ProjectProps } from '../constants/project'
+import { type ProjectProps } from '@/types/project'
 
 export const CustomProject = styled(Stack, {
   display: 'flex',

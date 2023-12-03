@@ -7,7 +7,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack'
 const Stack = createNativeStackNavigator<RootStackParamList>()
 
 export const RootNavigator = () => {
-  const isAuth = false
+  const isAuth = true
 
   const screens = (() => {
     if (!isAuth) {

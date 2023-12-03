@@ -1,3 +1,4 @@
+import { Pressable } from 'react-native'
 import { Stack, View, styled } from 'tamagui'
 
 import { Typography } from '@/components/Typography'
@@ -31,17 +32,25 @@ const TaskCheckBox = styled(View, {
     }
   }
 })
-export const Task = ({ checked, taskContent }: { checked: boolean; taskContent: string }) => {
+export const Task = ({
+  checked,
+  taskContent,
+  handlePress
+}: {
+  checked: boolean
+  taskContent: string
+  handlePress: () => void
+}) => {
   const taskTextColor = checked ? customPalettes.gray[300] : customPalettes.gray[700]
   const taskTextDecoration = checked ? 'line-through' : 'none'
   return (
     <TaskConatiner>
-      <View display="flex" flexDirection="row" gap={20} alignItems="center">
+      <Pressable style={{ display: 'flex', flexDirection: 'row', gap: 20, alignItems: 'center' }} onPress={handlePress}>
         <TaskCheckBox status={checked} />
         <Typography type="M" fontSize={14} textColor={taskTextColor} textDecoration={taskTextDecoration}>
           {taskContent}
         </Typography>
-      </View>
+      </Pressable>
       <Icon name="dots-three-horizontal" size={15} color={customPalettes.gray[700]} />
     </TaskConatiner>
   )
