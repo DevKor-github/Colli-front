@@ -1,18 +1,22 @@
 import React from 'react'
-import { View } from 'tamagui'
+import Animated, { SlideInLeft, SlideOutLeft } from 'react-native-reanimated'
 
 import { customPalettes } from '@/theme/customPalettes'
 
 export const SectionWrapper = ({ children }: { children: React.ReactNode }) => {
   return (
-    <View
-      mt={16}
-      display="flex"
-      justifyContent="flex-end"
-      alignItems="flex-start"
-      backgroundColor={customPalettes.snow[50]}
+    <Animated.View
+      style={{
+        marginTop: 16,
+        display: 'flex',
+        justifyContent: 'flex-end',
+        alignItems: 'flex-start',
+        backgroundColor: customPalettes.snow[50]
+      }}
+      entering={SlideInLeft}
+      exiting={SlideOutLeft}
     >
       {children}
-    </View>
+    </Animated.View>
   )
 }

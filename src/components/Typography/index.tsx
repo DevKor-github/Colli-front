@@ -2,7 +2,7 @@ import { Text } from 'tamagui'
 
 import { TYPOGRAPHY_WEIGHT, type TypographyProps, getLineHeight } from '@constants/typography'
 
-export const Typography = ({ children, fontSize, type, textColor, textDecoration }: TypographyProps) => {
+export const Typography = ({ children, fontSize, type, textColor, textDecorationLine, ellipse }: TypographyProps) => {
   const lineHeight = getLineHeight(fontSize)
   return (
     <Text
@@ -11,7 +11,8 @@ export const Typography = ({ children, fontSize, type, textColor, textDecoration
       color={textColor}
       fontWeight={TYPOGRAPHY_WEIGHT[type]}
       lineHeight={lineHeight}
-      textDecorationLine={textDecoration}
+      textDecorationLine={textDecorationLine}
+      ellipse={ellipse}
     >
       {children}
     </Text>

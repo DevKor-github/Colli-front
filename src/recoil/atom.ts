@@ -6,3 +6,8 @@ export const currentNavigationState = atom<BottomNavigtionState>({
   key: 'currentNavigationState',
   default: 'task'
 })
+
+export const calendarState = atom({
+  key: 'calendarState',
+  default: false
+})

@@ -66,7 +66,7 @@ export const NavigationButton = () => {
       selectionOffset.value = withTiming(233, { duration: 500 })
     }
     setSelected(selection)
-    handlePress()
+    setTimeout(() => handlePress(), 1000)
   }
   return (
     <NavigationTab style={{ width, height, borderRadius }} onPress={handlePress}>

@@ -47,7 +47,7 @@ export const Task = ({
     <TaskConatiner>
       <Pressable style={{ display: 'flex', flexDirection: 'row', gap: 20, alignItems: 'center' }} onPress={handlePress}>
         <TaskCheckBox status={checked} />
-        <Typography type="M" fontSize={14} textColor={taskTextColor} textDecoration={taskTextDecoration}>
+        <Typography type="M" fontSize={14} textColor={taskTextColor} textDecorationLine={taskTextDecoration}>
           {taskContent}
         </Typography>
       </Pressable>

@@ -1,8 +1,15 @@
+import { Pressable } from 'react-native'
 import { View } from 'tamagui'
 
-import { Button } from '@/components/Buttons'
+import { Typography } from '@/components/Typography'
+import { customPalettes } from '@/theme/customPalettes'
+import Add from '@assets/Svgs/add.svg'
 
-export const BottomSafeArea = () => {
+interface BottomSafeAreaProps {
+  actionText: string
+  handlePress: () => void
+}
+export const BottomSafeArea = ({ actionText, handlePress }: BottomSafeAreaProps) => {
   return (
     <View
       display="flex"
@@ -12,9 +19,23 @@ export const BottomSafeArea = () => {
       paddingVertical={10}
       paddingHorizontal={20}
     >
-      <Button color="text" size="mid" handlePress={() => {}}>
-        + 태스크 추가하기
-      </Button>
+      <Pressable
+        style={{
+          display: 'flex',
+          flexDirection: 'row',
+          justifyContent: 'center',
+          alignItems: 'center',
+          paddingHorizontal: 18,
+          paddingVertical: 14,
+          gap: 8
+        }}
+        onPress={handlePress}
+      >
+        <Add />
+        <Typography type="M" fontSize={16} textColor={customPalettes.gray[400]}>
+          {actionText}
+        </Typography>
+      </Pressable>
     </View>
   )
 }

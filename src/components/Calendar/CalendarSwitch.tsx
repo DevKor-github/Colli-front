@@ -1,22 +1,20 @@
 import { Pressable } from 'react-native'
 import Animated, { Easing, useAnimatedStyle, useSharedValue, withDelay, withTiming } from 'react-native-reanimated'
+import { useRecoilState } from 'recoil'
 
+import { calendarState } from '@/recoil/atom'
 import Month from '@assets/Svgs/Month.svg'
 import Week from '@assets/Svgs/Week.svg'
 import { customPalettes } from '@theme/customPalettes'
 
-interface CalendarSwitchProps {
-  isWeek: boolean
-  handlePress: () => void
-}
-
-export const CalendarSwitch = ({ isWeek, handlePress }: CalendarSwitchProps) => {
+export const CalendarSwitch = () => {
+  const [isWeek, setIsWeek] = useRecoilState(calendarState)
   const offset = useSharedValue(isWeek ? 0 : 46)
   const animatedStyle = useAnimatedStyle(() => ({ transform: [{ translateX: offset.value }] }))
 
   const togglePress = () => {
     setTimeout(() => {
-      handlePress()
+      setIsWeek(!isWeek)
     }, 100)
     offset.value = withDelay(
       0,

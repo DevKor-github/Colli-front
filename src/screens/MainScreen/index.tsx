@@ -4,8 +4,8 @@ import { useRecoilValue } from 'recoil'
 import { NavigationButton } from '@/components/Buttons/NavigationButton'
 import { HeaderContainer } from '@/components/HeaderContainer'
 import { currentNavigationState } from '@/recoil/atom'
-import { BottomSafeArea } from '@/screens/MainScreen/BottomSafeArea'
 import { DueDateContainer } from '@/screens/MainScreen/DueDateContainer'
+import { ProjectSection } from '@/screens/MainScreen/ProjectSection'
 import { ScheduleSection } from '@/screens/MainScreen/ScheduleSection'
 import { TaskSection } from '@/screens/MainScreen/TaskSection'
 import { TopBar } from '@/screens/MainScreen/TopBar'
@@ -27,10 +27,10 @@ export const Main = () => {
           <TopBar />
           <DueDateContainer />
         </HeaderContainer>
-        <Calendar />
+        {currentNavigation !== 'project' && <Calendar />}
         {currentNavigation === 'task' && <TaskSection />}
         {currentNavigation === 'schedule' && <ScheduleSection />}
-        <BottomSafeArea />
+        {currentNavigation === 'project' && <ProjectSection />}
       </ScrollView>
       <NavigationButton />
     </SafeArea>

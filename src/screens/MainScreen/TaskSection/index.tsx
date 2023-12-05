@@ -1,12 +1,13 @@
 import { useState } from 'react'
 import { ScrollView } from 'react-native'
 import Animated, { scrollTo, useAnimatedRef, useDerivedValue, useSharedValue } from 'react-native-reanimated'
-import { View } from 'tamagui'
+import { View, YStack } from 'tamagui'
 
 import { Chip } from '@/components/Chips'
 import { SectionIndicator } from '@/components/SectionIndicator'
 import { Task } from '@/components/Task'
 import { TASKS } from '@/mocks/data/tasks'
+import { BottomSafeArea } from '@/screens/MainScreen/BottomSafeArea'
 import { SectionWrapper } from '@/screens/MainScreen/SectionWrapper'
 
 const AnimatedScrollView = Animated.createAnimatedComponent(ScrollView)
@@ -41,57 +42,58 @@ export const TaskSection = () => {
   })
 
   return (
-    <SectionWrapper>
-      <View paddingHorizontal={20} paddingVertical={16}>
-        <SectionIndicator text={SECTION_INDICATION} />
-      </View>
-      <AnimatedScrollView
-        ref={aref}
-        showsHorizontalScrollIndicator={false}
-        horizontal={true}
-        contentContainerStyle={{ display: 'flex', flexDirection: 'row', paddingLeft: 20, gap: 8 }}
-      >
-        <Chip
-          chipVariant="gray"
-          initialStatus={currentProject === '전체'}
-          onPress={() => handleProjectChange(INITIAL_PROJECT)}
+    <YStack>
+      <SectionWrapper>
+        <View paddingHorizontal={20} paddingVertical={16}>
+          <SectionIndicator text={SECTION_INDICATION} />
+        </View>
+        <AnimatedScrollView
+          ref={aref}
+          showsHorizontalScrollIndicator={false}
+          horizontal={true}
+          contentContainerStyle={{ display: 'flex', flexDirection: 'row', paddingLeft: 20, gap: 8 }}
         >
-          전체
-        </Chip>
-        {tasks.map((project, i) => (
           <Chip
-            key={i}
-            chipVariant="team"
-            initialStatus={currentProject === project.teamId}
-            onPress={() => handleProjectChange(project.teamId)}
+            chipVariant="gray"
+            initialStatus={currentProject === '전체'}
+            onPress={() => handleProjectChange(INITIAL_PROJECT)}
           >
-            {project.teamId}
+            전체
           </Chip>
-        ))}
-      </AnimatedScrollView>
-      {currentProject === '전체'
-        ? tasks.map(team =>
-            team.tasks.map((task, j) => (
-              <Task
-                key={j}
-                checked={task.checked}
-                taskContent={task.title}
-                handlePress={() => handleCheck(team.teamId, task.title)}
-              />
-            ))
-          )
-        : tasks
-            .find(task => task.teamId === currentProject)
-            ?.tasks.map((task, i) => (
-              <Task
-                key={i}
-                checked={task.checked}
-                taskContent={task.title}
-                handlePress={() => handleCheck(currentProject, task.title)}
-              />
-            ))}
-    </SectionWrapper>
+          {tasks.map((project, i) => (
+            <Chip
+              key={i}
+              chipVariant="team"
+              initialStatus={currentProject === project.teamId}
+              onPress={() => handleProjectChange(project.teamId)}
+            >
+              {project.teamId}
+            </Chip>
+          ))}
+        </AnimatedScrollView>
+        {currentProject === '전체'
+          ? tasks.map(team =>
+              team.tasks.map((task, j) => (
+                <Task
+                  key={j}
+                  checked={task.checked}
+                  taskContent={task.title}
+                  handlePress={() => handleCheck(team.teamId, task.title)}
+                />
+              ))
+            )
+          : tasks
+              .find(task => task.teamId === currentProject)
+              ?.tasks.map((task, i) => (
+                <Task
+                  key={i}
+                  checked={task.checked}
+                  taskContent={task.title}
+                  handlePress={() => handleCheck(currentProject, task.title)}
+                />
+              ))}
+      </SectionWrapper>
+      <BottomSafeArea actionText="태스크 추가하기" handlePress={() => {}} />
+    </YStack>
   )
 }
-
-TaskSection

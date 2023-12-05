@@ -67,7 +67,7 @@ const Circle = styled(View, {
 
 export const Chip = ({ chipVariant, initialStatus, children, onPress }: ChipProps) => {
   const fontSize = 16
-  const type = 'B'
+  const type = 'M'
   const textColor =
     chipVariant === 'gray' ? CHIP_TEXT_COLOR.gray[`${initialStatus}`] : CHIP_TEXT_COLOR.team[`${initialStatus}`]
 
