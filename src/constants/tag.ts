@@ -1,10 +1,12 @@
 import type { fontVariant } from '@/constants/typography'
 import { customPalettes } from '@/theme/customPalettes'
+import type { KanBanStatus } from '@/types/kanBanBoard'
 
 export interface TagProps {
   type: 'text' | 'dot'
   status: 'big' | 'sml' | 'on' | 'off'
   children: React.ReactNode
+  handlePress: () => void
 }
 
 interface TagTypographyProps {

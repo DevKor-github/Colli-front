@@ -3,6 +3,7 @@ import { type GetProps, Stack, View, styled } from 'tamagui'
 import { Typography } from '@/components/Typography'
 import { TAG_TYPOGRAPHY, type TagProps } from '@/constants/tag'
 import { customPalettes } from '@/theme/customPalettes'
+import { KanBanStatus } from '@/types/kanBanBoard'
 
 const TagContainer = styled(Stack, {
   display: 'inline-flex',
@@ -51,10 +52,10 @@ const TagContainer = styled(Stack, {
 })
 export type TagContainerProps = GetProps<typeof TagContainer>
 
-export const Tag = ({ type, status, children }: TagProps) => {
+export const Tag = ({ type, status, children, handlePress }: TagProps) => {
   const fontVariables = TAG_TYPOGRAPHY[status]
   return (
-    <TagContainer type={type} status={status}>
+    <TagContainer type={type} status={status} onPress={() => handlePress()}>
       {type === 'dot' && <View backgroundColor={fontVariables.color} width={8} height={8} borderRadius={8} />}
       <Typography fontSize={fontVariables.fontSize} type={fontVariables.type} textColor={fontVariables.color}>
         {children}
