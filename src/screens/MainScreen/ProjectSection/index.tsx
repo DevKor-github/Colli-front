@@ -1,10 +1,16 @@
+import type { GestureResponderEvent } from 'react-native'
 import Animated, { SlideInRight, SlideOutRight } from 'react-native-reanimated'
 import { View } from 'tamagui'
 
 import { Project } from '@/components/Projects'
 import { SectionIndicator } from '@/components/SectionIndicator'
+import { useNavigation } from '@react-navigation/native'
 
 export const ProjectSection = () => {
+  const navigation = useNavigation()
+  const handleNavigate = (e: GestureResponderEvent) => {
+    navigation.navigate('Team')
+  }
   return (
     <Animated.View
       style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}
@@ -25,7 +31,7 @@ export const ProjectSection = () => {
         flexWrap="wrap"
         justifyContent="space-between"
       >
-        <Project type="default" />
+        <Project type="default" handlePress={handleNavigate} />
         <Project type="default" />
         <Project type="default" />
         <Project type="default" />

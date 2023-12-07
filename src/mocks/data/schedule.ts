@@ -20,7 +20,7 @@ export const SCHEDULES: ScheduleProps[] = [
     location: '대성리역'
   },
   {
-    startAt: new Date('2023-12-05T17:00:00'),
+    startAt: new Date('2023-12-05T15:45:00'),
     endAt: new Date('2023-12-05T22:00:00'),
     content: '술 깨기',
     location: '집'

@@ -7,6 +7,7 @@ const linking: LinkingOptions<RootStackParamList> = {
     screens: {
       Splash: 'splash',
       Main: 'main',
+      Team: 'team',
       LogIn: 'login'
     }
   }

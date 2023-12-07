@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Pressable } from 'react-native'
-import Animated, { useSharedValue, withDelay, withTiming } from 'react-native-reanimated'
+import Animated, { Easing, useSharedValue, withDelay, withTiming } from 'react-native-reanimated'
 import { useRecoilState } from 'recoil'
 import { styled } from 'tamagui'
 
@@ -59,11 +59,11 @@ export const NavigationButton = () => {
   }
   const handleSelectionPress = (selection: 'task' | 'schedule' | 'project') => {
     if (selection === 'task') {
-      selectionOffset.value = withTiming(4, { duration: 500 })
+      selectionOffset.value = withTiming(4, { duration: 500, easing: Easing.bezier(0.42, 0, 0, 0.94) })
     } else if (selection === 'schedule') {
-      selectionOffset.value = withTiming(118, { duration: 500 })
+      selectionOffset.value = withTiming(118, { duration: 500, easing: Easing.bezier(0.42, 0, 0, 0.94) })
     } else if (selection === 'project') {
-      selectionOffset.value = withTiming(233, { duration: 500 })
+      selectionOffset.value = withTiming(233, { duration: 500, easing: Easing.bezier(0.42, 0, 0, 0.94) })
     }
     setSelected(selection)
     setTimeout(() => handlePress(), 1000)

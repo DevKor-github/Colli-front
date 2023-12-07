@@ -34,10 +34,10 @@ export const CustomProject = styled(Stack, {
   } as const
 })
 
-export const Project = ({ type }: ProjectProps) => {
+export const Project = ({ type, handlePress }: ProjectProps) => {
   if (type == 'default') {
     return (
-      <CustomProject type={type}>
+      <CustomProject type={type} onPress={handlePress}>
         <ProjectHeader>뎁코 최고의 학회~~!!!</ProjectHeader>
         <ProjectBottom>마지막 업데이트 · 2일 전</ProjectBottom>
       </CustomProject>

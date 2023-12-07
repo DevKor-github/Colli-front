@@ -8,5 +8,6 @@ declare global {
 export type RootStackParamList = {
   Splash: undefined
   Main: undefined
+  Team: undefined
   LogIn: undefined
 }

@@ -3,7 +3,7 @@ import { View } from 'tamagui'
 
 import { customPalettes } from '@theme/customPalettes'
 
-export const SafeArea = ({ children }: { children: React.ReactNode }) => {
+export const SafeArea = ({ children, team }: { children: React.ReactNode; team?: boolean }) => {
   const insets = useSafeAreaInsets()
   return (
     <View
@@ -11,7 +11,7 @@ export const SafeArea = ({ children }: { children: React.ReactNode }) => {
       paddingTop={insets.top}
       paddingLeft={insets.left}
       paddingRight={insets.right}
-      backgroundColor={customPalettes.gray[50]}
+      backgroundColor={team ? customPalettes.snow[50] : customPalettes.gray[50]}
     >
       {children}
     </View>

@@ -5,7 +5,7 @@ type variant = 'default' | 'add'
 export interface ProjectProps {
   type: variant
   //children: React.ReactNode
-  //handlePress: (event: GestureResponderEvent) => void
+  handlePress?: (event: GestureResponderEvent) => void
 }
 export interface CircleProps {
   children: React.ReactNode

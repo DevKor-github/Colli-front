@@ -1,6 +1,7 @@
 import { useRecoilValue } from 'recoil'
 import { YStack } from 'tamagui'
 
+import { AnimatedWeek } from '@/components/Calendar/AnimatedWeek'
 import { calendarState } from '@/recoil/atom'
 import { customPalettes } from '@/theme/customPalettes'
 import { CalendarHeader } from '@components/Calendar/CalendarHeader'
@@ -23,7 +24,7 @@ export const Calendar = () => {
   const isWeek = useRecoilValue(calendarState)
   const weekCalendar = calendar.slice(weekStartIndex, weekStartIndex + 7)
   const renderCalendarBody = () => {
-    return isWeek ? <WeekCalendar week={weekCalendar} /> : <MonthCalendar month={calendar} />
+    return isWeek ? <AnimatedWeek week={weekCalendar} /> : <MonthCalendar month={calendar} />
   }
   return (
     <YStack backgroundColor={customPalettes.snow[50]}>
