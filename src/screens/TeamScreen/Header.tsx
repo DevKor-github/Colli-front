@@ -4,6 +4,9 @@ import { View } from 'tamagui'
 import { Typography } from '@/components/Typography'
 import { customPalettes } from '@/theme/customPalettes'
 import LeftArrow from '@assets/Svgs/LeftArrow.svg'
+import CalendarIcon from '@assets/Svgs/calendar.svg'
+import Member from '@assets/Svgs/members.svg'
+import Setting from '@assets/Svgs/setting.svg'
 import { useNavigation } from '@react-navigation/native'
 
 export const Header = () => {
@@ -35,7 +38,17 @@ export const Header = () => {
           뎁코
         </Typography>
       </View>
-      <View></View>
+      <View display="flex" flexDirection="row" justifyContent="center" alignItems="center" gap={8}>
+        <Pressable onPress={() => navigation.navigate('TeamMember')}>
+          <Member />
+        </Pressable>
+        <Pressable>
+          <CalendarIcon />
+        </Pressable>
+        <Pressable>
+          <Setting />
+        </Pressable>
+      </View>
     </View>
   )
 }

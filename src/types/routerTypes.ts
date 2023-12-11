@@ -9,5 +9,6 @@ export type RootStackParamList = {
   Splash: undefined
   Main: undefined
   Team: undefined
+  TeamMember: undefined
   LogIn: undefined
 }

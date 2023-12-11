@@ -7,19 +7,17 @@ import { Notice } from '@/screens/TeamScreen/Notice'
 import { TeamTask } from '@/screens/TeamScreen/TeamTask'
 import { customPalettes } from '@/theme/customPalettes'
 import TeamCover from '@assets/Svgs/TeamCover.svg'
-import { useNavigation } from '@react-navigation/native'
 
 export const TeamScreen = () => {
-  const navigation = useNavigation()
   return (
     <SafeArea team>
+      <Header />
       <ScrollView
         showsVerticalScrollIndicator={false}
         style={{ backgroundColor: customPalettes.gray[50] }}
         scrollEventThrottle={0}
         decelerationRate="fast"
       >
-        <Header />
         <TeamCover />
         <Notice noticeText="12월 21일 기말 발표 준비할 수 있다..." />
         <Calendar />

@@ -5,8 +5,9 @@ import { Typography } from '@components/Typography'
 import { BUTTON_TEXT_COLOR } from '@constants/button'
 import { customPalettes } from '@theme/customPalettes'
 
-const CustomButton = styled(Stack, {
+export const CustomButton = styled(Stack, {
   display: 'flex',
+  flexDirection: 'row',
   justifyContent: 'center',
   alignItems: 'center',
   pressStyle: {
@@ -42,7 +43,7 @@ const CustomButton = styled(Stack, {
         paddingHorizontal: 16
       },
       mid: {
-        width: 165,
+        // width: 165,
         height: 'auto',
         padding: 16
       },

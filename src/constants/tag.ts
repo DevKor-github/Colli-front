@@ -1,10 +1,9 @@
 import type { fontVariant } from '@/constants/typography'
 import { customPalettes } from '@/theme/customPalettes'
-import type { KanBanStatus } from '@/types/kanBanBoard'
 
 export interface TagProps {
   type: 'text' | 'dot'
-  status: 'big' | 'sml' | 'on' | 'off'
+  status: 'big' | 'sml' | true | false
   children: React.ReactNode
   handlePress: () => void
 }
@@ -18,8 +17,8 @@ interface TagTypographyProps {
 interface TagTypography {
   big: TagTypographyProps
   sml: TagTypographyProps
-  on: TagTypographyProps
-  off: TagTypographyProps
+  true: TagTypographyProps
+  false: TagTypographyProps
 }
 export const TAG_TYPOGRAPHY: TagTypography = {
   big: {
@@ -32,12 +31,12 @@ export const TAG_TYPOGRAPHY: TagTypography = {
     type: 'M',
     color: customPalettes.gray[500]
   },
-  on: {
+  true: {
     fontSize: 16,
     type: 'M',
     color: customPalettes.blue[500]
   },
-  off: {
+  false: {
     fontSize: 14,
     type: 'M',
     color: customPalettes.gray[300]

@@ -13,6 +13,7 @@ import { View } from 'tamagui'
 import { ProgressBar } from '@/components/KanbanBoard/ProgressBar'
 import { ProgressButton } from '@/components/KanbanBoard/ProgressButton'
 import { StatusSection } from '@/components/KanbanBoard/StatusSection'
+import { TaskCard } from '@/components/KanbanBoard/TaskCard'
 import { Typography } from '@/components/Typography'
 import { TEAM_TASKS } from '@/mocks/data/teamTask'
 import { customPalettes } from '@/theme/customPalettes'
@@ -45,8 +46,8 @@ export const TeamTask = () => {
     scrollTo(aref, scroll.value, 0, true)
   })
   return (
-    <View display="flex" flexDirection="column" backgroundColor={customPalettes.snow[50]} mt={8}>
-      <View display="flex" paddingHorizontal={20} paddingVertical={16}>
+    <View display="flex" flexDirection="column" mt={8} mb={60}>
+      <View display="flex" paddingHorizontal={20} backgroundColor={customPalettes.snow[50]} paddingVertical={16}>
         <Typography type="B" fontSize={17} textColor={customPalettes.gray[700]}>
           Task
         </Typography>
@@ -61,7 +62,8 @@ export const TeamTask = () => {
           paddingTop: 4,
           paddingBottom: 8,
           gap: 20,
-          alignItems: 'center'
+          alignItems: 'center',
+          backgroundColor: customPalettes.snow[50]
         }}
       >
         <ProgressButton
@@ -80,6 +82,12 @@ export const TeamTask = () => {
       </AnimatedScrollView>
       <ProgressBar offset={offsetX} />
       <StatusSection status={status} handlePress={handleStatusChange} />
+      <View h={8} backgroundColor={customPalettes.gray[50]} />
+      <View paddingHorizontal={20} paddingVertical={4} flexDirection="row" gap={8} flexWrap="wrap">
+        <TaskCard status="todo" />
+        <TaskCard status="inProgress" />
+        <TaskCard status="done" />
+      </View>
     </View>
   )
 }

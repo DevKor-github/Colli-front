@@ -31,7 +31,7 @@ export const BottomSafeArea = ({ actionText, handlePress }: BottomSafeAreaProps)
         }}
         onPress={handlePress}
       >
-        <Add />
+        <Add color={customPalettes.gray[400]} />
         <Typography type="M" fontSize={16} textColor={customPalettes.gray[400]}>
           {actionText}
         </Typography>

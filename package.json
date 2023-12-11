@@ -21,6 +21,7 @@
     ]
   },
   "dependencies": {
+    "@react-native-clipboard/clipboard": "^1.12.1",
     "@react-native-community/cli-doctor": "^11.3.8",
     "@react-navigation/bottom-tabs": "^6.5.9",
     "@react-navigation/native": "^6.1.9",
