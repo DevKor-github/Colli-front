@@ -44,7 +44,6 @@ export const TaskDetail = ({
   const [titleInput, setTitleInput] = useState(title)
   const [, setDefaultTeamTask] = useRecoilState(defaultTeamTask)
   const [newStatus, setNewStatus] = useState(statusKR)
-  const [newDueDate, setNewDueDate] = useState(dueDate)
   const [pickedDate, setPickedDate] = useState({
     month: dueMonth,
     date: dueDay,
