@@ -10,3 +10,19 @@ export interface KanBanStatusSectionProps {
   status: KanBanStatus
   handlePress: (status: KanBanStatus) => void
 }
+
+export interface TaskCardProps {
+  id: number
+  category: string
+  title: string
+  dueDate: Date
+  reminderDate: number
+  notes: string
+  status: KanBanStatus
+  assignee: string
+}
+
+export interface TaskDetailProps extends TaskCardProps {
+  handleClose: () => Promise<boolean>
+  open: boolean
+}

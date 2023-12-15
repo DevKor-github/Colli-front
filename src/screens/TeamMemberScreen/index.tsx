@@ -1,6 +1,6 @@
-import { useEffect, useState } from 'react'
-import { Pressable, ScrollView } from 'react-native'
-import { useRecoilState, useRecoilValue } from 'recoil'
+import { useState } from 'react'
+import { Modal, Pressable, ScrollView } from 'react-native'
+import { useRecoilState } from 'recoil'
 import { Sheet, View } from 'tamagui'
 
 import { Button } from '@/components/Buttons'
@@ -20,11 +20,14 @@ import Clipboard from '@react-native-clipboard/clipboard'
 
 export const TeamMemberScreen = () => {
   const [open, setOpen] = useState(false)
+  const [modalOpen, setModalOpen] = useState(false)
   const hanleCopyToClipboard = () => {
+    setOpen(false)
+    setModalOpen(true)
     Clipboard.setString('COLI0817')
   }
   const [members, setMembers] = useRecoilState(searchedMember)
-  useEffect(() => setMembers([]), [])
+
   return (
     <SafeArea team>
       <SearchHeader />
@@ -92,7 +95,14 @@ export const TeamMemberScreen = () => {
           </IconButton>
         </View>
       </ScrollView>
-      <Sheet forceRemoveScrollEnabled={open} animation="medium" open={open} onOpenChange={setOpen} snapPoints={[32]}>
+      <Sheet
+        modal
+        forceRemoveScrollEnabled={open}
+        animation="medium"
+        open={open}
+        onOpenChange={setOpen}
+        snapPoints={[32]}
+      >
         <Sheet.Overlay animation="medium" enterStyle={{ opacity: 0 }} exitStyle={{ opacity: 0 }} />
         <Sheet.Frame borderRadius={20}>
           <View mt={24} display="flex" alignItems="flex-start" paddingHorizontal={20} paddingVertical={4} gap={10}>
@@ -133,6 +143,49 @@ export const TeamMemberScreen = () => {
           </View>
         </Sheet.Frame>
       </Sheet>
+      <Modal animationType="fade" transparent={true} visible={modalOpen} onRequestClose={() => setModalOpen(false)}>
+        <View
+          display="flex"
+          flexDirection="column"
+          flex={1}
+          justifyContent="center"
+          alignItems="center"
+          borderRadius={10}
+          backgroundColor={customPalettes.opacityD[400]}
+        >
+          <View
+            display="flex"
+            flexDirection="column"
+            justifyContent="center"
+            width={276}
+            height={104}
+            alignItems="center"
+            borderRadius={10}
+            backgroundColor={customPalettes.gray[100]}
+          >
+            <View flex={3} justifyContent="center" alignItems="center">
+              <Typography type="M" fontSize={16} textColor={customPalettes.gray[900]}>
+                복사되었습니다
+              </Typography>
+            </View>
+            <Pressable
+              style={{
+                width: '100%',
+                flex: 2,
+                borderTopWidth: 1,
+                borderColor: customPalettes.gray[300],
+                justifyContent: 'center',
+                alignItems: 'center'
+              }}
+              onPress={() => setModalOpen(false)}
+            >
+              <Typography type="M" fontSize={16} textColor={customPalettes.blue[500]}>
+                확인
+              </Typography>
+            </Pressable>
+          </View>
+        </View>
+      </Modal>
     </SafeArea>
   )
 }

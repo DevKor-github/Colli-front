@@ -53,8 +53,9 @@ export type TagContainerProps = GetProps<typeof TagContainer>
 
 export const Tag = ({ type, status, children, handlePress }: TagProps) => {
   const fontVariables = TAG_TYPOGRAPHY[`${status}`]
+  const onPress = handlePress ?? (() => {})
   return (
-    <TagContainer type={type} status={status} onPress={() => handlePress()}>
+    <TagContainer type={type} status={status} onPress={() => onPress()}>
       {type === 'dot' && <View backgroundColor={fontVariables.color} width={8} height={8} borderRadius={8} />}
       <Typography fontSize={fontVariables.fontSize} type={fontVariables.type} textColor={fontVariables.color}>
         {children}

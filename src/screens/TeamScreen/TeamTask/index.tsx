@@ -8,6 +8,7 @@ import Animated, {
   useSharedValue,
   withTiming
 } from 'react-native-reanimated'
+import { useRecoilValue } from 'recoil'
 import { View } from 'tamagui'
 
 import { ProgressBar } from '@/components/KanbanBoard/ProgressBar'
@@ -15,7 +16,8 @@ import { ProgressButton } from '@/components/KanbanBoard/ProgressButton'
 import { StatusSection } from '@/components/KanbanBoard/StatusSection'
 import { TaskCard } from '@/components/KanbanBoard/TaskCard'
 import { Typography } from '@/components/Typography'
-import { TEAM_TASKS } from '@/mocks/data/teamTask'
+import { TEAM_CATEGORY } from '@/mocks/data/teamTask'
+import { defaultTeamTask } from '@/recoil/atom'
 import { customPalettes } from '@/theme/customPalettes'
 import type { KanBanStatus } from '@/types/kanBanBoard'
 
@@ -27,14 +29,15 @@ export const TeamTask = () => {
   const offsetX = useSharedValue(0)
   const [currentSection, setCurrentSection] = useState('전체')
   const [status, setStatus] = useState<KanBanStatus>('todo')
-  const [teamTasks, setTeamTasks] = useState(TEAM_TASKS)
-  const handleProjectChange = (section: string) => {
-    setCurrentSection(section)
-    if (section === INITIAL_SECTION) {
+  const teamTasks = useRecoilValue(defaultTeamTask)
+  const [category, setCategory] = useState(TEAM_CATEGORY)
+  const handleProjectChange = (newCategory: string) => {
+    setCurrentSection(newCategory)
+    if (newCategory === INITIAL_SECTION) {
       scroll.value = 0
       offsetX.value = withTiming(0, { duration: 300 })
     } else {
-      const projectIndex = teamTasks.findIndex(task => task.sectionId === section)
+      const projectIndex = category.findIndex(category => category.name === newCategory)
       scroll.value = projectIndex * 10
       offsetX.value = withTiming((projectIndex + 1) * 62, { duration: 300, easing: Easing.bezier(0.42, 0, 0, 0.94) })
     }
@@ -71,12 +74,12 @@ export const TeamTask = () => {
           content="전체"
           handlePress={() => handleProjectChange(INITIAL_SECTION)}
         />
-        {teamTasks.map((task, index) => (
+        {TEAM_CATEGORY.map((category, index) => (
           <ProgressButton
             key={index}
-            isPressed={currentSection === task.sectionId}
-            content={task.sectionId}
-            handlePress={() => handleProjectChange(task.sectionId)}
+            isPressed={currentSection === category.name}
+            content={category.name}
+            handlePress={() => handleProjectChange(category.name)}
           />
         ))}
       </AnimatedScrollView>
@@ -84,9 +87,13 @@ export const TeamTask = () => {
       <StatusSection status={status} handlePress={handleStatusChange} />
       <View h={8} backgroundColor={customPalettes.gray[50]} />
       <View paddingHorizontal={20} paddingVertical={4} flexDirection="row" gap={8} flexWrap="wrap">
-        <TaskCard status="todo" />
-        <TaskCard status="inProgress" />
-        <TaskCard status="done" />
+        {teamTasks.map((tasks, i) => {
+          if (currentSection === INITIAL_SECTION) {
+            return tasks.status === status ? <TaskCard key={i} {...tasks} /> : ''
+          } else {
+            return tasks.status === status && tasks.category === currentSection ? <TaskCard key={i} {...tasks} /> : ''
+          }
+        })}
       </View>
     </View>
   )

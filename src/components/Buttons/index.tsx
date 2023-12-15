@@ -43,7 +43,7 @@ export const CustomButton = styled(Stack, {
         paddingHorizontal: 16
       },
       mid: {
-        // width: 165,
+        width: 165,
         height: 'auto',
         padding: 16
       },

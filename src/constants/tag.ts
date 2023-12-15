@@ -5,7 +5,7 @@ export interface TagProps {
   type: 'text' | 'dot'
   status: 'big' | 'sml' | true | false
   children: React.ReactNode
-  handlePress: () => void
+  handlePress?: () => void
 }
 
 interface TagTypographyProps {
