@@ -147,18 +147,22 @@ export const TEAM_TASKS: TaskCardProps[] = [
     notes:
       '자유롭게 메모를 작성할 수 있는 영역입니다. 본 서브텍스트박스를 터치하면 키보드가 시트가 호출되며 텍스트를 편집할 수 있습니다.',
     assignee: '차승민'
-  }
-
+  },
   // {
   //   category: '백엔드',
   //   todo: ['개발 구체화하기', 'PPT 준비하기'],
   //   inProgress: ['보고서 작성하기'],
   //   done: ['측량 실험하기']
   // },
-  // {
-  //   category: '발표',
-  //   todo: ['발표 구체화하기', 'PPT 준비하기'],
-  //   inProgress: ['보고서 작성하기'],
-  //   done: ['측량 실험하기']
-  // }
+  {
+    id: 203,
+    status: 'todo',
+    category: '발표',
+    title: '뎁코 종강 발표',
+    dueDate: new Date('2023-12-21T00:00:00'),
+    reminderDate: 3,
+    notes:
+      '자유롭게 메모를 작성할 수 있는 영역입니다. 본 서브텍스트박스를 터치하면 키보드가 시트가 호출되며 텍스트를 편집할 수 있습니다.',
+    assignee: '차승민'
+  }
 ]

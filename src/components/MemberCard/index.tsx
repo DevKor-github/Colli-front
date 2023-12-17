@@ -1,11 +1,12 @@
 import React from 'react'
+import { Image } from 'react-native'
 import { Avatar, View } from 'tamagui'
 
 import { Typography } from '@/components/Typography'
 import { customPalettes } from '@/theme/customPalettes'
 import type { MemberCardProps } from '@/types/memberCard'
 
-export const MemberCard = ({ id, name, department, email, division }: MemberCardProps) => {
+export const MemberCard = ({ id, name, department, email, division, imgSrc }: MemberCardProps) => {
   return (
     <View
       display="flex"
@@ -18,7 +19,7 @@ export const MemberCard = ({ id, name, department, email, division }: MemberCard
     >
       <View display="flex" flexDirection="row" alignItems="center" gap={16}>
         <Avatar size={48} circular>
-          <Avatar.Image source={{ uri: 'https://picsum.photos/id/237/3500/2095' }} />
+          <Avatar.Image source={imgSrc} />
         </Avatar>
         <View display="flex" flexDirection="column" gap={4} alignItems="flex-start">
           <Typography type="M" fontSize={17} textColor={customPalettes.gray[900]}>

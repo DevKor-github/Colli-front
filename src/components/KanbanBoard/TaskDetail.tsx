@@ -44,7 +44,6 @@ export const TaskDetail = ({
   const [titleInput, setTitleInput] = useState(title)
   const [, setDefaultTeamTask] = useRecoilState(defaultTeamTask)
   const [newStatus, setNewStatus] = useState(statusKR)
-  const [newDueDate, setNewDueDate] = useState(dueDate)
   const [pickedDate, setPickedDate] = useState({
     month: dueMonth,
     date: dueDay,
@@ -52,7 +51,6 @@ export const TaskDetail = ({
     hour: dueHour,
     minute: dueMinute
   })
-
   const handleTitleSubmit = () => {
     setDefaultTeamTask(prev => {
       const newTask = prev.map(task => {
@@ -72,9 +70,10 @@ export const TaskDetail = ({
   }
   const handleDueDate = () => {
     const { month, date, ampm, hour, minute } = pickedDate
-    const newDate = new Date(
-      `${dueYear}-${month}-${date} ${ampm === 1 ? `0${hour}` : `${hour + 12}`}:${minute - 1}:00Z`
-    )
+    const newDateString = `${dueYear}-${month}-${date} ${ampm === 1 ? `${hour}` : `${hour + 12}`}:${
+      minute < 10 ? `0${minute}` : minute
+    }:00`
+    const newDate = new Date(newDateString)
     setDefaultTeamTask(prev => prev.map(task => (task.id === id ? { ...task, dueDate: newDate } : task)))
     setShowPicker(!showPicker)
   }

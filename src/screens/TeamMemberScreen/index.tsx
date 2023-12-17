@@ -61,6 +61,7 @@ export const TeamMemberScreen = () => {
                 department={member.department}
                 email={member.email}
                 division={member.division}
+                imgSrc={member.imgSrc}
               />
             ))
           : members.map(member => (
@@ -71,6 +72,7 @@ export const TeamMemberScreen = () => {
                 department={member.department}
                 email={member.email}
                 division={member.division}
+                imgSrc={member.imgSrc}
               />
             ))}
         <View

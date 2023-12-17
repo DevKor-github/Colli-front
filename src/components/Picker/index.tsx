@@ -89,7 +89,7 @@ const Picker = ({ month, date, ampm, hour, minute, handleChange }: PickerProps) 
           onScrollEndDrag={e => {
             const calculatedValue = Math.round(e.nativeEvent.contentOffset.y / 50.5)
             dayScroll.value = calculatedValue * 50.5
-            handleChange('date', calculatedValue)
+            handleChange('date', calculatedValue + 1)
           }}
         >
           {['', ...days, ''].map((day, index) => (
@@ -114,7 +114,7 @@ const Picker = ({ month, date, ampm, hour, minute, handleChange }: PickerProps) 
           onScrollEndDrag={e => {
             const calculatedValue = Math.round(e.nativeEvent.contentOffset.y / 50.5)
             ampmScroll.value = Math.round(e.nativeEvent.contentOffset.y / 50) * 50.5
-            handleChange('ampm', calculatedValue)
+            handleChange('ampm', calculatedValue + 1)
           }}
         >
           {AMPM.map((ampm, index) => (
@@ -138,7 +138,7 @@ const Picker = ({ month, date, ampm, hour, minute, handleChange }: PickerProps) 
           onScrollEndDrag={e => {
             const calculatedValue = Math.round(e.nativeEvent.contentOffset.y / 50.5)
             hourScroll.value = Math.round(e.nativeEvent.contentOffset.y / 50.5) * 50.5
-            handleChange('hour', calculatedValue)
+            handleChange('hour', calculatedValue + 1)
           }}
         >
           {HOURS.map((hour, index) => (
@@ -162,7 +162,7 @@ const Picker = ({ month, date, ampm, hour, minute, handleChange }: PickerProps) 
           onScrollEndDrag={e => {
             const calculatedValue = Math.round(e.nativeEvent.contentOffset.y / 50.5)
             minuteScroll.value = Math.round(e.nativeEvent.contentOffset.y / 50.5) * 50.5
-            handleChange('minute', calculatedValue)
+            handleChange('minute', calculatedValue + 1)
           }}
         >
           {MINUTES.map((minute, index) => (
@@ -170,7 +170,7 @@ const Picker = ({ month, date, ampm, hour, minute, handleChange }: PickerProps) 
               key={index}
               onPress={() => {
                 handleGenericScrollChange(minuteScroll, index)
-                handleChange('minute', index)
+                handleChange('minute', index - 1)
               }}
               style={{ height: 50.5 }}
             >
