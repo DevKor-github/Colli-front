@@ -1,6 +1,8 @@
 import { Pressable } from 'react-native'
 import Animated, {
   Easing,
+  createAnimatedPropAdapter,
+  processColor,
   useAnimatedProps,
   useAnimatedStyle,
   useSharedValue,
@@ -34,12 +36,25 @@ export const CalendarSwitch = () => {
     weekColor.value = withTiming(!isWeek ? customPalettes.gray[700] : customPalettes.gray[300], { duration: 400 })
     monthColor.value = withTiming(isWeek ? customPalettes.gray[700] : customPalettes.gray[300], { duration: 400 })
   }
-  const animatedWeekPathProps = useAnimatedProps(() => ({
-    fill: weekColor.value
-  }))
-  const animatedMonthPathProps = useAnimatedProps(() => ({
-    fill: monthColor.value
-  }))
+  const adapter = createAnimatedPropAdapter(props => {
+    if (Object.keys(props).includes('fill')) {
+      props.fill = { type: 0, payload: processColor(props.fill) }
+    }
+  })
+  const animatedWeekPathProps = useAnimatedProps(
+    () => ({
+      fill: weekColor.value
+    }),
+    [],
+    adapter
+  )
+  const animatedMonthPathProps = useAnimatedProps(
+    () => ({
+      fill: monthColor.value
+    }),
+    [],
+    adapter
+  )
 
   return (
     <Pressable
