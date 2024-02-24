@@ -1,11 +1,13 @@
 import { Stack, styled } from 'tamagui'
 
+import type { ButtonProps } from '@/types/button'
 import { Typography } from '@components/Typography'
-import { BUTTON_TEXT_COLOR, type ButtonProps } from '@constants/button'
+import { BUTTON_TEXT_COLOR } from '@constants/button'
 import { customPalettes } from '@theme/customPalettes'
 
-const CustomButton = styled(Stack, {
+export const CustomButton = styled(Stack, {
   display: 'flex',
+  flexDirection: 'row',
   justifyContent: 'center',
   alignItems: 'center',
   pressStyle: {
@@ -26,7 +28,10 @@ const CustomButton = styled(Stack, {
         backgroundColor: customPalettes.gray[100]
       },
       text: {
-        backgroundColor: customPalettes.blue[50]
+        backgroundColor: 'none'
+      },
+      kakao: {
+        backgroundColor: customPalettes.kakao[50]
       }
     },
     size: {

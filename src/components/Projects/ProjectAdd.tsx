@@ -1,13 +1,13 @@
 import { Pressable } from 'react-native'
 import type { GetProps } from 'tamagui'
-import { Stack, View, YStack, styled } from 'tamagui'
+import { YStack, styled } from 'tamagui'
 
 import { ProjectAddCircle } from '@/components/Projects/ProjectAddCircle'
 import type { CustomProject } from '@/components/Projects/index'
 import { customPalettes } from '@/theme/customPalettes'
+import { type ProjectAddProps } from '@/types/project'
+import { Typography } from '@components/Typography'
 
-import { Typography } from '../Typography'
-import { type ProjectAddProps } from '../constants/project'
 import Icon from 'react-native-vector-icons/Foundation'
 
 export type ProjectWrapperProps = GetProps<typeof CustomProject>

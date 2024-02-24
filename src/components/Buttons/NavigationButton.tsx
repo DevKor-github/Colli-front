@@ -1,16 +1,19 @@
 import { useState } from 'react'
-import Animated, { useSharedValue, withDelay, withTiming } from 'react-native-reanimated'
-import { Text, styled } from 'tamagui'
+import { Pressable } from 'react-native'
+import Animated, { Easing, useSharedValue, withDelay, withTiming } from 'react-native-reanimated'
+import { useRecoilState } from 'recoil'
+import { styled } from 'tamagui'
 
+import { currentNavigationState } from '@/recoil/atom'
 import Colli from '@assets/Svgs/Colli.svg'
 import { Typography } from '@components/Typography'
 import { customPalettes } from '@theme/customPalettes'
 
 const SELECTED_COLOR = '#fff'
 const SELECTED_TEXT_COLOR = customPalettes.blue[400]
-const UNSELECTED_COLOR = customPalettes.blue[400]
 const UNSELECTED_TEXT_COLOR = customPalettes.blue[200]
-
+// 4, 118, 233
+const AnimatedPressable = Animated.createAnimatedComponent(Pressable)
 const NavigationTab = styled(Animated.View, {
   position: 'absolute',
   bottom: 31,
@@ -20,7 +23,7 @@ const NavigationTab = styled(Animated.View, {
   justifyContent: 'center',
   alignItems: 'center',
   alignSelf: 'center',
-  paddingHorizontal: 8,
+  // paddingHorizontal: 8,
   backgroundColor: customPalettes.blue[400]
 })
 
@@ -35,7 +38,8 @@ export const NavigationButton = () => {
   const opacity = useSharedValue(0)
   const rotate = useSharedValue('0deg')
   const [isOpen, setIsOpen] = useState(false)
-
+  const selectionOffset = useSharedValue(2)
+  const [selected, setSelected] = useRecoilState(currentNavigationState)
   const handlePress = () => {
     if (!isOpen) {
       width.value = withDelay(0, withTiming(348, { duration: 200 }))
@@ -53,6 +57,17 @@ export const NavigationButton = () => {
       setIsOpen(false)
     }
   }
+  const handleSelectionPress = (selection: 'task' | 'schedule' | 'project') => {
+    if (selection === 'task') {
+      selectionOffset.value = withTiming(4, { duration: 500, easing: Easing.bezier(0.42, 0, 0, 0.94) })
+    } else if (selection === 'schedule') {
+      selectionOffset.value = withTiming(118, { duration: 500, easing: Easing.bezier(0.42, 0, 0, 0.94) })
+    } else if (selection === 'project') {
+      selectionOffset.value = withTiming(233, { duration: 500, easing: Easing.bezier(0.42, 0, 0, 0.94) })
+    }
+    setSelected(selection)
+    setTimeout(() => handlePress(), 1000)
+  }
   return (
     <NavigationTab style={{ width, height, borderRadius }} onPress={handlePress}>
       <Animated.View style={{ transform: [{ rotate }] }}>{!isOpen && <Colli />}</Animated.View>
@@ -61,47 +76,72 @@ export const NavigationButton = () => {
           <Animated.View
             style={{
               flex: 1,
+              width: 104,
               height: 47,
               backgroundColor: SELECTED_COLOR,
               justifyContent: 'center',
               alignItems: 'center',
               borderRadius: 50,
+              opacity,
+              position: 'absolute',
+              left: selectionOffset
+            }}
+          />
+          <AnimatedPressable
+            style={{
+              flex: 1,
+              height: 47,
+              justifyContent: 'center',
+              alignItems: 'center',
+              borderRadius: 50,
               opacity
             }}
+            onPress={() => handleSelectionPress('task')}
           >
-            <Typography fontSize={16} type="B" textColor={SELECTED_TEXT_COLOR}>
+            <Typography
+              fontSize={16}
+              type="B"
+              textColor={selected === 'task' ? SELECTED_TEXT_COLOR : UNSELECTED_TEXT_COLOR}
+            >
               태스크
             </Typography>
-          </Animated.View>
-          <Animated.View
+          </AnimatedPressable>
+          <AnimatedPressable
             style={{
               flex: 1,
-              backgroundColor: UNSELECTED_COLOR,
               justifyContent: 'center',
               alignItems: 'center',
               borderRadius: 50,
               opacity
             }}
+            onPress={() => handleSelectionPress('schedule')}
           >
-            <Text fontFamily="$B" color={UNSELECTED_TEXT_COLOR}>
+            <Typography
+              fontSize={16}
+              type="M"
+              textColor={selected === 'schedule' ? SELECTED_TEXT_COLOR : UNSELECTED_TEXT_COLOR}
+            >
               일정
-            </Text>
-          </Animated.View>
-
-          <Animated.View
+            </Typography>
+          </AnimatedPressable>
+          <AnimatedPressable
             style={{
               flex: 1,
-              backgroundColor: UNSELECTED_COLOR,
               justifyContent: 'center',
               alignItems: 'center',
               borderRadius: 50,
               opacity
             }}
+            onPress={() => handleSelectionPress('project')}
           >
-            <Text fontFamily="$B" color={UNSELECTED_TEXT_COLOR}>
+            <Typography
+              fontSize={16}
+              type="M"
+              textColor={selected === 'project' ? SELECTED_TEXT_COLOR : UNSELECTED_TEXT_COLOR}
+            >
               프로젝트
-            </Text>
-          </Animated.View>
+            </Typography>
+          </AnimatedPressable>
         </Animated.View>
       )}
     </NavigationTab>

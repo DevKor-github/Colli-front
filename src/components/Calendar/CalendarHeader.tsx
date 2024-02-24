@@ -5,11 +5,7 @@ import { WeekHeader } from '@components/Calendar/WeekHeader'
 import { Typography } from '@components/Typography'
 import { customPalettes } from '@theme/customPalettes'
 
-interface CalendarHeaderProps {
-  isWeek: boolean
-  setIsWeek: React.Dispatch<React.SetStateAction<boolean>>
-}
-export const CalendarHeader = ({ isWeek, setIsWeek }: CalendarHeaderProps) => {
+export const CalendarHeader = () => {
   const today = new Date()
   const year = today.getFullYear()
   const month = today.getMonth() + 1
@@ -20,7 +16,7 @@ export const CalendarHeader = ({ isWeek, setIsWeek }: CalendarHeaderProps) => {
         <Typography fontSize={17} type="B" textColor={customPalettes.gray[700]}>
           {year}. {month}. {date}
         </Typography>
-        <CalendarSwitch isWeek={isWeek} handlePress={() => setIsWeek(!isWeek)} />
+        <CalendarSwitch />
       </XStack>
       <WeekHeader />
     </YStack>

@@ -1,12 +1,11 @@
-import React, { useState } from 'react'
-import { Pressable } from 'react-native'
+import React from 'react'
 import type { GetProps } from 'tamagui'
 import { Stack, View, styled } from 'tamagui'
 
+import { Typography } from '@/components/Typography'
+import { CHIP_TEXT_COLOR } from '@/constants/chip'
 import { customPalettes } from '@/theme/customPalettes'
-
-import { Typography } from '../Typography'
-import { CHIP_TEXT_COLOR, type ChipProps } from '../constants/chip'
+import type { ChipProps } from '@/types/chip'
 
 export const CustomChip = styled(Stack, {
   display: 'inline-flex',
@@ -67,17 +66,15 @@ const Circle = styled(View, {
 })
 
 export const Chip = ({ chipVariant, initialStatus, children, onPress }: ChipProps) => {
-  const [status, setStatus] = useState(initialStatus)
   const fontSize = 16
-  const type = 'B'
-  const textColor = chipVariant === 'gray' ? CHIP_TEXT_COLOR.gray[`${status}`] : CHIP_TEXT_COLOR.team[`${status}`]
-  const handlePress = () => {
-    setStatus(prevStatus => !prevStatus)
-  }
+  const type = 'M'
+  const textColor =
+    chipVariant === 'gray' ? CHIP_TEXT_COLOR.gray[`${initialStatus}`] : CHIP_TEXT_COLOR.team[`${initialStatus}`]
+
   const ChipWrapper = ({ variant, children }: { variant: string; children: React.ReactNode }) => {
     if (variant === 'gray') {
       return (
-        <CustomChip gray={status} onPress={handlePress}>
+        <CustomChip gray={initialStatus} onPress={onPress}>
           <Typography fontSize={fontSize} type={type} textColor={textColor}>
             {children}
           </Typography>
@@ -85,8 +82,8 @@ export const Chip = ({ chipVariant, initialStatus, children, onPress }: ChipProp
       )
     } else {
       return (
-        <CustomChip team={status} onPress={handlePress}>
-          <Circle backgroundColor={status ? customPalettes.blue[500] : customPalettes.blue[200]} />
+        <CustomChip team={initialStatus} onPress={onPress}>
+          <Circle backgroundColor={initialStatus ? customPalettes.blue[500] : customPalettes.blue[200]} />
           <Typography fontSize={fontSize} type={type} textColor={textColor}>
             {children}
           </Typography>

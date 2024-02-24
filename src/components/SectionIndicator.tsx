@@ -1,4 +1,3 @@
-import React from 'react'
 import { View } from 'tamagui'
 
 import { Typography } from '@/components/Typography'

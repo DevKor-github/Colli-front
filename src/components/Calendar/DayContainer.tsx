@@ -13,14 +13,24 @@ export const DayContainer = ({ day }: DayContainerProps) => {
   const currentMonthEndDate = getCurrentMonthEndDate(today)
 
   const handleDayTextColor = () => {
-    if (day.getDate() === today.getDate()) return customPalettes.snow[50]
+    if (
+      day.getFullYear() === today.getFullYear() &&
+      day.getMonth() === today.getMonth() &&
+      day.getDate() === today.getDate()
+    )
+      return customPalettes.snow[50]
     if (day.getDay() === 0) return customPalettes.rose[600]
     else if (day.getDay() === 6) return customPalettes.blue[500]
     else return customPalettes.gray[700]
   }
 
   const handleTodayColor = () => {
-    if (day.getDate() === today.getDate()) return customPalettes.blue[600]
+    if (
+      day.getFullYear() === today.getFullYear() &&
+      day.getMonth() === today.getMonth() &&
+      day.getDate() === today.getDate()
+    )
+      return customPalettes.blue[600]
     return 'transparent'
   }
   const handleOpacity = () => {

@@ -1,12 +1,12 @@
 // info 12, 14: 17(lineHeight), 16: 19(lineHeight)
+import type { TextProps } from 'tamagui'
 
 export type fontVariant = 'R' | 'M' | 'B'
-export interface TypographyProps {
+export interface TypographyProps extends TextProps {
   children: React.ReactNode
   fontSize: number
   type: fontVariant
   textColor: string
-  textDecoration?: 'none' | 'underline' | 'line-through' | 'underline line-through' | undefined
 }
 type weight = '400' | '600' | '700'
 interface TypographyWeight {

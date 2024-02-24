@@ -1,5 +1,5 @@
 import type { GetProps } from 'tamagui'
-import { View, XStack, styled } from 'tamagui'
+import { View, styled } from 'tamagui'
 
 import type { CustomProject } from '@/components/Projects/index'
 import { customPalettes } from '@/theme/customPalettes'
@@ -8,24 +8,22 @@ import { Typography } from '../Typography'
 
 export type ProjectWrapperProps = GetProps<typeof CustomProject>
 
-export const CustomProjectHeader = styled(XStack, {
+export const CustomProjectHeader = styled(View, {
   gap: 8,
-  display: 'inline-flex',
-  justifyContent: 'center',
+  display: 'flex',
+  flexDirection: 'row',
   alignItems: 'center',
-  overflow: 'hidden',
-  width: 147,
-  height: 'auto'
-  //textOverflow: 'ellipsis',
-  //whiteSpace: 'nowrap'
+  alignSelf: 'stretch',
+  maxWidth: 130
+  // height: 19
+  // width: '100%'
 })
 
 const Circle = styled(View, {
   width: 6,
   height: 6,
   borderRadius: 10,
-  backgroundColor: customPalettes.blue[500],
-  gap: 8
+  backgroundColor: customPalettes.blue[500]
 })
 
 export const ProjectHeader = ({ children }: { children: React.ReactNode }) => {
@@ -35,7 +33,7 @@ export const ProjectHeader = ({ children }: { children: React.ReactNode }) => {
   return (
     <CustomProjectHeader>
       <Circle />
-      <Typography fontSize={fontSize} type={type} textColor={textColor}>
+      <Typography fontSize={fontSize} type={type} textColor={textColor} ellipse>
         {children}
       </Typography>
     </CustomProjectHeader>

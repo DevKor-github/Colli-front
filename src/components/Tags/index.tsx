@@ -40,10 +40,10 @@ const TagContainer = styled(Stack, {
         gap: 4,
         borderRadius: 4
       },
-      on: {
+      true: {
         backgroundColor: customPalettes.blue[50]
       },
-      off: {
+      false: {
         backgroundColor: customPalettes.snow[50]
       }
     }
@@ -51,10 +51,11 @@ const TagContainer = styled(Stack, {
 })
 export type TagContainerProps = GetProps<typeof TagContainer>
 
-export const Tag = ({ type, status, children }: TagProps) => {
-  const fontVariables = TAG_TYPOGRAPHY[status]
+export const Tag = ({ type, status, children, handlePress }: TagProps) => {
+  const fontVariables = TAG_TYPOGRAPHY[`${status}`]
+  const onPress = handlePress ?? (() => {})
   return (
-    <TagContainer type={type} status={status}>
+    <TagContainer type={type} status={status} onPress={() => onPress()}>
       {type === 'dot' && <View backgroundColor={fontVariables.color} width={8} height={8} borderRadius={8} />}
       <Typography fontSize={fontVariables.fontSize} type={fontVariables.type} textColor={fontVariables.color}>
         {children}
