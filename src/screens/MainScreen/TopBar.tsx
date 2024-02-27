@@ -4,7 +4,7 @@ import Bell from '@assets/Svgs/Bell.svg'
 import MainScreenLogo from '@assets/Svgs/COLLI/MainScreenLogo.svg'
 import Menu from '@assets/Svgs/Menu.svg'
 
-export const TopBar = () => {
+export const AppBar = () => {
   return (
     <View
       display="flex"
@@ -20,5 +20,3 @@ export const TopBar = () => {
     </View>
   )
 }
-
-TopBar

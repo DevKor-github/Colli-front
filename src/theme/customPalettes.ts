@@ -69,5 +69,9 @@ export const customPalettes = {
   },
   kakao: {
     50: '#F1DE49'
+  },
+  wf: {
+    50: '#F0F1FF',
+    100: '#6973FF'
   }
 }
