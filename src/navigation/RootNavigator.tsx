@@ -1,3 +1,4 @@
+import LandingScreen from '@/screens/LandingScreen'
 import LogInScreen from '@/screens/LogInScreen'
 import { Main } from '@/screens/MainScreen'
 import { SplashScreen } from '@/screens/SplashScreen'
@@ -18,6 +19,7 @@ export const RootNavigator = () => {
           <Stack.Screen name="Splash" component={SplashScreen} options={{ headerShown: false }} />
           <Stack.Screen name="LogIn" component={LogInScreen} options={{ headerShown: false, animation: 'fade' }} />
           <Stack.Screen name="Main" component={Main} options={{ headerShown: false, animation: 'fade' }} />
+          <Stack.Screen name="Landing" component={LandingScreen} options={{ headerShown: false, animation: 'fade' }} />
           <Stack.Screen name="Team" component={TeamScreen} options={{ headerShown: false, animation: 'fade' }} />
           <Stack.Screen name="TeamMember" component={TeamMemberScreen} options={{ headerShown: false }} />
         </Stack.Group>
@@ -26,6 +28,7 @@ export const RootNavigator = () => {
       return (
         <Stack.Group>
           <Stack.Screen name="Main" component={Main} options={{ headerShown: false }} />
+          <Stack.Screen name="Landing" component={LandingScreen} options={{ headerShown: false }} />
           <Stack.Screen name="Team" component={TeamScreen} options={{ headerShown: false }} />
           <Stack.Screen name="TeamMember" component={TeamMemberScreen} options={{ headerShown: false }} />
         </Stack.Group>
