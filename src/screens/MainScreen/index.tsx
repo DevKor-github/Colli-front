@@ -8,7 +8,7 @@ import { DueDateContainer } from '@/screens/MainScreen/DueDateContainer'
 import { ProjectSection } from '@/screens/MainScreen/ProjectSection'
 import { ScheduleSection } from '@/screens/MainScreen/ScheduleSection'
 import { TaskSection } from '@/screens/MainScreen/TaskSection'
-import { TopBar } from '@/screens/MainScreen/TopBar'
+import { AppBar } from '@/screens/MainScreen/TopBar'
 import { customPalettes } from '@/theme/customPalettes'
 import { Calendar } from '@components/Calendar'
 import { SafeArea } from '@components/SafeArea'
@@ -24,7 +24,7 @@ export const Main = () => {
         decelerationRate="fast"
       >
         <HeaderContainer>
-          <TopBar />
+          <AppBar />
           <DueDateContainer />
         </HeaderContainer>
         {currentNavigation !== 'project' && <Calendar />}

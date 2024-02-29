@@ -9,6 +9,7 @@ import { TEAM_NAME } from '@/mocks/data/teamName'
 import { customPalettes } from '@/theme/customPalettes'
 import { SafeArea } from '@components/SafeArea'
 
+
 const LandingScreen = () => {
   return (
     <SafeArea>

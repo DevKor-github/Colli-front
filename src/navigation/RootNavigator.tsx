@@ -10,7 +10,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack'
 const Stack = createNativeStackNavigator<RootStackParamList>()
 
 export const RootNavigator = () => {
-  const isAuth = false
+  const isAuth = true
 
   const screens = (() => {
     if (!isAuth) {
@@ -27,8 +27,7 @@ export const RootNavigator = () => {
     } else {
       return (
         <Stack.Group>
-          <Stack.Screen name="Main" component={Main} options={{ headerShown: false }} />
-          <Stack.Screen name="Landing" component={LandingScreen} options={{ headerShown: false }} />
+          <Stack.Screen name="Main" component={LandingScreen} options={{ headerShown: false }} />
           <Stack.Screen name="Team" component={TeamScreen} options={{ headerShown: false }} />
           <Stack.Screen name="TeamMember" component={TeamMemberScreen} options={{ headerShown: false }} />
         </Stack.Group>
