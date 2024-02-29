@@ -1,10 +1,8 @@
 import { useEffect, useState } from 'react'
 import { Pressable } from 'react-native'
-import { useRecoilState } from 'recoil'
 import { Input, View } from 'tamagui'
 
 import { TEAM_MEMBER } from '@/mocks/data/teamMember'
-import { searchedMember } from '@/recoil/atom'
 import { customPalettes } from '@/theme/customPalettes'
 import LeftArrow from '@assets/Svgs/LeftArrow.svg'
 import { useNavigation } from '@react-navigation/native'
@@ -13,8 +11,8 @@ export const SearchHeader = () => {
   const navigation = useNavigation()
   const [searchKey, setSearchKey] = useState('')
   const filteredKey = TEAM_MEMBER.filter(member => member.name.includes(searchKey))
-  const [, setMember] = useRecoilState(searchedMember)
-  useEffect(() => setMember(filteredKey), [searchKey])
+  const [, setMember] = useState('')
+  // useEffect(() => setMember(filteredKey), [searchKey])
   return (
     <View
       display="flex"
@@ -47,7 +45,7 @@ export const SearchHeader = () => {
           borderWidth={0}
           value={searchKey}
           onChangeText={setSearchKey}
-          onSubmitEditing={() => setMember(filteredKey)}
+          // onSubmitEditing={() => setMember(filteredKey)}
         />
       </View>
     </View>

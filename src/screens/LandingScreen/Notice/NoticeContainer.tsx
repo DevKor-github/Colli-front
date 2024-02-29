@@ -1,6 +1,6 @@
 import { ScrollView } from 'react-native'
 
-import Notice from '@/screens/LandingScreen/Notice'
+import Notice from '@/screens/LandingScreen/Notice/Notice'
 
 const NoticeContainer = () => {
   return (

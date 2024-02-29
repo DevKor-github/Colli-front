@@ -1,10 +1,8 @@
 import { useState } from 'react'
 import { Pressable } from 'react-native'
 import Animated, { Easing, useSharedValue, withDelay, withTiming } from 'react-native-reanimated'
-import { useRecoilState } from 'recoil'
 import { styled } from 'tamagui'
 
-import { currentNavigationState } from '@/recoil/atom'
 import Colli from '@assets/Svgs/Colli.svg'
 import { Typography } from '@components/Typography'
 import { customPalettes } from '@theme/customPalettes'
@@ -39,7 +37,7 @@ export const NavigationButton = () => {
   const rotate = useSharedValue('0deg')
   const [isOpen, setIsOpen] = useState(false)
   const selectionOffset = useSharedValue(2)
-  const [selected, setSelected] = useRecoilState(currentNavigationState)
+  const [selected, setSelected] = useState(false)
   const handlePress = () => {
     if (!isOpen) {
       width.value = withDelay(0, withTiming(348, { duration: 200 }))
@@ -65,7 +63,7 @@ export const NavigationButton = () => {
     } else if (selection === 'project') {
       selectionOffset.value = withTiming(233, { duration: 500, easing: Easing.bezier(0.42, 0, 0, 0.94) })
     }
-    setSelected(selection)
+    // setSelected(selection)
     setTimeout(() => handlePress(), 1000)
   }
   return (
@@ -98,11 +96,7 @@ export const NavigationButton = () => {
             }}
             onPress={() => handleSelectionPress('task')}
           >
-            <Typography
-              fontSize={16}
-              type="B"
-              textColor={selected === 'task' ? SELECTED_TEXT_COLOR : UNSELECTED_TEXT_COLOR}
-            >
+            <Typography fontSize={16} type="B" textColor={selected ? SELECTED_TEXT_COLOR : UNSELECTED_TEXT_COLOR}>
               태스크
             </Typography>
           </AnimatedPressable>
@@ -116,11 +110,7 @@ export const NavigationButton = () => {
             }}
             onPress={() => handleSelectionPress('schedule')}
           >
-            <Typography
-              fontSize={16}
-              type="M"
-              textColor={selected === 'schedule' ? SELECTED_TEXT_COLOR : UNSELECTED_TEXT_COLOR}
-            >
+            <Typography fontSize={16} type="M" textColor={selected ? SELECTED_TEXT_COLOR : UNSELECTED_TEXT_COLOR}>
               일정
             </Typography>
           </AnimatedPressable>
@@ -134,11 +124,7 @@ export const NavigationButton = () => {
             }}
             onPress={() => handleSelectionPress('project')}
           >
-            <Typography
-              fontSize={16}
-              type="M"
-              textColor={selected === 'project' ? SELECTED_TEXT_COLOR : UNSELECTED_TEXT_COLOR}
-            >
+            <Typography fontSize={16} type="M" textColor={selected ? SELECTED_TEXT_COLOR : UNSELECTED_TEXT_COLOR}>
               프로젝트
             </Typography>
           </AnimatedPressable>

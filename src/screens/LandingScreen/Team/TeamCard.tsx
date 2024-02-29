@@ -35,9 +35,10 @@ export const TeamCard = ({ id, name, teamMember, imgSrc }: TeamCardProps) => {
         height={73}
         alignSelf="stretch"
         borderRadius={8}
-        backgroundColor={customPalettes.blue[200]}
+        opacity={0.15}
+        backgroundColor={customPalettes.wf[100]}
         onPress={() => {}}
-      ></View>
+      />
     </View>
   )
 }

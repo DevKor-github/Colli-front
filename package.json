@@ -42,7 +42,6 @@
     "react-native-vector-icons": "^10.0.0",
     "react-navigation": "^5.0.0",
     "react-query": "^3.39.3",
-    "recoil": "^0.7.7",
     "tamagui": "^1.74.13"
   },
   "devDependencies": {

@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { Pressable } from 'react-native'
 import Animated, {
   Easing,
@@ -10,14 +11,12 @@ import Animated, {
   withTiming
 } from 'react-native-reanimated'
 import { Path, Svg } from 'react-native-svg'
-import { useRecoilState } from 'recoil'
 
-import { calendarState } from '@/recoil/atom'
 import { customPalettes } from '@theme/customPalettes'
 
 const AnimatedPath = Animated.createAnimatedComponent(Path)
 export const CalendarSwitch = () => {
-  const [isWeek, setIsWeek] = useRecoilState(calendarState)
+  const [isWeek, setIsWeek] = useState(false)
   const offset = useSharedValue(isWeek ? 0 : 46)
   const animatedStyle = useAnimatedStyle(() => ({ transform: [{ translateX: offset.value }] }))
   const weekColor = useSharedValue(isWeek ? customPalettes.gray[700] : customPalettes.gray[300])

@@ -1,9 +1,9 @@
 import React from 'react'
 import { View } from 'tamagui'
 
-import { PushNotiBoard } from '@/screens/LandingScreen/PushNotiBoard'
-import ScheduleBoard from '@/screens/LandingScreen/ScheduleBoard'
-import TaskBoard from '@/screens/LandingScreen/TaskBoard'
+import { PushNotiBoard } from '@/screens/LandingScreen/DashBoard/PushNotiBoard'
+import ScheduleBoard from '@/screens/LandingScreen/DashBoard/ScheduleBoard'
+import TaskBoard from '@/screens/LandingScreen/DashBoard/TaskBoard'
 
 const DashBoard = () => {
   return (
