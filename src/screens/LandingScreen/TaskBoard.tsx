@@ -3,6 +3,7 @@ import { Circle, View } from 'tamagui'
 
 import { BoardContainer } from '@/components/Board/BoardContainer'
 import BoardHeader from '@/components/Board/BoardHeader'
+import { Tag } from '@/components/Tags'
 import { Typography } from '@/components/Typography'
 import { customPalettes } from '@/theme/customPalettes'
 
@@ -35,33 +36,8 @@ const TaskBoard = ({ taskContent, dueDate, team }: TaskBoardProps) => {
       </View>
       <View display="flex" flexDirection="row" gap={54} justifyContent="flex-end" alignItems="flex-end">
         <View display="flex" gap={4} alignItems="flex-start">
-          <View
-            display="inline-flex"
-            flexGrow={1}
-            paddingVertical={4}
-            paddingHorizontal={8}
-            alignItems="center"
-            gap={10}
-            borderRadius={8}
-            backgroundColor={customPalettes.wf[50]}
-          >
-            <Typography type="R" fontSize={12} textColor={customPalettes.wf[100]}>
-              {`D-${dayDifference}`}
-            </Typography>
-          </View>
-          <View
-            display="inline-flex"
-            paddingVertical={4}
-            paddingHorizontal={8}
-            alignItems="center"
-            gap={10}
-            borderRadius={8}
-            backgroundColor={customPalettes.wf[50]}
-          >
-            <Typography type="R" fontSize={12} textColor={customPalettes.wf[100]}>
-              {team}
-            </Typography>
-          </View>
+          <Tag color="light">{`D-${dayDifference}`}</Tag>
+          <Tag color="light">{team}</Tag>
         </View>
         <Circle size={23} backgroundColor={customPalettes.wf[100]} opacity={0.7} />
       </View>

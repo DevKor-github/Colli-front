@@ -3,6 +3,7 @@ import { Circle, View } from 'tamagui'
 
 import { BoardContainer } from '@/components/Board/BoardContainer'
 import BoardHeader from '@/components/Board/BoardHeader'
+import { Tag } from '@/components/Tags'
 import { Typography } from '@/components/Typography'
 import { customPalettes } from '@/theme/customPalettes'
 
@@ -27,19 +28,7 @@ export const PushNotiBoard = ({ noticeNumber }: PushNotiBoardProps) => {
         </Typography>
       </View>
       <View display="flex" flexDirection="row" justifyContent="space-between" alignItems="flex-end" alignSelf="stretch">
-        <View
-          display="inline-flex"
-          paddingVertical={4}
-          paddingHorizontal={8}
-          alignItems="center"
-          gap={10}
-          borderRadius={8}
-          backgroundColor={customPalettes.wf[50]}
-        >
-          <Typography type="R" fontSize={12} textColor={customPalettes.wf[100]}>
-            {noticeNumber}개
-          </Typography>
-        </View>
+        <Tag color="light">{noticeNumber}개</Tag>
         <Circle size={23} backgroundColor={customPalettes.wf[100]} opacity={0.7} />
       </View>
     </BoardContainer>

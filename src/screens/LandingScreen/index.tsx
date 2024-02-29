@@ -1,24 +1,27 @@
 import { ScrollView } from 'react-native'
-import { useRecoilValue } from 'recoil'
-import { Sheet, View } from 'tamagui'
+import { View } from 'tamagui'
 
-import { Chip } from '@/components/Chips'
 import { TeamCard } from '@/components/TeamCard'
 import { Typography } from '@/components/Typography'
 import { TEAM_NAME } from '@/mocks/data/teamName'
+import DashBoard from '@/screens/LandingScreen/DashBoard'
+import NoticeContainer from '@/screens/LandingScreen/NoticeContainer'
+import { AppBar } from '@/screens/MainScreen/TopBar'
 import { customPalettes } from '@/theme/customPalettes'
 import { SafeArea } from '@components/SafeArea'
-
 
 const LandingScreen = () => {
   return (
     <SafeArea>
+      <AppBar />
       <ScrollView
         showsVerticalScrollIndicator={false}
         style={{ backgroundColor: customPalettes.gray[50] }}
         scrollEventThrottle={0}
         decelerationRate="fast"
       >
+        <NoticeContainer />
+        <DashBoard />
         <View padding={16} gap={12} flexDirection="column" alignItems="center" alignSelf="stretch">
           <View
             display="flex"
@@ -32,9 +35,9 @@ const LandingScreen = () => {
               참여중인 팀
             </Typography>
             <View
-              style={{ width: 83, height: 32 }}
+              style={{ width: 83, height: 32, opacity: 0.15 }}
               borderRadius={100}
-              backgroundColor={customPalettes.blue[200]}
+              backgroundColor={customPalettes.wf[100]}
               pressStyle={{ opacity: 0.15 }}
             ></View>
           </View>
