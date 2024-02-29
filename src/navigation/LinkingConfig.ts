@@ -8,7 +8,8 @@ const linking: LinkingOptions<RootStackParamList> = {
       Splash: 'splash',
       Main: 'main',
       Team: 'team',
-      LogIn: 'login'
+      LogIn: 'login',
+      Landing: 'landing'
     }
   }
 }

@@ -1,15 +1,11 @@
 import { useState } from 'react'
 import { Modal, Pressable, ScrollView } from 'react-native'
-import { useRecoilState } from 'recoil'
 import { Sheet, View } from 'tamagui'
 
 import { Button } from '@/components/Buttons'
 import { IconButton } from '@/components/Buttons/IconButton'
-import { MemberCard } from '@/components/MemberCard'
 import { SafeArea } from '@/components/SafeArea'
 import { Typography } from '@/components/Typography'
-import { TEAM_MEMBER } from '@/mocks/data/teamMember'
-import { searchedMember } from '@/recoil/atom'
 import { SearchHeader } from '@/screens/TeamMemberScreen/SearchHeader'
 import { customPalettes } from '@/theme/customPalettes'
 import ArrowDown from '@assets/Svgs/ArrowDown.svg'
@@ -26,8 +22,6 @@ export const TeamMemberScreen = () => {
     setModalOpen(true)
     Clipboard.setString('COLI0817')
   }
-  const [members, setMembers] = useRecoilState(searchedMember)
-
   return (
     <SafeArea team>
       <SearchHeader />
@@ -52,29 +46,7 @@ export const TeamMemberScreen = () => {
           </Typography>
           <ArrowDown />
         </View>
-        {members.length === 0
-          ? TEAM_MEMBER.map(member => (
-              <MemberCard
-                id={member.id}
-                key={member.id}
-                name={member.name}
-                department={member.department}
-                email={member.email}
-                division={member.division}
-                imgSrc={member.imgSrc}
-              />
-            ))
-          : members.map(member => (
-              <MemberCard
-                id={member.id}
-                key={member.id}
-                name={member.name}
-                department={member.department}
-                email={member.email}
-                division={member.division}
-                imgSrc={member.imgSrc}
-              />
-            ))}
+
         <View
           mt={24}
           display="flex"

@@ -2,8 +2,7 @@ import type { fontVariant } from '@/constants/typography'
 import { customPalettes } from '@/theme/customPalettes'
 
 export interface TagProps {
-  type: 'text' | 'dot'
-  status: 'big' | 'sml' | true | false
+  color: 'light' | 'dark'
   children: React.ReactNode
   handlePress?: () => void
 }

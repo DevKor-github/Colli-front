@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react'
 import { Pressable, TextInput } from 'react-native'
-import { useRecoilState } from 'recoil'
 import { Sheet, View } from 'tamagui'
 
 import { Button } from '@/components/Buttons'
@@ -8,7 +7,6 @@ import Picker from '@/components/Picker'
 import { Tag } from '@/components/Tags'
 import { Typography } from '@/components/Typography'
 import { REMINDER_DATE } from '@/mocks/data/teamTask'
-import { defaultTeamTask } from '@/recoil/atom'
 import { customPalettes } from '@/theme/customPalettes'
 import type { KanBanStatus, TaskDetailProps } from '@/types/kanBanBoard'
 import DownArrow from '@assets/Svgs/ArrowDown.svg'
@@ -42,7 +40,7 @@ export const TaskDetail = ({
   const dueHour = dueHour24 <= 12 ? dueHour24 : dueHour24 - 12
   const dueMinute = dueDate.getMinutes()
   const [titleInput, setTitleInput] = useState(title)
-  const [, setDefaultTeamTask] = useRecoilState(defaultTeamTask)
+  // const [, setDefaultTeamTask] = useState(defaultTeamTask)
   const [newStatus, setNewStatus] = useState(statusKR)
   const [pickedDate, setPickedDate] = useState({
     month: dueMonth,
@@ -52,15 +50,15 @@ export const TaskDetail = ({
     minute: dueMinute
   })
   const handleTitleSubmit = () => {
-    setDefaultTeamTask(prev => {
-      const newTask = prev.map(task => {
-        if (task.id === id) {
-          return { ...task, title: titleInput }
-        }
-        return task
-      })
-      return newTask
-    })
+    // setDefaultTeamTask(prev => {
+    //   const newTask = prev.map(task => {
+    //     if (task.id === id) {
+    //       return { ...task, title: titleInput }
+    //     }
+    //     return task
+    //   })
+    //   return newTask
+    // })
   }
   const handleStatus = (option: string) => {
     setNewStatus(option)
@@ -74,38 +72,38 @@ export const TaskDetail = ({
       minute < 10 ? `0${minute}` : minute
     }:00`
     const newDate = new Date(newDateString)
-    setDefaultTeamTask(prev => prev.map(task => (task.id === id ? { ...task, dueDate: newDate } : task)))
+    // setDefaultTeamTask(prev => prev.map(task => (task.id === id ? { ...task, dueDate: newDate } : task)))
     setShowPicker(!showPicker)
   }
   const handleReminder = (index: number) => {
-    setDefaultTeamTask(prev => prev.map(task => (task.id === id ? { ...task, reminderDate: index } : task)))
+    // setDefaultTeamTask(prev => prev.map(task => (task.id === id ? { ...task, reminderDate: index } : task)))
   }
   const handleChangeClose = async () => {
     const result = await handleClose()
     if (result && statusKR !== newStatus) {
       const newStatusEn: KanBanStatus = newStatus === '예정' ? 'todo' : newStatus === '진행중' ? 'inProgress' : 'done'
-      setTimeout(
-        () =>
-          setDefaultTeamTask(prev => {
-            const newTask = prev.map(task => {
-              if (task.id === id) {
-                return { ...task, status: newStatusEn }
-              }
-              return task
-            })
-            return newTask
-          }),
-        500
-      )
+      // setTimeout(
+      //   () =>
+      //     setDefaultTeamTask(prev => {
+      //       const newTask = prev.map(task => {
+      //         if (task.id === id) {
+      //           return { ...task, status: newStatusEn }
+      //         }
+      //         return task
+      //       })
+      //       return newTask
+      //     }),
+      //   500
+      // )
     }
   }
   const handleNoteSubmit = () => {
-    setDefaultTeamTask(prev => prev.map(task => (task.id === id ? { ...task, notes: notesInput } : task)))
+    // setDefaultTeamTask(prev => prev.map(task => (task.id === id ? { ...task, notes: notesInput } : task)))
   }
   const handleDelete = async () => {
     const result = await handleClose()
     if (result) {
-      setTimeout(() => setDefaultTeamTask(prev => prev.filter(task => task.id !== id)), 500)
+      // setTimeout(() => setDefaultTeamTask(prev => prev.filter(task => task.id !== id)), 500)
     }
   }
   useEffect(() => {
@@ -198,9 +196,9 @@ export const TaskDetail = ({
               style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', gap: 19 }}
               onPress={() => setChangeStatus(!changeStatus)}
             >
-              <Tag type="dot" status={true} handlePress={() => setChangeStatus(!changeStatus)}>
+              {/* <Tag type="dot" status={true} handlePress={() => setChangeStatus(!changeStatus)}>
                 {newStatus}
-              </Tag>
+              </Tag> */}
               {changeStatus ? <DownArrow /> : <RightArrow />}
             </Pressable>
           </View>

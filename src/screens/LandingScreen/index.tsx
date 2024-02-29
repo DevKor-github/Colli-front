@@ -1,27 +1,27 @@
 import { ScrollView } from 'react-native'
 
-import { NavigationButton } from '@/components/Buttons/NavigationButton'
-import { HeaderContainer } from '@/components/HeaderContainer'
-import { DueDateContainer } from '@/screens/MainScreen/DueDateContainer'
+import DashBoard from '@/screens/LandingScreen/DashBoard'
+import NoticeContainer from '@/screens/LandingScreen/Notice/NoticeContainer'
+import TeamList from '@/screens/LandingScreen/Team'
 import { AppBar } from '@/screens/MainScreen/TopBar'
 import { customPalettes } from '@/theme/customPalettes'
 import { SafeArea } from '@components/SafeArea'
 
-export const Main = () => {
+const LandingScreen = () => {
   return (
     <SafeArea>
+      <AppBar />
       <ScrollView
         showsVerticalScrollIndicator={false}
         style={{ backgroundColor: customPalettes.gray[50] }}
         scrollEventThrottle={0}
         decelerationRate="fast"
       >
-        <HeaderContainer>
-          <AppBar />
-          <DueDateContainer />
-        </HeaderContainer>
+        <NoticeContainer />
+        <DashBoard />
+        <TeamList />
       </ScrollView>
-      <NavigationButton />
     </SafeArea>
   )
 }
+export default LandingScreen

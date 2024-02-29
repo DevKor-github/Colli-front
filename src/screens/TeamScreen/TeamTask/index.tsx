@@ -8,7 +8,6 @@ import Animated, {
   useSharedValue,
   withTiming
 } from 'react-native-reanimated'
-import { useRecoilValue } from 'recoil'
 import { View } from 'tamagui'
 
 import { ProgressBar } from '@/components/KanbanBoard/ProgressBar'
@@ -17,7 +16,6 @@ import { StatusSection } from '@/components/KanbanBoard/StatusSection'
 import { TaskCard } from '@/components/KanbanBoard/TaskCard'
 import { Typography } from '@/components/Typography'
 import { TEAM_CATEGORY } from '@/mocks/data/teamTask'
-import { defaultTeamTask } from '@/recoil/atom'
 import { customPalettes } from '@/theme/customPalettes'
 import type { KanBanStatus } from '@/types/kanBanBoard'
 
@@ -29,7 +27,7 @@ export const TeamTask = () => {
   const offsetX = useSharedValue(0)
   const [currentSection, setCurrentSection] = useState('전체')
   const [status, setStatus] = useState<KanBanStatus>('todo')
-  const teamTasks = useRecoilValue(defaultTeamTask)
+  const teamTasks = useState('')
   const [category, setCategory] = useState(TEAM_CATEGORY)
   const handleProjectChange = (newCategory: string) => {
     setCurrentSection(newCategory)
@@ -86,7 +84,7 @@ export const TeamTask = () => {
       <ProgressBar offset={offsetX} />
       <StatusSection status={status} handlePress={handleStatusChange} />
       <View h={8} backgroundColor={customPalettes.gray[50]} />
-      <View paddingHorizontal={20} paddingVertical={4} flexDirection="row" gap={8} flexWrap="wrap">
+      {/* <View paddingHorizontal={20} paddingVertical={4} flexDirection="row" gap={8} flexWrap="wrap">
         {teamTasks.map((tasks, i) => {
           if (currentSection === INITIAL_SECTION) {
             return tasks.status === status ? <TaskCard key={i} {...tasks} /> : ''
@@ -94,7 +92,7 @@ export const TeamTask = () => {
             return tasks.status === status && tasks.category === currentSection ? <TaskCard key={i} {...tasks} /> : ''
           }
         })}
-      </View>
+      </View> */}
     </View>
   )
 }

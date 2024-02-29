@@ -1,4 +1,4 @@
-import { RecoilRoot } from 'recoil'
+import { Provider } from 'jotai'
 import { TamaguiProvider } from 'tamagui'
 
 import { Router } from '@/router'
@@ -6,11 +6,11 @@ import config from '@/theme/tamagui.config'
 
 const App = () => {
   return (
-    <RecoilRoot>
+    <Provider>
       <TamaguiProvider config={config}>
         <Router />
       </TamaguiProvider>
-    </RecoilRoot>
+    </Provider>
   )
 }
 

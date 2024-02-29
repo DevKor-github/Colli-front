@@ -112,7 +112,7 @@ const LogInScreen = () => {
         angle={180}
         colors={['rgba(244, 245, 247, 0.00)', 'rgba(244, 245, 247, 0.83)', '#F4F5F7']}
       >
-        <Button color="kakao" size="big" handlePress={() => navigation.navigate('Main')}>
+        <Button color="kakao" size="big" handlePress={() => navigation.navigate('Landing')}>
           카카오톡으로 시작하기
         </Button>
         <XStack alignItems="center">
