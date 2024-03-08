@@ -72,6 +72,7 @@ export const customPalettes = {
   },
   wf: {
     50: '#F0F1FF',
+    120: '#C1C5FF',
     100: '#6973FF'
   }
 }

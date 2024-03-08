@@ -2,6 +2,7 @@ import LandingScreen from '@/screens/LandingScreen'
 import LogInScreen from '@/screens/LogInScreen'
 import { Main } from '@/screens/MainScreen'
 import { SplashScreen } from '@/screens/SplashScreen'
+import TaskScreen from '@/screens/TaskScreen'
 import { TeamMemberScreen } from '@/screens/TeamMemberScreen'
 import { TeamScreen } from '@/screens/TeamScreen'
 import type { RootStackParamList } from '@/types/routerTypes'
@@ -26,10 +27,9 @@ export const RootNavigator = () => {
       )
     } else {
       return (
-        <Stack.Group>
-          <Stack.Screen name="Main" component={LandingScreen} options={{ headerShown: false }} />
-          <Stack.Screen name="Team" component={TeamScreen} options={{ headerShown: false }} />
-          <Stack.Screen name="TeamMember" component={TeamMemberScreen} options={{ headerShown: false }} />
+        <Stack.Group screenOptions={{ headerShown: false }}>
+          <Stack.Screen name="Main" component={LandingScreen} />
+          <Stack.Screen name="Task" component={TaskScreen} />
         </Stack.Group>
       )
     }
