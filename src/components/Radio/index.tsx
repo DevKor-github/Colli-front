@@ -3,47 +3,52 @@ import { Stack, styled, withStaticProperties } from 'tamagui'
 import { customPalettes } from '@/theme/customPalettes'
 import useToggle from '@/util/useToggle'
 
-import Check from 'assets/Svgs/Check.svg'
-
 const Frame = styled(Stack, {
   display: 'flex',
   width: 24,
   height: 24,
+  padding: 5,
   justifyContent: 'center',
   alignItems: 'center',
   gap: 10,
   flexShrink: 0,
-  borderRadius: 4,
-  borderWidth: 1,
-  borderStyle: 'solid',
+  borderRadius: 100,
   borderColor: customPalettes.wf[100],
   variants: {
     checked: {
       true: {
-        backgroundColor: customPalettes.wf[100]
+        borderWidth: 2,
+        borderColor: customPalettes.wf[100]
       },
       false: {
+        borderWidth: 1,
+        borderStyle: 'solid',
         borderColor: customPalettes.wf[120]
       }
     }
-  }
+  } as const
 })
-const Indicator = styled(Stack, {})
+const Indicator = styled(Stack, {
+  width: 14,
+  height: 14,
+  borderRadius: 100,
+  backgroundColor: customPalettes.wf[100]
+})
 
-const CustomCheckBox = withStaticProperties(Frame, {
+const CustomRadio = withStaticProperties(Frame, {
   Indicator
 })
 
-interface CheckBoxProps {
+interface RadioProps {
   checked: boolean
 }
-const CheckBox = ({ checked }: CheckBoxProps) => {
+const Radio = ({ checked }: RadioProps) => {
   const [isChecked, setIsChecked] = useToggle(checked)
   return (
-    <CustomCheckBox checked={isChecked} onPress={setIsChecked}>
-      <CustomCheckBox.Indicator>{isChecked && <Check />}</CustomCheckBox.Indicator>
-    </CustomCheckBox>
+    <CustomRadio checked={isChecked} onPress={setIsChecked}>
+      {isChecked && <CustomRadio.Indicator />}
+    </CustomRadio>
   )
 }
 
-export default CheckBox
+export default Radio

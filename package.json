@@ -5,6 +5,8 @@
   "scripts": {
     "android": "react-native run-android",
     "ios": "react-native run-ios",
+    "pod-install": "cd ios && if [[ \\\"$(uname -m)\\\" == \\\"arm64\\\" ]]; then arch -x86_64 pod install; else pod install; fi",
+    "ios-clean": "cd ios && rm -rf Pods Podfile.lock && rm -rf ~/Library/Developer/Xcode/DerivgedData && pod deintegrate && pod setup",
     "lint": "eslint .",
     "lint:fix": "eslint --fix",
     "prettier": "prettier '**/*.{js,jsx,ts,tsx,json,yaml,md}' --check",
@@ -32,6 +34,7 @@
     "jotai": "^2.7.0",
     "react": "18.2.0",
     "react-native": "0.72.5",
+    "react-native-awesome-slider": "^2.5.1",
     "react-native-calendars": "^1.1301.0",
     "react-native-gesture-handler": "2.14.1",
     "react-native-ios-modal": "^0.1.8",

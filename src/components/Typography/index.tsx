@@ -12,7 +12,8 @@ export const Typography = ({
   ellipse,
   flexGrow,
   flexBasis,
-  alignSelf
+  alignSelf,
+  numberOfLines
 }: TypographyProps) => {
   const lineHeight = getLineHeight(fontSize)
   // const fontFmaily = type === 'M' ? 'Pretendard-Medium' : type === 'R' ? 'Pretendard-Regular' : 'Pretendard-Bold'
@@ -28,7 +29,7 @@ export const Typography = ({
       flexGrow={flexGrow}
       flexBasis={flexBasis}
       alignSelf={alignSelf}
-      numberOfLines={50}
+      numberOfLines={numberOfLines === undefined ? 1 : numberOfLines}
     >
       {children}
     </Text>
