@@ -31,6 +31,7 @@ const TaskProgress = () => {
           backgroundColor={'rgba(105, 115, 255, 0.1)'}
           borderRadius={8}
           pressStyle={{ opacity: 0.8 }}
+          onPress={() => {}}
         >
           <Typography type="R" fontSize={16} textColor={customPalettes.wf[100]}>
             콕 찌르기

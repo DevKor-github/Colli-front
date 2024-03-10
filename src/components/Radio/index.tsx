@@ -1,7 +1,6 @@
 import { Stack, styled, withStaticProperties } from 'tamagui'
 
 import { customPalettes } from '@/theme/customPalettes'
-import useToggle from '@/util/useToggle'
 
 const Frame = styled(Stack, {
   display: 'flex',
@@ -43,12 +42,7 @@ interface RadioProps {
   checked: boolean
 }
 const Radio = ({ checked }: RadioProps) => {
-  const [isChecked, setIsChecked] = useToggle(checked)
-  return (
-    <CustomRadio checked={isChecked} onPress={setIsChecked}>
-      {isChecked && <CustomRadio.Indicator />}
-    </CustomRadio>
-  )
+  return <CustomRadio checked={checked}>{checked && <CustomRadio.Indicator />}</CustomRadio>
 }
 
 export default Radio

@@ -29,7 +29,7 @@ export const Typography = ({
       flexGrow={flexGrow}
       flexBasis={flexBasis}
       alignSelf={alignSelf}
-      numberOfLines={numberOfLines === undefined ? 1 : numberOfLines}
+      numberOfLines={numberOfLines === undefined ? undefined : numberOfLines}
     >
       {children}
     </Text>

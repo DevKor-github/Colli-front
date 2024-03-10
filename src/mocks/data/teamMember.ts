@@ -42,14 +42,6 @@ export const TEAM_MEMBER: MemberCardProps[] = [
     imgSrc: require('@assets/Images/seoeun.jpeg')
   },
   {
-    id: 5,
-    name: '박용준',
-    department: '고려대학교 정치외교학과',
-    email: 'pyj123@korea.ac.kr',
-    division: '프론트',
-    imgSrc: require('@assets/Images/dummy.jpg')
-  },
-  {
     id: 6,
     name: '노채린',
     department: '고려대학교 한국사학과',

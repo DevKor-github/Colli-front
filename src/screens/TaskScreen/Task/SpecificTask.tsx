@@ -1,9 +1,7 @@
-import React from 'react'
 import { ScrollView } from 'react-native'
 import { Circle, View } from 'tamagui'
 
 import CheckBox from '@/components/CheckBox'
-import Radio from '@/components/Radio'
 import { Typography } from '@/components/Typography'
 import { customPalettes } from '@/theme/customPalettes'
 

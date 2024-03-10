@@ -1,10 +1,12 @@
-import { Avatar, View } from 'tamagui'
+import { View } from 'tamagui'
 
-import { Tag } from '@/components/Tags'
 import { Typography } from '@/components/Typography'
+import AssigneeCategory from '@/screens/TaskScreen/Task/AssigneeCategory'
+import ProgressCategory from '@/screens/TaskScreen/Task/ProgressCategory'
 import { Task } from '@/screens/TaskScreen/Task/Task'
+import TaskCategory from '@/screens/TaskScreen/Task/TaskCategory'
+import TaskDueCategory from '@/screens/TaskScreen/Task/TaskDueCategory'
 import { customPalettes } from '@/theme/customPalettes'
-import ThreeDots from '@assets/Svgs/ThreeDots.svg'
 
 const TaskSection = () => {
   return (
@@ -15,53 +17,10 @@ const TaskSection = () => {
         </Typography>
       </Task.Title>
       <Task.Wrapper>
-        <Task.Context>
-          <View display="flex" flexDirection="row" gap={12} alignItems="center">
-            <Typography type="R" fontSize={14} textColor={customPalettes.gray[700]}>
-              카테고리
-            </Typography>
-            <Tag color="dark">Sprint A</Tag>
-          </View>
-          <ThreeDots />
-        </Task.Context>
-        <Task.Context>
-          <View display="flex" flexDirection="row" gap={12} alignItems="center">
-            <Typography type="R" fontSize={14} textColor={customPalettes.gray[700]}>
-              진행상태
-            </Typography>
-            <Tag color="light">in Progress</Tag>
-          </View>
-          <ThreeDots />
-        </Task.Context>
-        <Task.Context>
-          <View display="flex" flexDirection="row" gap={12} alignItems="center">
-            <View width={52}>
-              <Typography type="R" fontSize={14} textColor={customPalettes.gray[700]}>
-                담당자
-              </Typography>
-            </View>
-            <View display="flex" flexDirection="row" alignItems="center" gap={4}>
-              <Avatar size={32} circular>
-                <Avatar.Image src="https://picsum.photos/200/300" />
-              </Avatar>
-              <Typography type="R" fontSize={14} textColor={customPalettes.gray[700]}>
-                차승민
-              </Typography>
-            </View>
-          </View>
-          <ThreeDots />
-        </Task.Context>
-        <Task.Context>
-          <View display="flex" flexDirection="row" gap={12} alignItems="center">
-            <Typography type="R" fontSize={14} textColor={customPalettes.gray[700]}>
-              마감기한
-            </Typography>
-            <Typography type="R" fontSize={14} textColor={customPalettes.gray[950]}>
-              2023년 12월 24일
-            </Typography>
-          </View>
-          <ThreeDots />
-        </Task.Context>
+        <TaskCategory />
+        <ProgressCategory />
+        <AssigneeCategory />
+        <TaskDueCategory />
         <Task.Context content>
           <View width={52}>
             <Typography type="R" fontSize={14} textColor={customPalettes.gray[700]}>
