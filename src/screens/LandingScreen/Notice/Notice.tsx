@@ -21,7 +21,7 @@ const Notice = ({ notice }: { notice: string }) => {
     >
       <View width={30} height={30} borderRadius={15} backgroundColor={customPalettes.wf[50]} />
       <View width={252}>
-        <Typography type="R" fontSize={16} textColor={customPalettes.gray[700]} ellipse>
+        <Typography type="R" fontSize={16} textColor={customPalettes.gray[700]} numberOfLines={1} ellipse>
           {notice}
         </Typography>
       </View>

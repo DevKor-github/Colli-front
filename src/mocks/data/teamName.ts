@@ -3,7 +3,7 @@ import type { TeamCardProps } from '@/types/teamCard'
 export const TEAM_NAME: TeamCardProps[] = [
   {
     id: 0,
-    name: '팀명은 한 줄까지',
+    name: 'colli2024',
     teamMember: 6,
     imgSrc: require('@assets/Images/dummyTeam1.png')
   },
