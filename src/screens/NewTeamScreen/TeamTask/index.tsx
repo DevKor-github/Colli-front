@@ -44,6 +44,7 @@ export const TeamTask = () => {
   const [sortOpen, setSortOpen] = useState(false)
   const handleSortClose = async () => {
     setSortOpen(false)
+
     return true
   }
   const filterReducer = (state: State, action: Action) => {

@@ -1,13 +1,11 @@
-import { useEffect, useState } from 'react';
-import { Pressable, TextInput } from 'react-native';
-import { Sheet, View } from 'tamagui';
+import { useEffect, useState } from 'react'
+import { Pressable, TextInput } from 'react-native'
+import { Sheet, View } from 'tamagui'
 
-
-
-import { CheckedButton } from '@/components/Buttons/CheckedButton';
-import { Typography } from '@/components/Typography';
-import { customPalettes } from '@/theme/customPalettes';
-import type { TaskSortBottomProps } from '@/types/newKanBanBoard';
+import { CheckedButton } from '@/components/Buttons/CheckedButton'
+import { Typography } from '@/components/Typography'
+import { customPalettes } from '@/theme/customPalettes'
+import type { TaskSortBottomProps } from '@/types/newKanBanBoard'
 
 const INITIAL_SORT = '정렬'
 export const TaskSortBottom = ({ open, handleClose, onSortSelect }: TaskSortBottomProps) => {
@@ -24,6 +22,11 @@ export const TaskSortBottom = ({ open, handleClose, onSortSelect }: TaskSortBott
       onSortSelect(category)
     }
   }
+  useEffect(() => {
+    if (!open && selectedCategory === '') {
+      handleClose()
+    }
+  }, [open, selectedCategory, handleClose])
 
   return (
     <Sheet
