@@ -5,8 +5,8 @@ import { AppBar } from '@/components/AppBar'
 import { SafeArea } from '@/components/SafeArea'
 import { Typography } from '@/components/Typography'
 import TaskSection from '@/screens/TaskScreen/Task'
+import ProgressSection from '@/screens/TaskScreen/Task/ProgressSection'
 import SpecificTask from '@/screens/TaskScreen/Task/SpecificTask'
-import TaskProgress from '@/screens/TaskScreen/Task/TaskProgress'
 import { customPalettes } from '@/theme/customPalettes'
 import GoBack from '@assets/Svgs/GoBack.svg'
 import { useNavigation } from '@react-navigation/native'
@@ -44,7 +44,7 @@ const TaskScreen = () => {
           gap={10}
           backgroundColor={customPalettes.gray[50]}
         />
-        <TaskProgress />
+        <ProgressSection />
         <View
           display="flex"
           height={4}

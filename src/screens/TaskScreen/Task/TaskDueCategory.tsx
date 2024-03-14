@@ -1,9 +1,8 @@
 import { useState } from 'react'
 import { View } from 'tamagui'
 
-import BottomSheet, { Option } from '@/components/BottomSheet'
+import BottomSheet from '@/components/BottomSheet'
 import Picker from '@/components/Picker'
-import { Tag } from '@/components/Tags'
 import { Typography } from '@/components/Typography'
 import { Task } from '@/screens/TaskScreen/Task/Task'
 import { customPalettes } from '@/theme/customPalettes'
@@ -13,7 +12,6 @@ import ThreeDots from '@assets/Svgs/ThreeDots.svg'
 const TaskDueCategory = () => {
   const dueDate = new Date()
   const [open, setOpen] = useToggle(false)
-  const dueYear = dueDate.getFullYear()
   const dueMonth = dueDate.getMonth() + 1
   const dueDay = dueDate.getDate()
   const dueHour24 = dueDate.getHours()

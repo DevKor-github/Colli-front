@@ -3,6 +3,7 @@ import { Circle, View } from 'tamagui'
 
 import CheckBox from '@/components/CheckBox'
 import { Typography } from '@/components/Typography'
+import { Paragraph } from '@/components/Typography/Paragraph'
 import { customPalettes } from '@/theme/customPalettes'
 
 const SpecificTask = () => {
@@ -29,8 +30,8 @@ const SpecificTask = () => {
             </Typography>
           </View>
           <View display="flex" alignSelf="stretch" gap={24}>
-            <View display="flex" height={136} alignItems="flex-start" gap={24} alignSelf="stretch" pr={16}>
-              <Typography
+            <View display="flex" height={136} alignItems="flex-start" gap={24} alignSelf="stretch" mr={16}>
+              <Paragraph
                 type="R"
                 fontSize={14}
                 textColor={customPalettes.gray[900]}
@@ -43,7 +44,7 @@ const SpecificTask = () => {
                 {`여행은 새로운 경험과 추억을 선사하지만, 올바른 준비가 필수입니다. 이번 블로그 포스트에서는 여행자가 가져가야 할 10가지 필수 아이템을 상세히 소개합니다. 
 
 첫째, 편안한 여행을 위한 양질의 여행 가방. 두 번째는 다양한 환경에 대비할 수 있는 다용도 의류. 세 번째 아이템은 여행 중 긴급 상황에 대비한 응급 키트입니다. 네 번째는 휴대용 충전기와 보조 배터리로. 이 공간을 넘으면 점처리 됩니다.`}
-              </Typography>
+              </Paragraph>
             </View>
             <ScrollView
               style={{ display: 'flex', width: '100%', gap: 8 }}

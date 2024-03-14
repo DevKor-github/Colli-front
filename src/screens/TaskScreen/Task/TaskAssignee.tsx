@@ -10,7 +10,7 @@ import { customPalettes } from '@/theme/customPalettes'
 import useToggle from '@/util/useToggle'
 import ThreeDots from '@assets/Svgs/ThreeDots.svg'
 
-const AssigneeCategory = () => {
+const TaskAssignee = () => {
   const [open, setOpen] = useToggle(false)
   const [assignee, setAssignee] = useState<string>('차승민')
   return (
@@ -49,4 +49,4 @@ const AssigneeCategory = () => {
   )
 }
 
-export default AssigneeCategory
+export default TaskAssignee

@@ -5,6 +5,7 @@ import { View } from 'tamagui'
 import { Typography } from '@/components/Typography'
 import { customPalettes } from '@/theme/customPalettes'
 import type { TeamCardProps } from '@/types/teamCard'
+import DotsLine from '@assets/Svgs/DotsLine.svg'
 
 export const TeamCard = ({ id, name, teamMember, imgSrc }: TeamCardProps) => {
   return (
@@ -13,7 +14,7 @@ export const TeamCard = ({ id, name, teamMember, imgSrc }: TeamCardProps) => {
       height={97}
       padding={12}
       justifyContent="space-between"
-      alignItems="flex-start"
+      ai="center"
       alignSelf="stretch"
       backgroundColor={customPalettes.snow[50]}
       flexDirection="row"
@@ -30,15 +31,7 @@ export const TeamCard = ({ id, name, teamMember, imgSrc }: TeamCardProps) => {
           </Typography>
         </View>
       </View>
-      <View
-        width={29}
-        height={73}
-        alignSelf="stretch"
-        borderRadius={8}
-        opacity={0.15}
-        backgroundColor={customPalettes.wf[100]}
-        onPress={() => {}}
-      />
+      <DotsLine />
     </View>
   )
 }

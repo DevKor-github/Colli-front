@@ -1,75 +1,51 @@
 import { useState } from 'react'
-import { Slider } from 'react-native-awesome-slider'
-import { GestureHandlerRootView } from 'react-native-gesture-handler'
-import { useSharedValue } from 'react-native-reanimated'
+import { Pressable } from 'react-native'
 import { View } from 'tamagui'
 
+import BottomSheet, { Option } from '@/components/BottomSheet'
+import { Tag } from '@/components/Tags'
 import { Typography } from '@/components/Typography'
 import { Task } from '@/screens/TaskScreen/Task/Task'
 import { customPalettes } from '@/theme/customPalettes'
+import useToggle from '@/util/useToggle'
+import ThreeDots from '@assets/Svgs/ThreeDots.svg'
 
+type ProgressState = 'todo' | 'inProgress' | 'done'
+interface ProgressConfigProps {
+  label: string
+  state: ProgressState
+}
+const progressConfig: ProgressConfigProps[] = [
+  { label: 'To Do', state: 'todo' },
+  { label: 'In Progress', state: 'inProgress' },
+  { label: 'Done', state: 'done' }
+]
 const TaskProgress = () => {
-  const currentValue = 30
-  const progress = useSharedValue(currentValue)
-  const [progressText, setProgressText] = useState(currentValue.toString())
-  const min = useSharedValue(0)
-  const max = useSharedValue(100)
+  const [open, setOpen] = useToggle(false)
+  const [currentState, setCurrentState] = useState<ProgressConfigProps>({ label: 'To Do', state: 'todo' })
   return (
-    <View display="flex" paddingVertical={20} alignItems="flex-start" gap={12} alignSelf="stretch">
-      <Task.Context paddingHorizontal={16}>
-        <Typography type="B" fontSize={16} textColor={customPalettes.gray[800]}>
-          이만큼 했어요!
-        </Typography>
-        <View
-          display="flex"
-          height={40}
-          paddingVertical={10}
-          paddingHorizontal={16}
-          justifyContent="center"
-          alignItems="center"
-          gap={10}
-          backgroundColor={'rgba(105, 115, 255, 0.1)'}
-          borderRadius={8}
-          pressStyle={{ opacity: 0.8 }}
-          onPress={() => {}}
-        >
-          <Typography type="R" fontSize={16} textColor={customPalettes.wf[100]}>
-            콕 찌르기
+    <View w="100%">
+      <Task.Context onPress={setOpen}>
+        <View display="flex" flexDirection="row" gap={12} alignItems="center">
+          <Typography type="R" fontSize={14} textColor={customPalettes.gray[700]}>
+            진행상태
           </Typography>
+          <Tag color="light">{currentState.label}</Tag>
         </View>
+        <ThreeDots />
       </Task.Context>
-      <GestureHandlerRootView
-        style={{
-          display: 'flex',
-          flexDirection: 'row',
-          paddingHorizontal: 20,
-          paddingVertical: 16,
-          gap: 13,
-          alignItems: 'center',
-          alignSelf: 'stretch'
-        }}
-      >
-        <Typography type="B" fontSize={22} textColor={customPalettes.wf[100]}>
-          {progressText}%
-        </Typography>
-        <Slider
-          onValueChange={value => setProgressText(value.toFixed(0))}
-          theme={{
-            disableMinTrackTintColor: '#fff',
-            maximumTrackTintColor: customPalettes.gray[100],
-            minimumTrackTintColor: customPalettes.wf[120],
-            cacheTrackTintColor: '#333',
-            bubbleBackgroundColor: '#666'
-          }}
-          renderThumb={() => <View width={32} h={32} br={16} bg={customPalettes.wf[100]} />}
-          renderBubble={() => null}
-          containerStyle={{ width: '100%', height: 7, borderRadius: 100 }}
-          progress={progress}
-          minimumValue={min}
-          maximumValue={max}
-          thumbWidth={32}
-        />
-      </GestureHandlerRootView>
+      <BottomSheet isOpen={open} bottomSheetTitle="진행상태" setOpen={setOpen}>
+        {progressConfig.map(item => (
+          <Option key={item.label}>
+            <Option.Text type="R" fontSize={16} textColor={customPalettes.gray[900]}>
+              {item.label}
+            </Option.Text>
+            <Pressable onPress={() => setCurrentState(item)}>
+              <Option.Radio checked={item.state === currentState.state} />
+            </Pressable>
+          </Option>
+        ))}
+      </BottomSheet>
     </View>
   )
 }
