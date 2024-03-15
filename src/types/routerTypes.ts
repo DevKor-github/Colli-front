@@ -14,4 +14,5 @@ export type RootStackParamList = {
   Landing: undefined
   Task: undefined
   NewTeam: undefined
+  TaskComment: undefined
 }
