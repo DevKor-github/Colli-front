@@ -2,27 +2,26 @@ import { ScrollView } from 'react-native'
 import { View } from 'tamagui'
 
 import Fab from '@/assets/Svgs/fab.svg'
-import { TEAM_NAME } from '@/mocks/data/teamName'
-import DashBoard from '@/screens/LandingScreen/DashBoard'
-import NoticeContainer from '@/screens/NewTeamScreen/Notice/NoticeContainer'
+import AppBarWithCalendar from '@/components/AppBar/AppBarWithCalendar'
+import Notice from '@/components/Notice/Notice'
 import MemberListContainer from '@/screens/NewTeamScreen/MemberList/MemberListContainer'
-import { Notice } from '@/screens/NewTeamScreen/Notice/Notice'
 import { TeamTask } from '@/screens/NewTeamScreen/TeamTask/index'
-import { AppBar } from '@/screens/NewTeamScreen/TopBar'
 import { customPalettes } from '@/theme/customPalettes'
 import { SafeArea } from '@components/SafeArea'
+import { useNavigation } from '@react-navigation/native'
 
 const NewTeamScreen = () => {
+  const navigation = useNavigation()
+  const handleNavigation = () => {
+    navigation.goBack()
+  }
   return (
     <SafeArea>
-      <AppBar />
-      <ScrollView
-        showsVerticalScrollIndicator={false}
-        style={{ backgroundColor: '#ffffff' }}
-        scrollEventThrottle={0}
-        decelerationRate="fast"
-      >
-        <Notice noticeText="공지가 적히는 배너입니다. 공지가 적히는 칸입니다." />
+      <AppBarWithCalendar teamName="colli2024" handleNavigation={handleNavigation} />
+      <ScrollView showsVerticalScrollIndicator={false} scrollEventThrottle={0} decelerationRate="fast">
+        <View display="flex" paddingHorizontal="10%">
+          <Notice notice="공지가 적히는 배너입니다. 공지가 적히는 칸입니다." />
+        </View>
         <MemberListContainer />
         <TeamTask />
       </ScrollView>

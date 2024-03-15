@@ -1,6 +1,6 @@
-import { useState } from 'react'
 import { Sheet, Stack, View, styled, withStaticProperties } from 'tamagui'
 
+import CheckBox from '@/components/CheckBox'
 import Radio from '@/components/Radio'
 import { Typography } from '@/components/Typography'
 import { customPalettes } from '@/theme/customPalettes'
@@ -20,7 +20,8 @@ const Frame = styled(Stack, {
 
 export const Option = withStaticProperties(Frame, {
   Text: Typography,
-  Radio: Radio
+  Radio: Radio,
+  CheckBox: CheckBox
 })
 
 interface BottomSheetProps {

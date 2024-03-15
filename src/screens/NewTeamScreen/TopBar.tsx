@@ -4,8 +4,6 @@ import Date from '@/assets/Svgs/Date.svg'
 import Dots_y from '@/assets/Svgs/Dots_y.svg'
 import DownOne from '@/assets/Svgs/DownOne.svg'
 import { Typography } from '@/components/Typography'
-import { customPalettes } from '@/theme/customPalettes'
-import type { TeamCardProps } from '@/types/teamCard'
 import RoundArrowBack from '@assets/Svgs/RoundArrowBack.svg'
 import { useNavigation } from '@react-navigation/native'
 
@@ -24,12 +22,11 @@ export const AppBar = () => {
         flexShrink={0}
         flexBasis={0}
         height={48}
+        onPress={() => {
+          navigation.goBack()
+        }}
       >
-        <RoundArrowBack
-          onPress={() => {
-            navigation.navigate('Main')
-          }}
-        />
+        <RoundArrowBack />
       </View>
       <View
         flexDirection="row"

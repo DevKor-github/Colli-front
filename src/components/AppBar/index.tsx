@@ -7,14 +7,15 @@ export const AppBarSection = styled(Stack, {
   justifyContent: 'center',
   gap: 5,
   flexGrow: 1,
-  flexShrink: 0,
   flexBasis: 0,
   alignSelf: 'stretch',
   variants: {
     type: {
       left: { alignItems: 'flex-start' },
       right: {
-        alignItems: 'flex-end',
+        flexDirection: 'row',
+        justifyContent: 'flex-end',
+        alignItems: 'center',
         gap: 10
       }
     }
@@ -32,22 +33,27 @@ export const AppBarFrame = styled(View, {
   flexShrink: 0
 })
 
+export const IconWrapper = styled(View, {
+  display: 'flex',
+  width: 44,
+  height: 44,
+  justifyContent: 'center',
+  gap: 10,
+  variants: {
+    type: {
+      left: { alignItems: 'flex-start' },
+      right: { alignItems: 'flex-end' }
+    }
+  } as const
+})
+
+export const AppBarCenter = styled(View, {
+  display: 'flex',
+  flexDirection: 'row',
+  alignItems: 'center'
+})
 export const AppBar = withStaticProperties(AppBarFrame, {
   Section: AppBarSection,
-  Center: View
+  Center: AppBarCenter,
+  IconWrapper: IconWrapper
 })
-// export const AppBar = ({ children }: { children: React.ReactNode }) => {
-//   return (
-//     <View
-//       display="flex"
-//       flexDirection="row"
-//       height={48}
-//       paddingHorizontal={20}
-//       alignItems="center"
-//       alignSelf="stretch"
-//       flexShrink={0}
-//     >
-//       {children}
-//     </View>
-//   )
-// }

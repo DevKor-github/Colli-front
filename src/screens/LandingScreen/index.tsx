@@ -1,29 +1,16 @@
 import { ScrollView } from 'react-native'
 
-import { AppBar, AppBarSection } from '@/components/AppBar'
+import AppBarMain from '@/components/AppBar/AppBarMain'
 import DashBoard from '@/screens/LandingScreen/DashBoard'
-import NoticeContainer from '@/screens/LandingScreen/Notice'
+import NoticeContainer from '@/screens/LandingScreen/NoticeContainer'
 import TeamList from '@/screens/LandingScreen/Team'
 import { customPalettes } from '@/theme/customPalettes'
-import Bell from '@assets/Svgs/Bell.svg'
-import MainScreenLogo from '@assets/Svgs/COLLI/MainScreenLogo.svg'
-import Menu from '@assets/Svgs/Menu.svg'
 import { SafeArea } from '@components/SafeArea'
 
 const LandingScreen = () => {
   return (
     <SafeArea>
-      <AppBar>
-        <AppBar.Section type="left">
-          <Menu />
-        </AppBar.Section>
-        <AppBar.Center>
-          <MainScreenLogo />
-        </AppBar.Center>
-        <AppBar.Section type="right">
-          <Bell />
-        </AppBar.Section>
-      </AppBar>
+      <AppBarMain />
       <ScrollView
         showsVerticalScrollIndicator={false}
         style={{ backgroundColor: customPalettes.gray[50] }}

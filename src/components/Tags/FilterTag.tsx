@@ -1,13 +1,11 @@
-import { Stack, View, styled } from 'tamagui';
-import type { GetProps } from 'tamagui';
+import { Stack, View, styled } from 'tamagui'
+import type { GetProps } from 'tamagui'
 
-import DownOne from '@/assets/Svgs/DownOne.svg';
-import RoundRefreshDefault from '@/assets/Svgs/RoundRefreshDefault.svg';
-import RoundRefreshSelected from '@/assets/Svgs/RoundRefreshSelected.svg';
-import { Typography } from '@/components/Typography';
-import type { FilterTagProps } from '@/constants/tag';
-import { customPalettes } from '@/theme/customPalettes';
-
+import RoundRefreshDefault from '@/assets/Svgs/RoundRefreshDefault.svg'
+import RoundRefreshSelected from '@/assets/Svgs/RoundRefreshSelected.svg'
+import ToggleDown from '@/assets/Svgs/ToggleDown.svg'
+import { Typography } from '@/components/Typography'
+import type { FilterTagProps } from '@/constants/tag'
 
 const FilterTagContainer = styled(Stack, {
   borderRadius: 100,
@@ -84,7 +82,7 @@ const FilterTag = ({ children, tagType, isPressed, handlePress }: FilterTagProps
           <Typography type="R" fontSize={14} textColor={textColor}>
             {children}
           </Typography>
-          <DownOne />
+          <ToggleDown />
         </View>
       </FilterTagContainer>
     )

@@ -1,7 +1,7 @@
 import { ScrollView } from 'react-native'
 import { useSafeAreaFrame } from 'react-native-safe-area-context'
 
-import Notice from '@/screens/LandingScreen/Notice/Notice'
+import Notice from '@/components/Notice/Notice'
 
 const NoticeContainer = () => {
   const screenWidth = useSafeAreaFrame().width
