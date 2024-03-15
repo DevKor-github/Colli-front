@@ -149,10 +149,8 @@ export const TeamTask = () => {
           tagType="text"
           isPressed={tags.sort}
           handlePress={() => {
-            if (!sortOpen) {
-              setSortOpen(true)
-            }
             handleFilterChange('Sort')
+            setSortOpen(!sortOpen)
           }}
         >
           {sort}
