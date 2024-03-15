@@ -157,7 +157,13 @@ export const TeamTask = () => {
         >
           {sort}
         </FilterTag>
-        <TaskSortBottom open={sortOpen} handleClose={handleSortClose} onSortSelect={handleSortSelect} />
+        <TaskSortBottom
+          open={sortOpen}
+          handleClose={handleSortClose}
+          onSortSelect={
+            handleSortSelect
+          } /* 여기서 sortOpen 부분이 지금 이상한데 태그가 선택된 상태에서 또 TaskSortBottom을 열려면 두번 눌러야해.. 아마 지금 true false 해주는 로직이 꼬인 것 같은데.. 뭐지.. */
+        />
       </View>
       <View
         display="flex"
