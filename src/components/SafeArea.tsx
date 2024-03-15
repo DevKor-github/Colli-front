@@ -11,7 +11,7 @@ export const SafeArea = ({ children, team }: { children: React.ReactNode; team?:
       paddingTop={insets.top}
       paddingLeft={insets.left}
       paddingRight={insets.right}
-      backgroundColor={team ? customPalettes.snow[50] : customPalettes.gray[50]}
+      backgroundColor={customPalettes.snow[50]}
     >
       {children}
     </View>

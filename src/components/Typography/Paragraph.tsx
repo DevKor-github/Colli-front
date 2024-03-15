@@ -1,9 +1,8 @@
 import { Text } from 'tamagui'
 
-// import { Text } from 'react-native'
-import { TYPOGRAPHY_WEIGHT, type TypographyProps, getLineHeight } from '@constants/typography'
+import { TYPOGRAPHY_WEIGHT, type TypographyProps, getLineHeight } from '@/constants/typography'
 
-export const Typography = ({
+export const Paragraph = ({
   children,
   fontSize,
   type,
@@ -12,10 +11,11 @@ export const Typography = ({
   ellipse,
   flexGrow,
   flexBasis,
-  alignSelf
+  alignSelf,
+  numberOfLines
 }: TypographyProps) => {
   const lineHeight = getLineHeight(fontSize)
-  // const fontFmaily = type === 'M' ? 'Pretendard-Medium' : type === 'R' ? 'Pretendard-Regular' : 'Pretendard-Bold'
+
   return (
     <Text
       fontFamily={`$${type}`}
@@ -28,6 +28,7 @@ export const Typography = ({
       flexGrow={flexGrow}
       flexBasis={flexBasis}
       alignSelf={alignSelf}
+      numberOfLines={numberOfLines}
     >
       {children}
     </Text>

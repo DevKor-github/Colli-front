@@ -12,5 +12,6 @@ export type RootStackParamList = {
   TeamMember: undefined
   LogIn: undefined
   Landing: undefined
+  Task: undefined
   NewTeam: undefined
 }

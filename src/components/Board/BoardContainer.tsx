@@ -30,6 +30,10 @@ export const CustomBoard = styled(Stack, {
   } as const
 })
 
-export const BoardContainer = ({ size, children }: BoardContainerProps) => {
-  return <CustomBoard size={size}>{children}</CustomBoard>
+export const BoardContainer = ({ size, children, onPress }: BoardContainerProps) => {
+  return (
+    <CustomBoard size={size} onPress={onPress}>
+      {children}
+    </CustomBoard>
+  )
 }

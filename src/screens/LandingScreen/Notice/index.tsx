@@ -1,8 +1,10 @@
 import { ScrollView } from 'react-native'
+import { useSafeAreaFrame } from 'react-native-safe-area-context'
 
 import Notice from '@/screens/LandingScreen/Notice/Notice'
 
 const NoticeContainer = () => {
+  const screenWidth = useSafeAreaFrame().width
   return (
     <ScrollView
       horizontal
@@ -11,11 +13,16 @@ const NoticeContainer = () => {
       contentContainerStyle={{
         display: 'flex',
         flexDirection: 'row',
-        paddingHorizontal: 16,
+        justifyContent: 'center',
+        alignItems: 'center',
         paddingVertical: 10,
+        paddingHorizontal: '10%',
         gap: 8
       }}
+      snapToInterval={screenWidth * 0.8 + 12}
+      decelerationRate="fast"
     >
+      <Notice notice="공지가 적히는 배너입니다. 공지가 적히는 배너입니다." />
       <Notice notice="공지가 적히는 배너입니다. 공지가 적히는 배너입니다." />
       <Notice notice="공지가 적히는 배너입니다. 공지가 적히는 배너입니다." />
     </ScrollView>

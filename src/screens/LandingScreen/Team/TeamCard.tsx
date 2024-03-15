@@ -6,6 +6,7 @@ import DotsLine from '@/assets/Svgs/DotsLine.svg'
 import { Typography } from '@/components/Typography'
 import { customPalettes } from '@/theme/customPalettes'
 import type { TeamCardProps } from '@/types/teamCard'
+import DotsLine from '@assets/Svgs/DotsLine.svg'
 import { useNavigation } from '@react-navigation/native'
 
 export const TeamCard = ({ id, name, teamMember, imgSrc }: TeamCardProps) => {
@@ -17,10 +18,13 @@ export const TeamCard = ({ id, name, teamMember, imgSrc }: TeamCardProps) => {
       padding={12}
       flexDirection="row"
       justifyContent="space-between"
-      alignItems="center"
+      ai="center"
       alignSelf="stretch"
       backgroundColor={customPalettes.snow[50]}
       borderRadius={16}
+      onPress={() => {
+          navigation.navigate('NewTeam')
+      }}
     >
       <View display="flex" flexDirection="row" alignItems="center" gap={12} alignSelf="stretch">
         <Image source={imgSrc} style={{ width: 73, height: 73, borderRadius: 8 }} />
@@ -33,12 +37,7 @@ export const TeamCard = ({ id, name, teamMember, imgSrc }: TeamCardProps) => {
           </Typography>
         </View>
       </View>
-
-      <DotsLine
-        onPress={() => {
-          navigation.navigate('NewTeam')
-        }}
-      />
+      <DotsLine />
     </View>
   )
 }

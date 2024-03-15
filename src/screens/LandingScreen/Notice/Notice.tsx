@@ -8,7 +8,6 @@ const Notice = ({ notice }: { notice: string }) => {
     <View
       display="flex"
       flexDirection="row"
-      width={314}
       height={50}
       alignItems="center"
       paddingHorizontal={12}
