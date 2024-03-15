@@ -1,9 +1,17 @@
-import type { fontVariant } from '@/constants/typography'
-import { customPalettes } from '@/theme/customPalettes'
+import type { fontVariant } from '@/constants/typography';
+import { customPalettes } from '@/theme/customPalettes';
+
 
 export interface TagProps {
   color: 'light' | 'dark'
   children: React.ReactNode
+  handlePress?: () => void
+}
+
+export interface FilterTagProps {
+  children?: React.ReactNode
+  tagType: 'icon' | 'text'
+  isPressed: boolean
   handlePress?: () => void
 }
 
