@@ -13,6 +13,7 @@ export const Notice = ({ noticeText }: { noticeText: string }) => {
       paddingHorizontal={16}
       alignSelf="stretch"
       height={70}
+      backgroundColor={customPalettes.gray[50]}
     >
       <View
         display="flex"

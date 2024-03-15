@@ -1,5 +1,5 @@
 import { ScrollView } from 'react-native'
-
+import { customPalettes } from '@/theme/customPalettes'
 import { Notice } from '@/screens/NewTeamScreen/Notice/Notice'
 
 const NoticeContainer = () => {
@@ -14,7 +14,7 @@ const NoticeContainer = () => {
         paddingHorizontal: 16,
         paddingVertical: 10,
         gap: 10,
-        alignSelf: 'stretch'
+        alignSelf: 'stretch',
       }}
     >
       <Notice noticeText="공지가 적히는 배너입니다. 공지가 적히는 배너입니다." />

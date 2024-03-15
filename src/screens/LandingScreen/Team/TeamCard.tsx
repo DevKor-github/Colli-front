@@ -2,6 +2,7 @@ import React from 'react'
 import { Image } from 'react-native'
 import { View } from 'tamagui'
 
+import DotsLine from '@/assets/Svgs/DotsLine.svg'
 import { Typography } from '@/components/Typography'
 import { customPalettes } from '@/theme/customPalettes'
 import type { TeamCardProps } from '@/types/teamCard'
@@ -14,11 +15,11 @@ export const TeamCard = ({ id, name, teamMember, imgSrc }: TeamCardProps) => {
       display="flex"
       height={97}
       padding={12}
+      flexDirection="row"
       justifyContent="space-between"
-      alignItems="flex-start"
+      alignItems="center"
       alignSelf="stretch"
       backgroundColor={customPalettes.snow[50]}
-      flexDirection="row"
       borderRadius={16}
     >
       <View display="flex" flexDirection="row" alignItems="center" gap={12} alignSelf="stretch">
@@ -32,14 +33,11 @@ export const TeamCard = ({ id, name, teamMember, imgSrc }: TeamCardProps) => {
           </Typography>
         </View>
       </View>
-      <View
-        width={29}
-        height={73}
-        alignSelf="stretch"
-        borderRadius={8}
-        opacity={0.15}
-        backgroundColor={customPalettes.wf[100]}
-        onPress={() => navigation.navigate('NewTeam')}
+
+      <DotsLine
+        onPress={() => {
+          navigation.navigate('NewTeam')
+        }}
       />
     </View>
   )

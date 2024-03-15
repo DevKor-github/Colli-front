@@ -18,7 +18,7 @@ const NewTeamScreen = () => {
       <AppBar />
       <ScrollView
         showsVerticalScrollIndicator={false}
-        style={{ backgroundColor: customPalettes.gray[50] }}
+        style={{ backgroundColor: '#ffffff' }}
         scrollEventThrottle={0}
         decelerationRate="fast"
       >

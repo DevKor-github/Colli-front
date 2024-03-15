@@ -1,4 +1,4 @@
-import { useEffect, useReducer, useState } from 'react'
+import { useReducer, useRef, useState } from 'react'
 import { ScrollView } from 'react-native'
 import Animated, {
   Easing,
@@ -44,7 +44,6 @@ export const TeamTask = () => {
   const [sortOpen, setSortOpen] = useState(false)
   const handleSortClose = async () => {
     setSortOpen(false)
-
     return true
   }
   const filterReducer = (state: State, action: Action) => {
@@ -52,9 +51,9 @@ export const TeamTask = () => {
       case 'Icon':
         return { ...state, icon: !state.icon }
       case 'Filter':
-        return { ...state, filter: !state.filter }
+        return { ...state, filter: true }
       case 'Sort':
-        return { ...state, sort: !state.sort }
+        return { ...state, sort: true }
       default:
         return state
     }
@@ -85,7 +84,13 @@ export const TeamTask = () => {
   }
   const [sort, setSort] = useState(INITIAL_SORT)
   const handleSortSelect = (sortedCategory: string) => {
-    setSort(sortedCategory)
+    const newSort = sortedCategory
+    if (newSort === INITIAL_SORT) {
+      tags.sort = false
+    } else {
+      tags.sort = true
+    }
+    setSort(newSort)
   }
 
   const [filter, setFilter] = useState(INITIAL_FILTER)
@@ -95,13 +100,16 @@ export const TeamTask = () => {
     const selectedCategoryList = sortedCategory.map(index => categoryList[index])
     const selectedMemberList = sortedMember.map(index => memberList[index])
 
-    const newSort = selectedCategoryList.concat(selectedMemberList)
-    if (newSort.length === 0) {
+    const newFilter = selectedCategoryList.concat(selectedMemberList)
+    if (newFilter.length === 0) {
       setFilter(INITIAL_FILTER)
-    } else if (newSort.length === 1) {
-      setFilter(newSort[0])
+      tags.filter = false
+    } else if (newFilter.length === 1) {
+      setFilter(newFilter[0])
+      tags.filter = true
     } else {
-      setFilter(`${newSort[0]} 외 ${newSort.length - 1}개`)
+      setFilter(`${newFilter[0]} 외 ${newFilter.length - 1}개`)
+      tags.filter = true
     }
   }
 
@@ -141,8 +149,10 @@ export const TeamTask = () => {
           tagType="text"
           isPressed={tags.sort}
           handlePress={() => {
+            if (!sortOpen) {
+              setSortOpen(true)
+            }
             handleFilterChange('Sort')
-            setSortOpen(!sortOpen)
           }}
         >
           {sort}

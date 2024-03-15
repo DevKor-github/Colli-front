@@ -22,11 +22,7 @@ export const TaskSortBottom = ({ open, handleClose, onSortSelect }: TaskSortBott
       onSortSelect(category)
     }
   }
-  useEffect(() => {
-    if (!open && selectedCategory === '') {
-      handleClose()
-    }
-  }, [open, selectedCategory, handleClose])
+  
 
   return (
     <Sheet
