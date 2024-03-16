@@ -7,13 +7,10 @@ import TaskSection from '@/screens/TaskScreen/Task'
 import ProgressSection from '@/screens/TaskScreen/Task/ProgressSection'
 import SpecificTask from '@/screens/TaskScreen/Task/SpecificTask'
 import { customPalettes } from '@/theme/customPalettes'
-import { useNavigation } from '@react-navigation/native'
+import { useGoBack } from '@/util/useGoBack'
 
 const TaskScreen = () => {
-  const navigation = useNavigation()
-  const handleNavigation = () => {
-    navigation.goBack()
-  }
+  const [, handleNavigation] = useGoBack()
   return (
     <SafeArea>
       <AppBarWithNav handleNavigation={handleNavigation} />
