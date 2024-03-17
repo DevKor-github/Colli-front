@@ -1,5 +1,5 @@
 import { useReducer, useRef, useState } from 'react'
-import { ScrollView } from 'react-native'
+import { ScrollView, TurboModuleRegistry } from 'react-native'
 import Animated, {
   Easing,
   scrollTo,
@@ -12,8 +12,6 @@ import { View } from 'tamagui'
 
 import { NewTask } from '@/components/NewTask'
 import FilterTag from '@/components/Tags/FilterTag'
-import type { TagContainerProps } from '@/components/Tags/FilterTag'
-import { Task } from '@/components/Task'
 import { TEAM_TASKS } from '@/mocks/data/newTeamTask'
 import { TEAM_MEMBER } from '@/mocks/data/teamMember'
 import { TapBar } from '@/screens/NewTeamScreen/TeamTask/TapBar'
@@ -41,6 +39,7 @@ export const TeamTask = () => {
     setFilterOpen(false)
     return true
   }
+
   const [sortOpen, setSortOpen] = useState(false)
   const handleSortClose = async () => {
     setSortOpen(false)
@@ -85,12 +84,13 @@ export const TeamTask = () => {
   const [sort, setSort] = useState(INITIAL_SORT)
   const handleSortSelect = (sortedCategory: string) => {
     const newSort = sortedCategory
-    if (newSort === INITIAL_SORT) {
+    if (newSort === '') {
+      setSort(INITIAL_SORT)
       tags.sort = false
     } else {
+      setSort(newSort)
       tags.sort = true
     }
-    setSort(newSort)
   }
 
   const [filter, setFilter] = useState(INITIAL_FILTER)
@@ -104,6 +104,7 @@ export const TeamTask = () => {
     if (newFilter.length === 0) {
       setFilter(INITIAL_FILTER)
       tags.filter = false
+      /*여기 로직 다시 살펴봐야할듯 */
     } else if (newFilter.length === 1) {
       setFilter(newFilter[0])
       tags.filter = true
@@ -155,13 +156,7 @@ export const TeamTask = () => {
         >
           {sort}
         </FilterTag>
-        <TaskSortBottom
-          open={sortOpen}
-          handleClose={handleSortClose}
-          onSortSelect={
-            handleSortSelect
-          } /* 여기서 sortOpen 부분이 지금 이상한데 태그가 선택된 상태에서 또 TaskSortBottom을 열려면 두번 눌러야해.. 아마 지금 true false 해주는 로직이 꼬인 것 같은데.. 뭐지.. */
-        />
+        <TaskSortBottom open={sortOpen} handleClose={handleSortClose} onSortSelect={handleSortSelect} />
       </View>
       <View
         display="flex"
