@@ -39,15 +39,7 @@ export const TEAM_MEMBER: MemberCardProps[] = [
     department: '고려대학교 컴퓨터학과',
     email: 'tjdms030920@naver.com',
     division: '프론트',
-    imgSrc: require('@assets/Images/seoeun.jpeg')
-  },
-  {
-    id: 5,
-    name: '박용준',
-    department: '고려대학교 정치외교학과',
-    email: 'pyj123@korea.ac.kr',
-    division: '프론트',
-    imgSrc: require('@assets/Images/dummy.jpg')
+    imgSrc: require('@assets/Images/seoeun.jpg')
   },
   {
     id: 6,

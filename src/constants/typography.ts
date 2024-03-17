@@ -3,7 +3,7 @@ import type { TextProps } from 'tamagui'
 
 export type fontVariant = 'R' | 'M' | 'B'
 export interface TypographyProps extends TextProps {
-  children: React.ReactNode
+  children?: React.ReactNode
   fontSize: number
   type: fontVariant
   textColor: string

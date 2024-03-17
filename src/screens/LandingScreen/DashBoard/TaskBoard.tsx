@@ -6,6 +6,7 @@ import BoardHeader from '@/components/Board/BoardHeader'
 import { Tag } from '@/components/Tags'
 import { Typography } from '@/components/Typography'
 import { customPalettes } from '@/theme/customPalettes'
+import { useNavigation } from '@react-navigation/native'
 
 interface TaskBoardProps {
   taskContent: string
@@ -16,8 +17,12 @@ const TaskBoard = ({ taskContent, dueDate, team }: TaskBoardProps) => {
   const today = new Date()
   const leftDate = dueDate.getTime() - today.getTime()
   const dayDifference = Math.floor(leftDate / (1000 * 3600 * 24))
+  const navigation = useNavigation()
+  const handleNavigation = () => {
+    navigation.navigate('Task')
+  }
   return (
-    <BoardContainer size="long">
+    <BoardContainer size="long" onPress={handleNavigation}>
       <View
         display="flex"
         alignItems="flex-start"

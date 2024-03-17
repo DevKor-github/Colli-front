@@ -3,13 +3,13 @@ import type { TeamCardProps } from '@/types/teamCard'
 export const TEAM_NAME: TeamCardProps[] = [
   {
     id: 0,
-    name: '팀명은 한 줄까지',
+    name: 'colli2024',
     teamMember: 6,
     imgSrc: require('@assets/Images/dummyTeam1.png')
   },
   {
     id: 1,
-    name: '팀명은 한 줄까지 노출되어야만 하는데 왜 안 줄어드니',
+    name: '팀명은 한 줄까지 노출되며 넘으면 점처리 됩니다',
     teamMember: 5,
     imgSrc: require('@assets/Images/dummyTeam1.png')
   },

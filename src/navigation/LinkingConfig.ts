@@ -9,7 +9,9 @@ const linking: LinkingOptions<RootStackParamList> = {
       Main: 'main',
       Team: 'team',
       LogIn: 'login',
-      Landing: 'landing'
+      Landing: 'landing',
+      Task: 'task',
+      NewTeam: 'newteam'
     }
   }
 }
