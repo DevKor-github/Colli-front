@@ -1,20 +1,31 @@
 import React from 'react'
-import { Image, Text, View } from 'tamagui'
+import { ScrollView } from 'react-native'
+import { Image, Separator, Text, View } from 'tamagui'
 
 import AppBarWithClose from '@/components/AppBar/AppBarWithClose'
 import { SafeArea } from '@/components/SafeArea'
 import { Typography } from '@/components/Typography'
 import { Paragraph } from '@/components/Typography/Paragraph'
+import { CommentSection } from '@/screens/TaskCommentScreen/Comment'
+import Comment from '@/screens/TaskCommentScreen/Comment/CustomComment'
 import { customPalettes } from '@/theme/customPalettes'
 import { useGoBack } from '@/util/useGoBack'
 
 //? Comment 이외에 값을 prop으로 할 것인지 아니면, api get을 한 번 더 할 것인지, 아니면 jotai를 사용할 것인지
 const TaskCommentScreen = () => {
   const [, handleNavigation] = useGoBack()
+  const today = new Date().toLocaleString('ko-KR', {
+    year: '2-digit', // 년도를 숫자로
+    month: 'long', // 월을 긴 형식으로 (예: February)
+    day: 'numeric' // 날짜를 숫자로
+  })
   return (
     <SafeArea>
       <AppBarWithClose handleNavigation={handleNavigation} />
-      <View display="flex" ai="flex-start" gap={15}>
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={{ display: 'flex', alignItems: 'flex-start', gap: 15 }}
+      >
         <View display="flex" px={16} py={20} ai="flex-start" gap={24} alignSelf="stretch">
           <Typography type="B" fontSize={17} textColor={customPalettes.gray[950]}>
             하위 태스크 이름이 들어가는 공간입니다. 보여지는 텍스트의 라인 수 제한은 없습니다.
@@ -48,7 +59,24 @@ const TaskCommentScreen = () => {
             />
           ))}
         </View>
-      </View>
+        <View alignSelf="stretch">
+          <Separator bw={2} borderColor={customPalettes.gray[50]} alignSelf="stretch" />
+          <View display="flex" p={16}>
+            <Typography type="R" fontSize={14} textColor={customPalettes.gray[400]}>
+              6개의 댓글
+            </Typography>
+          </View>
+          <Separator bw={2} borderColor={customPalettes.gray[50]} alignSelf="stretch" />
+        </View>
+        <CommentSection>
+          <Comment avatar={require('@assets/Images/min.jpg')} name="차승민" date={today}>
+            @권서은 다른 사람들의 댓글도 읽어보니 저만큼 많은 사람들이 공감하고 있다는 게 느껴져요.
+          </Comment>
+          <Comment avatar={require('@assets/Images/min.jpg')} name="차승민" date={today}>
+            @권서은 다른 사람들의 댓글도 읽어보니 저만큼 많은 사람들이 공감하고 있다는 게 느껴져요.
+          </Comment>
+        </CommentSection>
+      </ScrollView>
     </SafeArea>
   )
 }
