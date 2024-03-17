@@ -2,8 +2,8 @@ import { Pressable } from 'react-native'
 import { Avatar, Stack, View, styled } from 'tamagui'
 
 import { Tag } from '@/components/Tags'
-import { Typography } from '@/components/Typography'
-import { customPalettes } from '@/theme/customPalettes'
+import { Paragraph } from '@/components/Typography/Paragraph'
+import { Typography } from '@/components/Typography/index'
 import type { TaskCardProps } from '@/types/newKanBanBoard'
 
 const TaskContainer = styled(Stack, {
@@ -32,9 +32,9 @@ export const NewTask = ({ id, category, title, dueDate, status, assignee, imgSrc
       <View display="flex" height={97} flexDirection="column" alignItems="flex-start" gap={12} alignSelf="stretch">
         <Tag color="dark">{category}</Tag>
         <View flexGrow={1} flexShrink={0} flexBasis={0}>
-          <Typography type="R" fontSize={16} textColor={'rgba(0, 0, 0, 0.6)'} numberOfLines={3} ellipse>
+          <Paragraph type="R" fontSize={16} textColor={'rgba(0, 0, 0, 0.6)'} numberOfLines={3} ellipse>
             {title}
-          </Typography>
+          </Paragraph>
         </View>
       </View>
       <View display="flex" justifyContent="space-between" alignItems="center" alignSelf="stretch" flexDirection="row">

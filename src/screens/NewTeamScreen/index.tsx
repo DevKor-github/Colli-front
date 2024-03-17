@@ -19,7 +19,7 @@ const NewTeamScreen = () => {
     <SafeArea>
       <AppBarWithCalendar teamName="colli2024" handleNavigation={handleNavigation} />
       <ScrollView showsVerticalScrollIndicator={false} scrollEventThrottle={0} decelerationRate="fast">
-        <View display="flex" paddingHorizontal="10%">
+        <View display="flex" paddingHorizontal="10%" backgroundColor={customPalettes.gray[50]}>
           <Notice notice="공지가 적히는 배너입니다. 공지가 적히는 칸입니다." />
         </View>
         <MemberListContainer />
