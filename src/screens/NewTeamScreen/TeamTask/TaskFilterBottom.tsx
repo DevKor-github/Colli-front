@@ -1,19 +1,13 @@
-import { useEffect, useState } from 'react';
-import { Pressable, TextInput } from 'react-native';
-import { Sheet, View } from 'tamagui';
+import { useEffect, useState } from 'react'
+import { Pressable, TextInput } from 'react-native'
+import { Sheet, View } from 'tamagui'
 
+import { CheckedButton } from '@/components/Buttons/CheckedButton'
+import { Typography } from '@/components/Typography'
+import { TEAM_MEMBER } from '@/mocks/data/teamMember'
+import { customPalettes } from '@/theme/customPalettes'
+import type { TaskFilterBottomProps } from '@/types/newKanBanBoard'
 
-
-import { CheckedButton } from '@/components/Buttons/CheckedButton';
-import { Typography } from '@/components/Typography';
-import { TEAMTASKS_CATEGORY } from '@/mocks/data/newTeamTask';
-import { TEAM_MEMBER } from '@/mocks/data/teamMember';
-import { customPalettes } from '@/theme/customPalettes';
-import { dark_purple_active_SliderTrackActive } from '@/theme/generated-new';
-import type { TaskFilterBottomProps } from '@/types/newKanBanBoard';
-
-
-const INITIAL_FILTER = '필터'
 export const TaskFilterBottom = ({ open, handleClose, onFilterSelect }: TaskFilterBottomProps) => {
   const [position, setPosition] = useState(0)
   const [snapPoint, setSnapPoint] = useState(71)
@@ -21,7 +15,7 @@ export const TaskFilterBottom = ({ open, handleClose, onFilterSelect }: TaskFilt
   const [selectedMember, setSelectedMember] = useState<number[]>([])
 
   const handleCategory = (index: number) => {
-    setSelectedCategory((prevState) => {
+    setSelectedCategory(prevState => {
       if (prevState.includes(index)) {
         return prevState.filter(i => i !== index)
       }
@@ -30,9 +24,9 @@ export const TaskFilterBottom = ({ open, handleClose, onFilterSelect }: TaskFilt
   }
 
   const handleMember = (index: number) => {
-    setSelectedMember((prevState) => {
+    setSelectedMember(prevState => {
       if (prevState.includes(index)) {
-        return prevState.filter(i=> i!==index)
+        return prevState.filter(i => i !== index)
       }
       return [...prevState, index]
     })
@@ -40,8 +34,8 @@ export const TaskFilterBottom = ({ open, handleClose, onFilterSelect }: TaskFilt
 
   useEffect(() => {
     onFilterSelect(selectedCategory, selectedMember)
-  }, [selectedCategory, selectedMember])
-  
+  }, [selectedCategory, selectedMember, open])
+
   return (
     <Sheet
       modal
@@ -49,7 +43,7 @@ export const TaskFilterBottom = ({ open, handleClose, onFilterSelect }: TaskFilt
       //   dismissOnSnapToBottom
       animation="medium"
       open={open}
-      onOpenChange={() => {}}
+      onOpenChange={handleClose}
       snapPoints={[snapPoint]}
       moveOnKeyboardChange
       position={position}

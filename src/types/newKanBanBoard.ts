@@ -1,5 +1,4 @@
-import type { ImageSourcePropType } from 'react-native';
-
+import type { ImageSourcePropType } from 'react-native'
 
 export interface TapButtonProps {
   isPressed: boolean
@@ -33,5 +32,5 @@ export interface TaskSortBottomProps {
 export interface TaskFilterBottomProps {
   handleClose: () => Promise<boolean>
   open: boolean
-  onFilterSelect: (sortedCategory:number[], sortedMember:number[]) => void
+  onFilterSelect: (sortedCategory: number[], sortedMember: number[]) => void
 }

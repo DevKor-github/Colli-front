@@ -7,22 +7,21 @@ import { Typography } from '@/components/Typography'
 import { customPalettes } from '@/theme/customPalettes'
 import type { TaskSortBottomProps } from '@/types/newKanBanBoard'
 
-const INITIAL_SORT = '정렬'
 export const TaskSortBottom = ({ open, handleClose, onSortSelect }: TaskSortBottomProps) => {
   const [position, setPosition] = useState(0)
   const [snapPoint, setSnapPoint] = useState(40)
   const [selectedCategory, setSelectedCategory] = useState('')
-
   const handleCategory = (category: string) => {
     if (selectedCategory === category) {
       setSelectedCategory('')
-      onSortSelect(INITIAL_SORT)
     } else {
       setSelectedCategory(category)
-      onSortSelect(category)
     }
   }
-  
+
+  useEffect(() => {
+    onSortSelect(selectedCategory), [selectedCategory]
+  })
 
   return (
     <Sheet
@@ -31,7 +30,7 @@ export const TaskSortBottom = ({ open, handleClose, onSortSelect }: TaskSortBott
       //   dismissOnSnapToBottom
       animation="medium"
       open={open}
-      onOpenChange={() => {}}
+      onOpenChange={handleClose}
       snapPoints={[snapPoint]}
       moveOnKeyboardChange
       position={position}
