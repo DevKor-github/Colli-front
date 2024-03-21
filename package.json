@@ -14,7 +14,9 @@
     "format": "prettier --write \"./**/*.{ts,tsx,js,jsx,json}\" --config ./.prettierrc",
     "start": "react-native start",
     "test": "jest",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "check-dependencies": "rnx-align-deps",
+    "fix-dependencies": "rnx-align-deps --write"
   },
   "lint-staged": {
     "*.{ts,tsx}": [
@@ -23,26 +25,26 @@
     ]
   },
   "dependencies": {
-    "@react-native-clipboard/clipboard": "1.13.2",
+    "@react-native-clipboard/clipboard": "^1.10.0",
     "@react-native-community/cli-doctor": "^11.3.8",
     "@react-navigation/bottom-tabs": "^6.5.9",
-    "@react-navigation/native": "^6.1.9",
+    "@react-navigation/native": "^6.0.8",
     "@react-navigation/native-stack": "^6.9.17",
     "@tamagui/animations-react-native": "^1.74.13",
     "@tamagui/babel-plugin": "^1.74.13",
     "@tamagui/config": "^1.74.13",
     "jotai": "^2.7.0",
     "react": "18.2.0",
-    "react-native": "0.73.6",
+    "react-native": "^0.73.0",
     "react-native-awesome-slider": "^2.5.1",
     "react-native-calendars": "^1.1301.0",
-    "react-native-gesture-handler": "2.14.1",
+    "react-native-gesture-handler": "^2.14.0",
     "react-native-ios-modal": "^0.1.8",
     "react-native-linear-gradient": "^2.8.3",
-    "react-native-reanimated": "3.6.1",
-    "react-native-safe-area-context": "4.8.2",
-    "react-native-screens": "^3.27.0",
-    "react-native-svg": "14.1.0",
+    "react-native-reanimated": "^3.6.0",
+    "react-native-safe-area-context": "^4.8.2",
+    "react-native-screens": "^3.28.0",
+    "react-native-svg": "^14.0.0",
     "react-native-vector-icons": "^10.0.0",
     "react-navigation": "^5.0.0",
     "react-query": "^3.39.3",
@@ -52,10 +54,11 @@
     "@babel/core": "^7.20.0",
     "@babel/preset-env": "^7.20.0",
     "@babel/runtime": "^7.20.0",
-    "@react-native/babel-preset": "^0.75.0-main",
-    "@react-native/eslint-config": "^0.73.2",
-    "@react-native/metro-config": "^0.73.5",
-    "@react-native/typescript-config": "^0.75.0-main",
+    "@react-native/babel-preset": "^0.73.18",
+    "@react-native/eslint-config": "^0.73.1",
+    "@react-native/metro-config": "^0.73.0",
+    "@react-native/typescript-config": "^0.73.1",
+    "@rnx-kit/align-deps": "^2.4.0",
     "@trivago/prettier-plugin-sort-imports": "^4.2.0",
     "@types/jest": "^29.5.5",
     "@types/react": "^18.2.6",
@@ -82,5 +85,30 @@
   },
   "engines": {
     "node": ">=18"
+  },
+  "rnx-kit": {
+    "kitType": "app",
+    "alignDeps": {
+      "requirements": [
+        "react-native@0.73"
+      ],
+      "capabilities": [
+        "animation",
+        "babel-preset-react-native",
+        "clipboard",
+        "core",
+        "core-android",
+        "core-ios",
+        "core/metro-config",
+        "gestures",
+        "jest",
+        "navigation/native",
+        "react",
+        "react-test-renderer",
+        "safe-area",
+        "screens",
+        "svg"
+      ]
+    }
   }
 }
