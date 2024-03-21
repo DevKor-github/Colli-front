@@ -34,7 +34,7 @@
     "@tamagui/babel-plugin": "^1.74.13",
     "@tamagui/config": "^1.74.13",
     "jotai": "^2.7.0",
-    "metro-react-native-babel-transformer": "^0.77.0",
+    "@react-native/metro-babel-transformer": "^0.77.0",
     "react": "18.2.0",
     "react-native": "^0.73.0",
     "react-native-awesome-slider": "^2.5.1",
