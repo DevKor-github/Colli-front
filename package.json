@@ -27,6 +27,7 @@
   "dependencies": {
     "@react-native-clipboard/clipboard": "^1.10.0",
     "@react-native-community/cli-doctor": "^11.3.8",
+    "@react-native/metro-babel-transformer": "^0.77.0",
     "@react-navigation/bottom-tabs": "^6.5.9",
     "@react-navigation/native": "^6.0.8",
     "@react-navigation/native-stack": "^6.9.17",
@@ -34,7 +35,6 @@
     "@tamagui/babel-plugin": "^1.74.13",
     "@tamagui/config": "^1.74.13",
     "jotai": "^2.7.0",
-    "@react-native/metro-babel-transformer": "^0.77.0",
     "react": "18.2.0",
     "react-native": "^0.73.0",
     "react-native-awesome-slider": "^2.5.1",
@@ -63,7 +63,6 @@
     "@trivago/prettier-plugin-sort-imports": "^4.2.0",
     "@types/jest": "^29.5.5",
     "@types/react": "^18.2.6",
-    "@types/react-native": "^0.72.3",
     "@types/react-native-calendars": "^1.1264.4",
     "@types/react-native-vector-icons": "^6.4.15",
     "@types/react-test-renderer": "^18.0.3",
