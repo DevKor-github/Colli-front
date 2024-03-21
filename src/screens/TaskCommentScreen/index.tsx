@@ -1,6 +1,6 @@
 import React from 'react'
 import { ScrollView } from 'react-native'
-import { Image, Separator, Text, View } from 'tamagui'
+import { Image, Separator, View } from 'tamagui'
 
 import AppBarWithClose from '@/components/AppBar/AppBarWithClose'
 import { SafeArea } from '@/components/SafeArea'
@@ -8,6 +8,7 @@ import { Typography } from '@/components/Typography'
 import { Paragraph } from '@/components/Typography/Paragraph'
 import { CommentSection } from '@/screens/TaskCommentScreen/Comment'
 import Comment from '@/screens/TaskCommentScreen/Comment/CustomComment'
+import CommentInput from '@/screens/TaskCommentScreen/CommentInput'
 import { customPalettes } from '@/theme/customPalettes'
 import { useGoBack } from '@/util/useGoBack'
 
@@ -77,6 +78,7 @@ const TaskCommentScreen = () => {
           </Comment>
         </CommentSection>
       </ScrollView>
+      <CommentInput />
     </SafeArea>
   )
 }
