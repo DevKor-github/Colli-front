@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { View } from 'tamagui'
 
 import BottomSheet from '@/components/BottomSheet'
+import Button from '@/components/Button'
 import Picker from '@/components/Picker'
 import { Typography } from '@/components/Typography'
 import { Task } from '@/screens/TaskScreen/Task/Task'
@@ -50,6 +51,14 @@ const TaskDueCategory = () => {
           minute={dueMinute}
           handleChange={handleSetNewDueDate}
         />
+        <View display="flex" flexDirection="row" px={20} py={12} gap={8} mt={44}>
+          <Button type="gray" handlePress={setOpen}>
+            취소
+          </Button>
+          <Button type="dark" handlePress={setOpen}>
+            완료
+          </Button>
+        </View>
       </BottomSheet>
     </View>
   )

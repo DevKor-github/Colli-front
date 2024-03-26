@@ -46,12 +46,11 @@ const Picker = ({ month, date, ampm, hour, minute, handleChange }: PickerProps) 
   }, [currentMonth])
   return (
     <View
-      mt={24}
       display="flex"
       flexDirection="row"
       alignItems="flex-start"
       height={141}
-      backgroundColor={customPalettes.gray[100]}
+      // backgroundColor={customPalettes.gray[100]}
     >
       <View display="flex" flexDirection="row" paddingHorizontal={37}>
         <AnimatedScrollView
@@ -72,6 +71,7 @@ const Picker = ({ month, date, ampm, hour, minute, handleChange }: PickerProps) 
             <Pressable
               key={index}
               onPress={() => {
+                if (!index || index === MONTHS.length - 1) return
                 handleGenericScrollChange(scroll, index)
                 handleChange('month', index)
               }}
@@ -97,6 +97,7 @@ const Picker = ({ month, date, ampm, hour, minute, handleChange }: PickerProps) 
               id="day"
               key={index}
               onPress={() => {
+                if (!index || index === days.length + 1) return
                 handleGenericScrollChange(dayScroll, index)
                 handleChange('date', index)
               }}
@@ -121,6 +122,7 @@ const Picker = ({ month, date, ampm, hour, minute, handleChange }: PickerProps) 
             <Pressable
               key={index}
               onPress={() => {
+                if (AMPM.length - 1 === index) return
                 handleGenericScrollChange(ampmScroll, index)
                 handleChange('ampm', index)
               }}
@@ -145,6 +147,7 @@ const Picker = ({ month, date, ampm, hour, minute, handleChange }: PickerProps) 
             <Pressable
               key={index}
               onPress={() => {
+                if (!index || index === HOURS.length - 1) return
                 handleGenericScrollChange(hourScroll, index)
                 handleChange('hour', index)
               }}
@@ -169,6 +172,7 @@ const Picker = ({ month, date, ampm, hour, minute, handleChange }: PickerProps) 
             <Pressable
               key={index}
               onPress={() => {
+                if (!index || index === MINUTES.length - 1) return
                 handleGenericScrollChange(minuteScroll, index)
                 handleChange('minute', index - 1)
               }}
@@ -189,9 +193,9 @@ const Picker = ({ month, date, ampm, hour, minute, handleChange }: PickerProps) 
         display="flex"
         // backgroundColor={'rgba(244, 245, 247, 0.7)'}
       >
-        <View width="100%" height={50.5} backgroundColor={'rgba(244, 245, 247, 0.7)'} />
+        <View width="100%" height={50.5} backgroundColor={'rgba(255, 255, 255, 0.7)'} />
         <View display="flex" flexDirection="row">
-          <View flex={1} height={40} backgroundColor={customPalettes.gray[50]} opacity={0.7} />
+          <View flex={1} height={40} backgroundColor={customPalettes.snow[50]} opacity={0.7} />
           <View
             flex={22}
             height={40}
@@ -199,9 +203,9 @@ const Picker = ({ month, date, ampm, hour, minute, handleChange }: PickerProps) 
             borderRadius={8}
             // borderWidth={1}
           />
-          <View flex={1} height={40} backgroundColor={customPalettes.gray[50]} opacity={0.7} />
+          <View flex={1} height={40} backgroundColor={customPalettes.snow[50]} opacity={0.7} />
         </View>
-        <View width="100%" height={50.5} backgroundColor={customPalettes.gray[50]} opacity={0.7} />
+        <View width="100%" height={50.5} backgroundColor={'rgba(255, 255, 255, 0.7)'} opacity={0.7} />
       </View>
     </View>
   )

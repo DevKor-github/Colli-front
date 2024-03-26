@@ -1,25 +1,35 @@
 import React from 'react'
-import { ScrollView } from 'react-native'
+import { Modal, Pressable, ScrollView } from 'react-native'
 import { Image, Separator, View } from 'tamagui'
 
 import AppBarWithClose from '@/components/AppBar/AppBarWithClose'
+import ModalContainer from '@/components/ModalContainer'
 import { SafeArea } from '@/components/SafeArea'
 import { Typography } from '@/components/Typography'
 import { Paragraph } from '@/components/Typography/Paragraph'
+import { COMMENT } from '@/mocks/data/comment'
 import { CommentSection } from '@/screens/TaskCommentScreen/Comment'
 import Comment from '@/screens/TaskCommentScreen/Comment/CustomComment'
 import CommentInput from '@/screens/TaskCommentScreen/CommentInput'
 import { customPalettes } from '@/theme/customPalettes'
+import type { CommentProps } from '@/types/comment'
 import { useGoBack } from '@/util/useGoBack'
 
 //? Comment 이외에 값을 prop으로 할 것인지 아니면, api get을 한 번 더 할 것인지, 아니면 jotai를 사용할 것인지
 const TaskCommentScreen = () => {
   const [, handleNavigation] = useGoBack()
-  const today = new Date().toLocaleString('ko-KR', {
-    year: '2-digit', // 년도를 숫자로
-    month: 'long', // 월을 긴 형식으로 (예: February)
-    day: 'numeric' // 날짜를 숫자로
-  })
+  const [comment, setComment] = React.useState<CommentProps[]>(COMMENT) // COMMENT
+  const [currentComment, setCurrentComment] = React.useState(0)
+  const [isModalVisible, setIsModalVisible] = React.useState(false)
+  const deleteComment = (index: number) => {
+    setComment(prev => prev.filter((_, idx) => idx !== index))
+    setIsModalVisible(false)
+  }
+  const handleModalVisible = (id: number) => {
+    setCurrentComment(id)
+    setIsModalVisible(true)
+  }
+  const ImageArray = Array.from({ length: 3 })
   return (
     <SafeArea>
       <AppBarWithClose handleNavigation={handleNavigation} />
@@ -48,35 +58,63 @@ const TaskCommentScreen = () => {
           alignSelf="stretch"
           jc="center"
         >
-          {Array.from({ length: 4 }).map((_, index) => (
+          {ImageArray.map((_, index) => (
             <Image
               key={index}
               source={{ width: 169, height: 169, uri: require('@assets/Images/DummyImage.jpg') }}
               br={3.5}
-              minWidth={169}
+              minWidth={165}
               flexGrow={1}
               flexShrink={0}
               flexBasis={0}
             />
           ))}
+          {ImageArray.length % 2 && <View br={3.5} minWidth={165} flexGrow={1} flexShrink={0} flexBasis={0} />}
         </View>
         <View alignSelf="stretch">
           <Separator bw={2} borderColor={customPalettes.gray[50]} alignSelf="stretch" />
           <View display="flex" p={16}>
             <Typography type="R" fontSize={14} textColor={customPalettes.gray[400]}>
-              6개의 댓글
+              {comment.length}개의 댓글
             </Typography>
           </View>
           <Separator bw={2} borderColor={customPalettes.gray[50]} alignSelf="stretch" />
         </View>
         <CommentSection>
-          <Comment avatar={require('@assets/Images/min.jpg')} name="차승민" date={today}>
-            @권서은 다른 사람들의 댓글도 읽어보니 저만큼 많은 사람들이 공감하고 있다는 게 느껴져요.
-          </Comment>
-          <Comment avatar={require('@assets/Images/min.jpg')} name="차승민" date={today}>
-            @권서은 다른 사람들의 댓글도 읽어보니 저만큼 많은 사람들이 공감하고 있다는 게 느껴져요.
-          </Comment>
+          {comment.map((item, index) => (
+            <Pressable key={index} delayLongPress={1500} onLongPress={() => handleModalVisible(index)}>
+              <Comment
+                avatar={item.avatar}
+                name={item.name}
+                date={item.date.toLocaleString('ko-KR', {
+                  year: '2-digit', // 년도를 숫자로
+                  month: 'long', // 월을 긴 형식으로 (예: February)
+                  day: 'numeric' // 날짜를 숫자로
+                })}
+              >
+                {item.text}
+              </Comment>
+            </Pressable>
+          ))}
         </CommentSection>
+        <Modal animationType="fade" transparent={true} visible={isModalVisible}>
+          <View
+            display="flex"
+            flexDirection="column"
+            flex={1}
+            justifyContent="center"
+            alignItems="center"
+            backgroundColor={customPalettes.opacityD[400]}
+          >
+            <ModalContainer
+              modalText="댓글을 삭제하시겠습니까?"
+              handleAction={() => deleteComment(currentComment)}
+              actionText="삭제"
+              subActionText="취소"
+              handleSubAction={() => setIsModalVisible(false)}
+            />
+          </View>
+        </Modal>
       </ScrollView>
       <CommentInput />
     </SafeArea>
