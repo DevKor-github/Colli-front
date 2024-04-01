@@ -48,7 +48,7 @@ const BottomSheet = ({ isOpen, bottomSheetTitle, setOpen, children }: BottomShee
       animation="medium"
     >
       <Sheet.Overlay />
-      <Sheet.Frame justifyContent="flex-start" alignItems="center">
+      <Sheet.Frame justifyContent="flex-start" alignItems="center" bg={customPalettes.snow[50]}>
         <View display="flex" py={8} jc="center" ai="center" gap={10} alignSelf="stretch">
           <Bar />
         </View>

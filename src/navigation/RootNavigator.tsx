@@ -2,6 +2,7 @@ import LandingScreen from '@/screens/LandingScreen'
 import LogInScreen from '@/screens/LogInScreen'
 import NewTeamScreen from '@/screens/NewTeamScreen'
 import { SplashScreen } from '@/screens/SplashScreen'
+import TaskCommentScreen from '@/screens/TaskCommentScreen'
 import TaskScreen from '@/screens/TaskScreen'
 import { TeamMemberScreen } from '@/screens/TeamMemberScreen'
 import { TeamScreen } from '@/screens/TeamScreen'
@@ -30,6 +31,7 @@ export const RootNavigator = () => {
         <Stack.Group screenOptions={{ headerShown: false }}>
           <Stack.Screen name="Main" component={LandingScreen} />
           <Stack.Screen name="Task" component={TaskScreen} />
+          <Stack.Screen name="TaskComment" component={TaskCommentScreen} />
           <Stack.Screen name="NewTeam" component={NewTeamScreen} />
           <Stack.Screen name="Team" component={TeamScreen} options={{ headerShown: false }} />
           <Stack.Screen name="TeamMember" component={TeamMemberScreen} options={{ headerShown: false }} />
