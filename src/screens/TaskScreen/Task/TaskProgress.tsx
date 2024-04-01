@@ -5,21 +5,13 @@ import { View } from 'tamagui'
 import BottomSheet, { Option } from '@/components/BottomSheet'
 import { Tag } from '@/components/Tags'
 import { Typography } from '@/components/Typography'
+import { progressConfig } from '@/constants/progress'
+import type { ProgressConfigProps } from '@/constants/progress'
 import { Task } from '@/screens/TaskScreen/Task/Task'
 import { customPalettes } from '@/theme/customPalettes'
 import useToggle from '@/util/useToggle'
 import ThreeDots from '@assets/Svgs/ThreeDots.svg'
 
-type ProgressState = 'todo' | 'inProgress' | 'done'
-interface ProgressConfigProps {
-  label: string
-  state: ProgressState
-}
-const progressConfig: ProgressConfigProps[] = [
-  { label: 'To Do', state: 'todo' },
-  { label: 'In Progress', state: 'inProgress' },
-  { label: 'Done', state: 'done' }
-]
 const TaskProgress = () => {
   const [open, setOpen] = useToggle(false)
   const [currentState, setCurrentState] = useState<ProgressConfigProps>({ label: 'To Do', state: 'todo' })

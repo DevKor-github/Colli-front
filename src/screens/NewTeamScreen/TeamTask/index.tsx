@@ -1,5 +1,6 @@
-import { useReducer, useRef, useState } from 'react'
+import { useEffect, useReducer, useRef, useState } from 'react'
 import { ScrollView, TurboModuleRegistry } from 'react-native'
+import { Pressable } from 'react-native'
 import Animated, {
   Easing,
   scrollTo,
@@ -10,24 +11,26 @@ import Animated, {
 } from 'react-native-reanimated'
 import { View } from 'tamagui'
 
-import { NewTask } from '@/components/NewTask'
 import FilterTag from '@/components/Tags/FilterTag'
+import { progressConfig } from '@/constants/progress'
+import type { ProgressConfigProps } from '@/constants/progress'
 import { TEAM_TASKS } from '@/mocks/data/newTeamTask'
 import { TEAM_MEMBER } from '@/mocks/data/teamMember'
 import { TapBar } from '@/screens/NewTeamScreen/TeamTask/TapBar'
 import { TapButton } from '@/screens/NewTeamScreen/TeamTask/TapButton'
+import { TaskCard } from '@/screens/NewTeamScreen/TeamTask/TaskCard'
 import { TaskFilterBottom } from '@/screens/NewTeamScreen/TeamTask/TaskFilterBottom'
-import { TaskSortBottom } from '@/screens/NewTeamScreen/TeamTask/TaskSortBottom'
+import { categoryConfig } from '@/types/newKanBanBoard'
+import type { SortConfigProps } from '@/types/newKanBanBoard'
 import { useNavigation } from '@react-navigation/native'
 
 type State = {
   icon: boolean
   filter: boolean
-  sort: boolean
 }
 
 type Action = {
-  type: 'Icon' | 'Filter' | 'Sort'
+  type: 'Icon' | 'Filter'
 }
 
 const INITIAL_FILTER = '필터'
@@ -40,19 +43,12 @@ export const TeamTask = () => {
     return true
   }
 
-  const [sortOpen, setSortOpen] = useState(false)
-  const handleSortClose = async () => {
-    setSortOpen(false)
-    return true
-  }
   const filterReducer = (state: State, action: Action) => {
     switch (action.type) {
       case 'Icon':
         return { ...state, icon: !state.icon }
       case 'Filter':
         return { ...state, filter: true }
-      case 'Sort':
-        return { ...state, sort: true }
       default:
         return state
     }
@@ -60,56 +56,50 @@ export const TeamTask = () => {
 
   const [tags, dispatch] = useReducer(filterReducer, {
     icon: false,
-    filter: false,
-    sort: false
+    filter: false
   })
 
-  const handleFilterChange = (newFilter: 'Icon' | 'Filter' | 'Sort') => {
+  const handleFilterChange = (newFilter: 'Icon' | 'Filter') => {
     dispatch({ type: newFilter })
   }
 
-  const [currentStatus, setCurrentStatus] = useState('In progress')
+  const [currentStatus, setCurrentStatus] = useState<ProgressConfigProps>({ label: 'In progress', state: 'inProgress' })
   const [teamTasks, setTeamTasks] = useState(TEAM_TASKS)
   const offsetX = useSharedValue(0)
-  const handleTaskChange = (newCategory: string) => {
+  const handleTaskChange = (newCategory: ProgressConfigProps) => {
     setCurrentStatus(newCategory)
-    if (newCategory === 'In progress') {
+    if (newCategory.state === 'inProgress') {
       offsetX.value = withTiming(0, { duration: 300 })
-    } else if (newCategory === 'To do') {
+    } else if (newCategory.state === 'todo') {
       offsetX.value = withTiming(-128, { duration: 300, easing: Easing.bezier(0.42, 0, 0, 0.94) })
     } else {
       offsetX.value = withTiming(128, { duration: 300, easing: Easing.bezier(0.42, 0, 0, 0.94) })
     }
   }
-  const [sort, setSort] = useState(INITIAL_SORT)
-  const handleSortSelect = (sortedCategory: string) => {
-    const newSort = sortedCategory
-    if (newSort === '') {
-      setSort(INITIAL_SORT)
-      tags.sort = false
-    } else {
-      setSort(newSort)
-      tags.sort = true
-    }
-  }
 
   const [filter, setFilter] = useState(INITIAL_FILTER)
-  const handleFilterSelect = (sortedCategory: number[], sortedMember: number[]) => {
-    const categoryList = ['스프린트 A', '스프린트 B', '스프린트 C']
+  const handleFilterSelect = (sortedSort: SortConfigProps, sortedCategory: number[], sortedMember: number[]) => {
+    const categoryList = categoryConfig.map(category => category.label)
     const memberList = TEAM_MEMBER.map(member => member.name)
     const selectedCategoryList = sortedCategory.map(index => categoryList[index])
     const selectedMemberList = sortedMember.map(index => memberList[index])
-
+    const selectedSort = sortedSort.label
     const newFilter = selectedCategoryList.concat(selectedMemberList)
-    if (newFilter.length === 0) {
+    /*if (newFilter.length === 0) {
       setFilter(INITIAL_FILTER)
       tags.filter = false
-      /*여기 로직 다시 살펴봐야할듯 */
     } else if (newFilter.length === 1) {
       setFilter(newFilter[0])
       tags.filter = true
     } else {
       setFilter(`${newFilter[0]} 외 ${newFilter.length - 1}개`)
+      tags.filter = true
+    }*/
+    if (selectedSort === '정렬') {
+      setFilter(INITIAL_FILTER)
+      tags.filter = false
+    } else {
+      setFilter(selectedSort)
       tags.filter = true
     }
   }
@@ -146,17 +136,6 @@ export const TeamTask = () => {
           {filter}
         </FilterTag>
         <TaskFilterBottom open={filterOpen} handleClose={handleFilterClose} onFilterSelect={handleFilterSelect} />
-        <FilterTag
-          tagType="text"
-          isPressed={tags.sort}
-          handlePress={() => {
-            handleFilterChange('Sort')
-            setSortOpen(!sortOpen)
-          }}
-        >
-          {sort}
-        </FilterTag>
-        <TaskSortBottom open={sortOpen} handleClose={handleSortClose} onSortSelect={handleSortSelect} />
       </View>
       <View
         display="flex"
@@ -177,27 +156,16 @@ export const TeamTask = () => {
           alignItems="center"
           alignSelf="stretch"
         >
-          <TapButton
-            isPressed={currentStatus === 'To do'}
-            content="To do"
-            handlePress={() => {
-              handleTaskChange('To do')
-            }}
-          />
-          <TapButton
-            isPressed={currentStatus === 'In progress'}
-            content="In progress"
-            handlePress={() => {
-              handleTaskChange('In progress')
-            }}
-          />
-          <TapButton
-            isPressed={currentStatus === 'Done'}
-            content="Done"
-            handlePress={() => {
-              handleTaskChange('Done')
-            }}
-          />
+          {progressConfig.map(item => (
+            <TapButton
+              key={item.state}
+              isPressed={currentStatus.label === item.label}
+              content={item.label}
+              handlePress={() => {
+                handleTaskChange(item)
+              }}
+            />
+          ))}
         </View>
         <TapBar offset={offsetX} />
       </View>
@@ -222,9 +190,9 @@ export const TeamTask = () => {
           flexWrap="wrap"
         >
           {teamTasks
-            .filter(task => task.status === currentStatus)
+            .filter(task => task.status === currentStatus.label)
             ?.map((status, i) => (
-              <NewTask
+              <TaskCard
                 key={i}
                 id={status.id}
                 category={status.category}
