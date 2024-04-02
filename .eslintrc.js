@@ -1,7 +1,7 @@
 module.exports = {
   root: true,
   plugins: ['react-native', '@typescript-eslint', 'import', 'eslint-plugin-tsdoc'],
-  extends: ['plugin:@typescript-eslint/recommended', 'prettier'],
+  extends: ['plugin:@typescript-eslint/recommended', 'prettier', 'plugin:@tanstack/eslint-plugin-query/recommended'],
   parser: '@typescript-eslint/parser',
   rules: {
     'react/react-in-jsx-scope': 'off',

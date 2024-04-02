@@ -33,6 +33,7 @@
     "@tamagui/animations-react-native": "^1.74.13",
     "@tamagui/babel-plugin": "^1.74.13",
     "@tamagui/config": "^1.74.13",
+    "@tanstack/react-query": "^5.28.9",
     "jotai": "^2.7.0",
     "metro-react-native-babel-transformer": "^0.77.0",
     "react": "18.2.0",
@@ -49,7 +50,6 @@
     "react-native-svg": "^14.0.0",
     "react-native-vector-icons": "^10.0.0",
     "react-navigation": "^5.0.0",
-    "react-query": "^3.39.3",
     "tamagui": "^1.74.13"
   },
   "devDependencies": {
@@ -61,6 +61,7 @@
     "@react-native/metro-config": "^0.73.0",
     "@react-native/typescript-config": "^0.73.1",
     "@rnx-kit/align-deps": "^2.4.0",
+    "@tanstack/eslint-plugin-query": "^5.28.6",
     "@trivago/prettier-plugin-sort-imports": "^4.2.0",
     "@types/jest": "^29.5.5",
     "@types/react": "^18.2.6",
