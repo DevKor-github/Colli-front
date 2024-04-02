@@ -1,10 +1,13 @@
 import { ScrollView } from 'react-native'
 import { useSafeAreaFrame } from 'react-native-safe-area-context'
 
+import { useGetNotice } from '@/api/hooks/notice'
+import { noticeResponse } from '@/api/types/notice'
 import Notice from '@/components/Notice/Notice'
 
 const NoticeContainer = () => {
   const screenWidth = useSafeAreaFrame().width
+  const res = useGetNotice().data
   return (
     <ScrollView
       horizontal
@@ -22,9 +25,9 @@ const NoticeContainer = () => {
       snapToInterval={screenWidth * 0.8 + 12}
       decelerationRate="fast"
     >
-      <Notice notice="공지가 적히는 배너입니다. 공지가 적히는 배너입니다." />
-      <Notice notice="공지가 적히는 배너입니다. 공지가 적히는 배너입니다." />
-      <Notice notice="공지가 적히는 배너입니다. 공지가 적히는 배너입니다." />
+      {res?.dataList.map(notice => (
+        <Notice key={notice.noticeId} notice={notice.content} />
+      ))}
     </ScrollView>
   )
 }
