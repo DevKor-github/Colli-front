@@ -34,6 +34,7 @@
     "@tamagui/babel-plugin": "^1.74.13",
     "@tamagui/config": "^1.74.13",
     "@tanstack/react-query": "^5.28.9",
+    "axios": "^1.6.8",
     "jotai": "^2.7.0",
     "metro-react-native-babel-transformer": "^0.77.0",
     "react": "18.2.0",
