@@ -13,6 +13,8 @@ const Notice = ({ notice }: { notice: string }) => {
       paddingHorizontal={12}
       paddingVertical={10}
       gap={8}
+      //alignSelf="stretch"
+      //alignSelf추가해야할것같아여
       borderRadius={25}
       backgroundColor={customPalettes.snow[50]}
       borderWidth={1}

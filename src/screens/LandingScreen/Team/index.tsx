@@ -1,11 +1,13 @@
 import { View } from 'tamagui'
 
+import { useGetTeamName } from '@/api/hooks/teamName'
 import { Typography } from '@/components/Typography'
 import { TEAM_NAME } from '@/mocks/data/teamName'
 import { TeamCard } from '@/screens/LandingScreen/Team/TeamCard'
 import { customPalettes } from '@/theme/customPalettes'
 
 const TeamList = () => {
+  const resTeamName = useGetTeamName().data
   return (
     <View padding={16} gap={12} flexDirection="column" alignItems="center" alignSelf="stretch">
       <View
@@ -27,7 +29,7 @@ const TeamList = () => {
         ></View>
       </View>
       <View display="flex" flexDirection="column" alignItems="flex-start" gap={8} alignSelf="stretch">
-        {TEAM_NAME.map(member => (
+        {resTeamName?.dataList.map(member => (
           <TeamCard
             id={member.id}
             key={member.id}

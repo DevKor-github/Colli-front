@@ -2,13 +2,13 @@ import React from 'react'
 import { Image } from 'react-native'
 import { View } from 'tamagui'
 
+import type { teamName } from '@/api/types/teamName'
 import DotsLine from '@/assets/Svgs/DotsLine.svg'
 import { Typography } from '@/components/Typography'
 import { customPalettes } from '@/theme/customPalettes'
-import type { TeamCardProps } from '@/types/teamCard'
 import { useNavigation } from '@react-navigation/native'
 
-export const TeamCard = ({ id, name, teamMember, imgSrc }: TeamCardProps) => {
+export const TeamCard = ({ id, name, teamMember, imgSrc }: teamName) => {
   const navigation = useNavigation()
   return (
     <View

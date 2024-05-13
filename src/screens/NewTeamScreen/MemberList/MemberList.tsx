@@ -1,10 +1,8 @@
 import { Avatar, View } from 'tamagui'
 
-import { Typography } from '@/components/Typography'
-import { customPalettes } from '@/theme/customPalettes'
-import type { MemberCardProps } from '@/types/memberCard'
+import type { teamMember } from '@/api/types/teamMember'
 
-const MemberList = ({ imgSrc }: MemberCardProps) => {
+const MemberList = ({ imgSrc }: teamMember) => {
   return (
     <Avatar size={64} circular>
       <Avatar.Image source={imgSrc} />

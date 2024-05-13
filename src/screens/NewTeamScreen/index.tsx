@@ -1,6 +1,8 @@
 import { ScrollView } from 'react-native'
 import { View } from 'tamagui'
 
+import { useGetTeamName } from '@/api/hooks/teamName'
+import { useGetTeamNotice } from '@/api/hooks/teamNotice'
 import Fab from '@/assets/Svgs/fab.svg'
 import AppBarWithCalendar from '@/components/AppBar/AppBarWithCalendar'
 import Notice from '@/components/Notice/Notice'
@@ -15,12 +17,17 @@ const NewTeamScreen = () => {
   const handleNavigation = () => {
     navigation.goBack()
   }
+  const resNotice = useGetTeamNotice().data
+  const resTeamName = useGetTeamName().data
+
   return (
     <SafeArea>
-      <AppBarWithCalendar teamName="colli2024" handleNavigation={handleNavigation} />
+      <AppBarWithCalendar teamName={resTeamName?.dataList?.[0]?.name || ''} handleNavigation={handleNavigation} />
       <ScrollView showsVerticalScrollIndicator={false} scrollEventThrottle={0} decelerationRate="fast">
         <View display="flex" paddingHorizontal="10%" backgroundColor={customPalettes.gray[50]}>
-          <Notice notice="공지가 적히는 배너입니다. 공지가 적히는 칸입니다." />
+          {resNotice?.dataList?.[0] ? (
+            <Notice key={resNotice.dataList[0].id} notice={resNotice.dataList[0].content} />
+          ) : null}
         </View>
         <MemberListContainer />
         <TeamTask />

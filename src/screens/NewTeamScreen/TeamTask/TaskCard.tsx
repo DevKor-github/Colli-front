@@ -1,10 +1,10 @@
 import { Pressable } from 'react-native'
 import { Avatar, Stack, View, styled } from 'tamagui'
 
+import type { teamTask } from '@/api/types/teamTask'
 import { Tag } from '@/components/Tags'
 import { Paragraph } from '@/components/Typography/Paragraph'
 import { Typography } from '@/components/Typography/index'
-import type { TaskCardProps } from '@/types/newKanBanBoard'
 
 const TaskContainer = styled(Stack, {
   display: 'flex',
@@ -26,7 +26,7 @@ const TaskContainer = styled(Stack, {
   }
 })
 
-export const TaskCard = ({ id, category, title, dueDate, status, assignee, imgSrc }: TaskCardProps) => {
+export const TaskCard = ({ id, category, title, dueDate, status, assignee, imgSrc, categoryState }: teamTask) => {
   return (
     <TaskContainer>
       <View display="flex" height={97} flexDirection="column" alignItems="flex-start" gap={12} alignSelf="stretch">

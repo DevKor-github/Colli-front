@@ -13,17 +13,7 @@ export interface TapBarStatusSectionProps {
   handlePress: (status: TapBarStatus) => void
 }
 
-export interface TaskCardProps {
-  id: number
-  category: string
-  title: string
-  dueDate: Date
-  status: TapBarStatus
-  assignee: string
-  imgSrc: ImageSourcePropType
-}
-
-type SortState = 'sort' | 'imminent' | 'added' | 'category' | 'assignee'
+type SortState = 'sort' | 'imminent' | 'added'
 
 export interface SortConfigProps {
   label: string
@@ -34,30 +24,16 @@ export const sortConfig: SortConfigProps[] = [
   { label: '정렬', state: 'sort' },
   { label: '추가된순으로', state: 'added' },
   { label: '임박한순으로', state: 'imminent' }
-  /*{ label: '카테고리별로', state: 'category' },
-  { label: '담당자별로', state: 'assignee' }*/
-]
-
-type CategoryState = 'category' | 'sprintA' | 'sprintB' | 'sprintC'
-
-export interface CategoryConfigProps {
-  label: string
-  state: CategoryState
-}
-
-export const categoryConfig: CategoryConfigProps[] = [
-  { label: '카테고리', state: 'category' },
-  { label: '스프린트 A', state: 'sprintA' },
-  { label: '스프린트 B', state: 'sprintB' },
-  { label: '스프린트 C', state: 'sprintC' }
 ]
 
 export interface TaskSortBottomProps {
+  handleClose: () => Promise<boolean>
+  open: boolean
   onSortSelect: (sortedCategory: SortConfigProps) => void
 }
 
 export interface TaskFilterBottomProps {
   handleClose: () => Promise<boolean>
   open: boolean
-  onFilterSelect: (sortedSort: SortConfigProps, sortedCategory: number[], sortedMember: number[]) => void
+  onFilterSelect: (sortedCategory: number[], sortedMember: number[]) => void
 }

@@ -38,10 +38,10 @@ interface CheckBoxProps {
   checked: boolean
 }
 const CheckBox = ({ checked }: CheckBoxProps) => {
-  const [isChecked, setIsChecked] = useToggle(checked)
+  //const [isChecked, setIsChecked] = useToggle(checked)
   return (
-    <CustomCheckBox checked={isChecked} onPress={setIsChecked}>
-      <CustomCheckBox.Indicator>{isChecked && <Check />}</CustomCheckBox.Indicator>
+    <CustomCheckBox checked={checked}>
+      <CustomCheckBox.Indicator>{checked && <Check />}</CustomCheckBox.Indicator>
     </CustomCheckBox>
   )
 }
